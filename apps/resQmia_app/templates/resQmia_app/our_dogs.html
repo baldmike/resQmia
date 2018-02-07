@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
+    
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="{% static 'resQmia_app/resQmia.js' %}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">resQmia</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/our_dogs">Our Dogs</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">NEW
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/new_dog">New Dog</a></li>
+                            <li><a href="#">New Cat</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text"><span id="date"></span></li>
+                    <li class="navbar-text"><span id="time"></span></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+                
+            </div>
+        </nav>
+
+
+
+        <div class="row">
+            
+            <div class="col-md-6 left box">
+                <h1 style="text-align: center;">Our Dogs</h1>   
+                {% for dog in avail_dogs %}
+                <h3><a href="/select/{{ dog.id }}">{{ dog.name }}</a>
+                    <a href="/delete/{{ dog.id }}">DELETE</a></h3>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6 right box">
+                {% for dog in current_dog %}
+                <h1>{{ dog.name }}</h1>
+                <h3{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }}</h3 {% endif %}>
+                <h3 {% if dog.microchip_number == "0" %} style="background-color: red">NEEDS MICROCHIP!</h3 {% endif %}>
+                <h3>Birthdate: {{ dog.birthdate }}</h3>
+                <h3>{{ dog.description }}, {{ dog.weight }}lbs.</h3>
+                <h3 {% if dog.fixed == False %} style="background-color: red">NOT FIXED!!</h3 {% endif %}>
+                {% endfor %}
+                
+                <hr>
+                {% for rabies in current_rabies %}
+                <h3{% if rabies.vaccine>Rabies due: {{ rabies.vaccine_due }} </h3>
+                {% endfor %}
+
+                {% for da2pp in current_da2pp %}
+                <h3>{{ da2pp.vaccine_name }} due: {{ da2pp.vaccine_due }}</h3>
+                {% endfor %}
+                
+                {% for lepto in current_lepto %}
+                <h3>{{ lepto.vaccine_name }} due: {{ lepto.vaccine_due }}</h3>
+                {% endfor %}
+
+                {% for bord in current_bord %}
+                <h3>{{ bord.vaccine_name }} due: {{ bord.vaccine_due }}</h3>
+                {% endfor %}
+
+                {% for civ in current_civ %}
+                <h3>{{ civ.vaccine_name }} due: {{ civ.vaccine_due }}</h3>
+                <hr>
+                {% endfor %}
+            
+                {% for heartPrev in current_heartworm_prev %}
+                <h3>{{ heartPrev.prevention_name }} prevention due: {{ heartPrev.prevention_due }}</h3>
+                {% endfor %}
+
+                {% for flea in current_flea_tick %}
+                <h3>{{ flea.prevention_name }} prevention due: {{ flea.prevention_due }}</h3>
+                <hr>
+                {% endfor %}
+
+                {% for heartTest in current_heartworm_test %}
+                <h3>{{ heartTest.test_name }} test due: {{ heartTest.test_due }}</h3>
+                {% endfor %}
+
+                {% for fecal in current_fecal %}
+                <h3>{{ fecal.test_name }} test due: {{ fecal.test_due }}</h3>
+                {% endfor %}
+
+                {% for worm in current_dewormer %}
+                <h3>{{ worm.test_name }} due: {{ worm.test_due }}</h3>
+                {% endfor %}
+
+
+                
+            </div>
+
+        </div>
+    </div>
+</body>

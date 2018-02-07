@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'resQmia_app/login_app.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>resQmia</h1>
+            </div>
+            {% for message in messages %}
+            <h2>{{message}}</h2>
+            {% endfor %}
+        </div>
+        <div class="col-xs-4 col-xs-offset-4">
+            <form action="/login" method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email_login" aria-describedby="emailHelp" placeholder="Enter email" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" id="password_login" aria-describedby="emailHelp" placeholder="Enter Password">
+                </div>
+                <button type="submit" name="login" class="btn btn-primary center" style="float: right;">login</button>
+            </form>
+        </div>
+
+        <div class="col-xs-4 col-xs-offset-4 reg">
+            <form action="/register" method="post">
+                {% csrf_token %}
+                <h1 class="header">register</h1>
+                <div class="form-group login">
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
+                </div>
+                <div class="form-group login">
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
+                </div>
+                <div class="form-group login">
+                    <input type="email" class="form-control" name="email" id="email_reg" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+                <div class="form-group login">
+                    <input type="password" class="form-control" name="password" id="password-reg" aria-describedby="emailHelp" placeholder="Password">
+                </div>
+                <div class="form-group login">
+                    <input type="password" class="form-control" name="conf_password" id="conf_password" aria-describedby="emailHelp" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary floatright login loginbtn">register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>`

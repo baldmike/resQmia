@@ -1,0 +1,133 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.reg {
+    margin-top: 500px;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+
+/* BELOW FROM SEP RESQMIA APP */
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-default {
+    background-color: hotpink;
+    color: black;
+    font-size: 20px;
+}
+.new-dog-form {
+    margin-top: 10%;
+}
+
+.form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.form-advance-button {
+    text-align: center;
+    width: 200px;
+}
+
+#vaccinations {
+    margin-top: 1000px;
+}
+
+.shot-box {
+    /* margin-top: 10px; */
+}
+
+
+.red-form {
+    background-color: red;
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.purple-form {
+    background-color: purple;
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.orange-form {
+    background-color: orange;
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.blue-form {
+    background-color: blue;
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.pink-form {
+    background-color: hotpink;
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+
+
+#preventions {
+    /* margin-top: 500px; */
+}
+
+.heartworm-prev-form {
+    background-color: rgb(125, 148, 170);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.flea-prev-form {
+    background-color: rgb(247, 128, 114);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.heartworm-test-form {
+    background-color: rgb(37, 228, 37);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.fecal-test-form {
+    background-color: rgb(167, 119, 56);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
+.dewormer-test-form {
+    background-color: rgb(63, 113, 248);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
