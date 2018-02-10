@@ -76,33 +76,9 @@ class Vaccine(models.Model):
     vaccine_name = models.CharField(max_length=100)
     vaccine_given = models.DateField(null=True, blank=True)
     vaccine_due = models.DateField()
+    vaccine_number = models.CharField(default=None, blank=True, null=True, max_length = 100)
     vaccine_notes = models.TextField(max_length = 500)
     dog = models.ForeignKey(Dog, related_name="vaccines", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return self.vaccine_name
-
-class RabiesVaccine(models.Model):
-    vaccine_name = models.CharField(max_length=100)
-    vaccine_given = models.DateField(null=True, blank=True)
-    vaccine_due = models.DateField()
-    vaccine_number = models.CharField(max_length = 100)
-    vaccine_notes = models.TextField(max_length = 500)
-    dog = models.ForeignKey(Dog, related_name="rabiesvaccines", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self):
-        return self.vaccine_name
-
-class Da2ppVaccine(models.Model):
-    vaccine_name = models.CharField(max_length=100)
-    vaccine_given = models.DateField(null=True, blank=True)
-    vaccine_due = models.DateField()
-    vaccine_notes = models.TextField(max_length=500)
-    dog = models.ForeignKey(Dog, related_name="da2ppvaccines", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

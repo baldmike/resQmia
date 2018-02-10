@@ -105,30 +105,30 @@
                 
                 <div class="form-group" id="vaccinations">
                     <h1>Vaccinations</h1>
+
                     <div class="form-group rabies">
                         <h4 class="center">RABIES</h4>
                         <div class="form-control red-form" id="rabiesVacFalse">
                             <input type="radio" name="rabiesVac" value="False" checked="checked">
-                            <label for="rabiesVac" class="input-label"> Needs Rabies Vaccine</label>
-                            <input style="float: right; color: black;" type="date" name="rabiesDue" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <label for="rabiesVac"> Needs Rabies Vaccine</label>
+                            <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
                         <div class="form-control" id="rabiesVacTrue">
                             <input type="radio" name="rabiesVac" value="True">
                             <label for="rabiesVac"> Rabies vaccine given on</label>
-                            <input style="float: right; color: black;" type="date" name="rabiesGiven" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
-                    
-                        <div class="form-control hidden red-form center" id="rabiesNumber">
-                            <input type="number" name="rabiesNumber" style="color: black;">
-                            <label class="control-label" for="rabiesNumber">Rabies Number</label>
+                        <div class="form-control hidden red-form center" id="rabies_number">
+                            <input type="number" name="rabies_number" style="color: black;">
+                            <label class="control-label" for="rabies_number">Rabies Number</label>
                         </div>
                     </div>
                 
 
                     <div class="form-group da2pp">
-                            <h4 class="center">DA2PP</h4>
+                        <h4 class="center">DA2PP</h4>
                         <div class="form-control purple-form" id="da2ppVacFalse">
                             <input type="radio" name="da2ppVac" value="False" checked="checked">
                             <label class="control-label" for="da2ppVacFalse">Needs DA2PP vaccine</label>

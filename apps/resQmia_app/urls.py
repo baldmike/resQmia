@@ -10,9 +10,13 @@ urlpatterns = [
 
     url(r'^new_dog$', views.new_dog),
     url(r'^rescue_dog$', views.rescue_dog),
-    url(r'^select/(?P<dog_id>\d+)$', views.select),
+    url(r'^select_our_dogs/(?P<dog_id>\d+)$', views.select_our_dogs),
+    url(r'^select_dashboard/(?P<dog_id>\d+)$', views.select_dashboard),
     url(r'^delete/(?P<dog_id>\d+)$', views.delete),
     url(r'^select_day/(?P<dog_id>\d+)$', views.select_day),
+
+    url(r'^new_vaccine/(?P<id>\d+)$', views.new_vaccine),
+
     url(r'^select_adopted/(?P<dog_id>\d+)$', views.select_adopted),
     url(r'^adopted/(?P<dog_id>\d+)$', views.adopted),
     url(r'^our_dogs$', views.our_dogs),

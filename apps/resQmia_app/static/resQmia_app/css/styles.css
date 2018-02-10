@@ -1,6 +1,4 @@
 * {
-    padding: 0px;
-    margin: 0px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -51,11 +49,6 @@
     margin-top: 1000px;
 }
 
-.shot-box {
-    /* margin-top: 10px; */
-}
-
-
 .red-form {
     background-color: red;
     color: white;
@@ -91,12 +84,6 @@
     font-size: 15px;
 }
 
-
-
-#preventions {
-    /* margin-top: 500px; */
-}
-
 .heartworm-prev-form {
     background-color: rgb(125, 148, 170);
     color: white;
@@ -130,4 +117,21 @@
     color: white;
     height: 40px;
     font-size: 15px;
+}
+
+.new-vac-button {
+    width: 100px;
+    background-color: greenyellow;
+    height: 30px;
+    border-radius: 5px;
+    float: right;
+}
+
+.add-vac-button {
+    width: 100px;
+    margin-top: 10px;
+    background-color: red; 
+    height: 30px;
+    border-radius: 5px;
+    float: right;
 }

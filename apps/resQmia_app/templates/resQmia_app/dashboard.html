@@ -49,17 +49,242 @@
             </div>
         </nav>
 
-        <div class="action-box vaccines">
+        <div class="row">
+            
+            <div class="col-md-4 col-md-offset-2">
             <h3>These dogs have vaccines due today or before:</h3>
             {% for dog in vaccines_due %}
             <ul>
-                <li><h3><a href="/select_day/{{ dog.id }}">{{ dog.name }}</a></h3></li>
+                <li><h3><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></h3></li>
             </ul>
             {% endfor %}
         </div>
 
+        <div class="col-md-4">
+            {% for dog in current_dog %}
+            <ul>
+                <h1>{{ dog.name }}</h1>
+                <li{% if dog.fixed == False %} style="background-color: red">NOT FIXED!!{% endif %}</li>
+                <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
+                <li {% if dog.microchip_number == "0" %} style="background-color: red">NEEDS MICROCHIP!</li {% endif %}>
+                <li>Birthdate: {{ dog.birthdate }}</li>
+                <li>{{ dog.description }}, {{ dog.weight }}lbs.</li>
+            </ul>
+            {% endfor %}
+            
+            <ul>    
+                <h4 {% if current_dog %}><hr>Vaccinations Due:</h4>{% endif %}
+                {% for rabies in current_rabies %}
+                <div class="new-vac">
+                    <div class="col-md-6">
+                        <li>Rabies due: {{ rabies.vaccine_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_rabies_button" class="new-vac-button">New Rabies</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_rabies">
+                        <form action="/new_vaccine/{{ rabies.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">Rabies Number</label>
+                                <input type="number" name="vaccine_number" class="form-control" placeholder="Rabies Number">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">New Rabies Vaccine Given </label>
+                                <input placeholder="Rabies GIVEN on: " type="text" class="form-control" name="vaccine_given" id="rabies_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">Rabies Vaccine Due Date</label>
+                                <input placeholder="Rabies is now DUE on: " type="text" class="form-control" name="vaccine_due" id="rabies-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add RABIES</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %} 
+
+                {% for da2pp in current_da2pp %}
+                <div class="new-vac">
+                    <div class="col-md-6">
+                        <li>DA2PP due: {{ da2pp.vaccine_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_da2pp_button" class="new-vac-button">New DA2PP</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_da2pp">
+                        <form action="/new_vaccine/{{ da2pp.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New DA2PP Vaccine Given </label>
+                                <input placeholder="DA2PP GIVEN on: " type="text" class="form-control" name="vaccine_given" id="da2pp_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">DA2PP Vaccine Due Date</label>
+                                <input placeholder="DA2PP is now DUE on: " type="text" class="form-control" name="vaccine_due" id="da2pp-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add DA2PP</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% for lepto in current_lepto %}
+                <div class="new-vac">
+                    <div class="col-md-6">
+                        <li>Leptospirosis due: {{ lepto.vaccine_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_lepto_button" class="new-vac-button">New Lepto</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_lepto">
+                        <form action="/new_vaccine/{{ lepto.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New lepto Vaccine Given </label>
+                                <input placeholder="LEPTO GIVEN on: " type="text" class="form-control" name="vaccine_given" id="lepto_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">lepto Vaccine Due Date</label>
+                                <input placeholder="LEPTO is now DUE on: " type="text" class="form-control" name="vaccine_due" id="lepto-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add LEPTO</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
 
 
+                {% for bord in current_bord %}
+                <div class="new-vac">
+                    <div class="col-md-6">
+                        <li>Bordatella due: {{ bord.vaccine_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_bord_button" class="new-vac-button">New Bord</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_bord">
+                        <form action="/new_vaccine/{{ bord.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New Bord Vaccine Given </label>
+                                <input placeholder="BORD GIVEN on: " type="text" class="form-control" name="vaccine_given" id="bord_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">bord Vaccine Due Date</label>
+                                <input placeholder="bord is now DUE on: " type="text" class="form-control" name="vaccine_due" id="bord-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add BORD</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                
+                {% for civ in current_civ %}
+                <div class="new-vac">
+                    <div class="col-md-6">
+                        <li>civ due: {{ civ.vaccine_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_civ_button" class="new-vac-button">New CIV</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_civ">
+                        <form action="/new_vaccine/{{ civ.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New CIV Vaccine Given </label>
+                                <input placeholder="CIV GIVEN on: " type="text" class="form-control" name="vaccine_given" id="civ_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">CIV Vaccine Due Date</label>
+                                <input placeholder="CIV is now DUE on: " type="text" class="form-control" name="vaccine_due" id="civ-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add CIV</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+
+                
+                
+                
+                
+                <h4 {% if current_dog %}><hr>Preventions Due:</h4>{% endif %}
+                {% for heartPrev in current_heartworm_prev %}
+                <div class="new-prev">
+                    <div class="col-md-6">
+                        <li>{{ heartPrev.prevention_name }} prevention due: {{ heartPrev.prevention_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_civ_button" class="new-vac-button">New CIV</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_civ">
+                        <form action="/new_vaccine/{{ civ.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New CIV Vaccine Given </label>
+                                <input placeholder="CIV GIVEN on: " type="text" class="form-control" name="vaccine_given" id="civ_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">CIV Vaccine Due Date</label>
+                                <input placeholder="CIV is now DUE on: " type="text" class="form-control" name="vaccine_due" id="civ-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <input hidden name="vaccine_number" value=0>
+                                <button type="submit" class="add-vac-button">Add CIV</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for flea in current_flea_tick %}
+                <li>{{ flea.prevention_name }} prevention due: {{ flea.prevention_due }}</li>
+                {% endfor %}
+            </ul>
+
+            <ul>
+                <h4 {% if current_dog %}><hr>Tests Due:</h4>{% endif %}
+                {% for heartTest in current_heartworm_test %}
+                <li>{{ heartTest.test_name }} test due: {{ heartTest.test_due }}</li>
+                {% endfor %}
+
+                {% for fecal in current_fecal %}
+                <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
+                {% endfor %}
+
+                {% for worm in current_dewormer %}
+                <li>{{ worm.test_name }} due: {{ worm.test_due }}</li>
+                {% endfor %}
+            </ul>
+
+
+                
+        </div>
+
+
+        </div>
 
 
 

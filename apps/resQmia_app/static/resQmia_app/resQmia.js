@@ -64,21 +64,21 @@ $(document).ready(function(){
     });
 
     var rabiesVacTrue = $('#rabiesVacTrue')
-    rabiesVacTrue.change(function(){
+    rabiesVacTrue.click(function(){
         $('#rabiesVacFalse').toggleClass('red-form')
         $('#rabiesVacTrue').toggleClass('red-form')
-        $('#rabiesGiven').toggleClass("hidden")
-        $('#rabiesNumber').toggleClass("hidden")
-        $('#rabiesDue').toggleClass("hidden")
+        $('#rabies_given').toggleClass("hidden")
+        $('#rabies_number').toggleClass("hidden")
+        $('#rabies_due').toggleClass("hidden")
     })
 
     var rabiesVacFalse = $('#rabiesVacFalse')
-    rabiesVacFalse.change(function(){
+    rabiesVacFalse.click(function(){
         $('#rabiesVacFalse').toggleClass('red-form')
         $('#rabiesVacTrue').toggleClass('red-form')
-        $('#rabiesGiven').toggleClass("hidden")
-        $('#rabiesNumber').toggleClass("hidden")
-        $('#rabiesDue').toggleClass("hidden")
+        $('#rabies_given').toggleClass("hidden")
+        $('#rabies_number').toggleClass("hidden")
+        $('#rabies_due').toggleClass("hidden")
     })
 
     var da2ppVacTrue = $('#da2ppVacTrue')
@@ -230,5 +230,26 @@ $(document).ready(function(){
     })
 
        
+
+
+    $('#new_rabies_button').click(function(){
+        $('#new_rabies').toggleClass("hidden");
+    })
+
+    $('#new_da2pp_button').click(function(){
+        $('#new_da2pp').toggleClass("hidden");
+    })
+
+    $('#new_lepto_button').click(function(){
+        $('#new_lepto').toggleClass("hidden");
+    })
+
+    $('#new_bord_button').click(function(){
+        $('#new_bord').toggleClass("hidden");
+    })
+
+    $('#new_civ_button').click(function(){
+        $('#new_civ').toggleClass("hidden");
+    })
 
 });
