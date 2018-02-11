@@ -18,47 +18,28 @@
 <body>
     <div class="container-fluid">
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">resQmia</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="/our_dogs">Our Dogs</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">NEW
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/new_dog">New Dog</a></li>
-                            <li><a href="#">New Cat</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left" action="#">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="navbar-text"><span id="date"></span></li>
-                    <li class="navbar-text"><span id="time"></span></li>
-                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                </ul>
-                
-            </div>
-        </nav>
+    {% include 'resQmia_app/nav_bar.html' %}
 
-        <div class="row">
+        
+    <div class="col-md-4 col-md-offset-2">
+        <h3>These dogs have shit due today or before!</h3>
+        {% for dog in dog_alert %}
+        <ul>
+            <li><h3><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></h3></li>
+        </ul>
+        {% endfor %}
+    </div>
+
             
-            <div class="col-md-4 col-md-offset-2">
-            <h3>These dogs have vaccines due today or before:</h3>
-            {% for dog in vaccines_due %}
-            <ul>
-                <li><h3><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></h3></li>
-            </ul>
-            {% endfor %}
-        </div>
+                <div class="col-md-4 col-md-offset-2">
+                <h3>These cats have shit due today or before!</h3>
+                {% for cat in cat_alert %}
+                <ul>
+                    <li><h3><a href="/select_dashboard/{{ cat.id }}">{{ cat.name }}</a></h3></li>
+                </ul>
+                {% endfor %}
+            </div>
+
 
         <div class="col-md-4">
             {% for dog in current_dog %}
@@ -84,7 +65,7 @@
                         <button id="new_rabies_button" class="new-vac-button">New Rabies</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_rabies">
-                        <form action="/new_vaccine/{{ rabies.id }}" method="post">
+                        <form action="/new_vaccine_dog/{{ rabies.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
                                 <label class="sr-only">Rabies Number</label>
@@ -117,7 +98,7 @@
                         <button id="new_da2pp_button" class="new-vac-button">New DA2PP</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_da2pp">
-                        <form action="/new_vaccine/{{ da2pp.id }}" method="post">
+                        <form action="/new_vaccine_dog/{{ da2pp.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
                                 <label class="sr-only">New DA2PP Vaccine Given </label>
@@ -146,7 +127,7 @@
                         <button id="new_lepto_button" class="new-vac-button">New Lepto</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_lepto">
-                        <form action="/new_vaccine/{{ lepto.id }}" method="post">
+                        <form action="/new_vaccine_dog/{{ lepto.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
                                 <label class="sr-only">New lepto Vaccine Given </label>
@@ -176,7 +157,7 @@
                         <button id="new_bord_button" class="new-vac-button">New Bord</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_bord">
-                        <form action="/new_vaccine/{{ bord.id }}" method="post">
+                        <form action="/new_vaccine_dog/{{ bord.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
                                 <label class="sr-only">New Bord Vaccine Given </label>
@@ -199,14 +180,14 @@
                 {% for civ in current_civ %}
                 <div class="new-vac">
                     <div class="col-md-6">
-                        <li>civ due: {{ civ.vaccine_due }}</li>
+                        <li>CIV due: {{ civ.vaccine_due }}</li>
                     </div>
                 
                     <div class="col-md-6">
                         <button id="new_civ_button" class="new-vac-button">New CIV</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_civ">
-                        <form action="/new_vaccine/{{ civ.id }}" method="post">
+                        <form action="/new_vaccine_dog/{{ civ.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
                                 <label class="sr-only">New CIV Vaccine Given </label>
@@ -224,35 +205,33 @@
                     </div>
                 </div>
                 {% endfor %}
+                
+                
 
-                
-                
-                
-                
+                <hr>
                 <h4 {% if current_dog %}><hr>Preventions Due:</h4>{% endif %}
-                {% for heartPrev in current_heartworm_prev %}
+                {% for heart_prev in current_heartworm_prev %}
                 <div class="new-prev">
                     <div class="col-md-6">
-                        <li>{{ heartPrev.prevention_name }} prevention due: {{ heartPrev.prevention_due }}</li>
+                        <li>{{ heart_prev.prevention_name }} prev due: {{ heart_prev.prevention_due }}</li>
                     </div>
                 
                     <div class="col-md-6">
-                        <button id="new_civ_button" class="new-vac-button">New CIV</button>
+                        <button id="new_heart_prev_button" class="new-prev-button">Heartworm</button>
                     </div>
-                    <div class="col-md-12 hidden" id="new_civ">
-                        <form action="/new_vaccine/{{ civ.id }}" method="post">
+                    <div class="col-md-12 hidden" id="new_heart_prev">
+                        <form action="/new_prevention_dog/{{ heart_prev.id }}" method="post">
                             {% csrf_token %}
                             <div class="col-md-8">
-                                <label class="sr-only">New CIV Vaccine Given </label>
-                                <input placeholder="CIV GIVEN on: " type="text" class="form-control" name="vaccine_given" id="civ_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <label class="sr-only">New Heartworm Prevention Given </label>
+                                <input placeholder="HW Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="heart_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')">
                             </div>
                             <div class="col-md-8">
-                                <label class="sr-only">CIV Vaccine Due Date</label>
-                                <input placeholder="CIV is now DUE on: " type="text" class="form-control" name="vaccine_due" id="civ-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                                <label class="sr-only">Heartworm Prevention Due Date</label>
+                                <input placeholder="HW Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="heart_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                             </div>
                             <div class="col-md-4">
-                                <input hidden name="vaccine_number" value=0>
-                                <button type="submit" class="add-vac-button">Add CIV</button>
+                                <button type="submit" class="add-prev-button">HEARTWORM</button>
                             </div>
                         </form>
                     </div>
@@ -260,36 +239,129 @@
                 {% endfor %}
 
                 {% for flea in current_flea_tick %}
-                <li>{{ flea.prevention_name }} prevention due: {{ flea.prevention_due }}</li>
+                
+                <div class="new-prev">
+                    <div class="col-md-6">
+                        <li>Flea/Tick prev due: {{ flea.prevention_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_flea_prev_button" class="new-prev-button">Fleas!</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_flea_prev">
+                        <form action="/new_prevention_dog/{{ flea.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New Flea/Tick Prevention Given </label>
+                                <input placeholder="Flea Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="flea_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">Flea Prevention Due Date</label>
+                                <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="add-prev-button">FLEAS!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 {% endfor %}
             </ul>
+
+
+
+
 
             <ul>
                 <h4 {% if current_dog %}><hr>Tests Due:</h4>{% endif %}
-                {% for heartTest in current_heartworm_test %}
-                <li>{{ heartTest.test_name }} test due: {{ heartTest.test_due }}</li>
+                {% for heart_test in current_heartworm_test %}
+
+                <div class="new-test">
+                    <div class="col-md-6">
+                        <li>{{ heart_test.test_name }} test due: {{ heart_test.test_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_heart_test_button" class="new-test-button">Worm Test!!</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_heart_test">
+                        <form action="/new_test_dog/{{ heart_test.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New Heartworm Test Given </label>
+                                <input placeholder="Heartworm Test GIVEN on: " type="text" class="form-control" name="test_given" id="heart_test_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">Heartworm Test Due Date</label>
+                                <input placeholder="Heartworm Test is now DUE on: " type="text" class="form-control" name="test_due" id="heart_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="add-test-button">Worm Test!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 {% endfor %}
 
+
                 {% for fecal in current_fecal %}
-                <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
+                <div class="new-test">
+                    <div class="col-md-6">
+                        <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_fecal_test_button" class="new-test-button">POOP Test!!</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_fecal_test">
+                        <form action="/new_test_dog/{{ fecal.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New Fecal Test Given </label>
+                                <input placeholder="Fecal Test GIVEN on: " type="text" class="form-control" name="test_given" id="fecal_test_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">Fecal Test Due Date</label>
+                                <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="add-test-button">POOP Test!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 {% endfor %}
 
                 {% for worm in current_dewormer %}
-                <li>{{ worm.test_name }} due: {{ worm.test_due }}</li>
+                <div class="new-test">
+                    <div class="col-md-6">
+                        <li>{{ worm.test_name }} due: {{ worm.test_due }}</li>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <button id="new_dewormer_button" class="new-test-button">DEWORMER!!</button>
+                    </div>
+                    <div class="col-md-12 hidden" id="new_dewormer">
+                        <form action="/new_test_dog/{{ worm.id }}" method="post">
+                            {% csrf_token %}
+                            <div class="col-md-8">
+                                <label class="sr-only">New Dewormer Given </label>
+                                <input placeholder="Dewormer GIVEN on: " type="text" class="form-control" name="test_given" id="dewormer_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="sr-only">Fecal Test Due Date</label>
+                                <input placeholder="Dewormer is now DUE on: " type="text" class="form-control" name="test_due" id="dewormer_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="add-test-button">DEWORMER!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 {% endfor %}
             </ul>
-
-
                 
         </div>
-
-
-        </div>
-
-
-
-
-
 
     </div>
 </body>

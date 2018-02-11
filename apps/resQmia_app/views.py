@@ -14,47 +14,122 @@ print "*****"
 print "TODAY IS: ", dateToday
 print "*****"
 
-def vaccines_due():
-    vaccines_due = []
-    rbv = Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due')
+# dog_alert = [] becomes a no-duplicate list of dogs who need vetting that day
+def dog_alert():
+    dog_alert = []
+
+    rbv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due')
     for x in range (0, len(rbv)):
         print rbv[x].dog
-        vaccines_due.append(rbv[x].dog)
-    dav = Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due')
+        dog_alert.append(rbv[x].dog)
+    dav = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due')
     for x in range (0, len(dav)):
-        if dav[x].dog not in vaccines_due:
-            vaccines_due.append(dav[x].dog)
-    lpv = Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due')
+        if dav[x].dog not in dog_alert:
+            dog_alert.append(dav[x].dog)
+    lpv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due')
     for x in range (0, len(lpv)):
-        if lpv[x].dog not in vaccines_due:
-            vaccines_due.append(lpv[x].dog)
-    bdv = Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due')
+        if lpv[x].dog not in dog_alert:
+            dog_alert.append(lpv[x].dog)
+    bdv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due')
     for x in range (0, len(bdv)):
-        if bdv[x].dog not in vaccines_due:
-            vaccines_due.append(bdv[x].dog)
-    civ = Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due')
+        if bdv[x].dog not in dog_alert:
+            dog_alert.append(bdv[x].dog)
+    civ = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due')
     for x in range (0, len(civ)):
-        if civ[x].dog not in vaccines_due:
-            vaccines_due.append(civ[x].dog)
-    return vaccines_due
+        if civ[x].dog not in dog_alert:
+            dog_alert.append(civ[x].dog)
+
+    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    for x in range (0, len(hwp)):
+        if hwp[x].dog not in dog_alert:
+            dog_alert.append(hwp[x].dog)
+    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="fleaTick").order_by('prevention_due')
+    for x in range (0, len(ftp)):
+        if ftp[x].dog not in dog_alert:
+            dog_alert.append(ftp[x].dog)
+    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    for x in range (0, len(hwt)):
+        if hwt[x].dog not in dog_alert:
+            dog_alert.append(hwt[x].dog)
+    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
+    for x in range (0, len(fct)):
+        if fct[x].dog not in dog_alert:
+            dog_alert.append(fct[x].dog)
+    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
+    for x in range (0, len(dwd)):
+        if dwd[x].dog not in dog_alert:
+            dog_alert.append(dwd[x].dog)
+
+    return dog_alert
+
+
+# cat_alert = [] becomes a no-duplicate list of cats who need vetting that day
+def cat_alert():
+    cat_alert = []
+
+    rbv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due')
+    for x in range (0, len(rbv)):
+        print rbv[x].cat
+        cat_alert.append(rbv[x].cat)
+    dav = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due')
+    for x in range (0, len(dav)):
+        if dav[x].cat not in cat_alert:
+            cat_alert.append(dav[x].cat)
+    lpv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due')
+    for x in range (0, len(lpv)):
+        if lpv[x].cat not in cat_alert:
+            cat_alert.append(lpv[x].cat)
+    bdv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due')
+    for x in range (0, len(bdv)):
+        if bdv[x].cat not in cat_alert:
+            cat_alert.append(bdv[x].cat)
+    civ = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due')
+    for x in range (0, len(civ)):
+        if civ[x].cat not in cat_alert:
+            cat_alert.append(civ[x].cat)
+
+    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    for x in range (0, len(hwp)):
+        if hwp[x].cat not in cat_alert:
+            cat_alert.append(hwp[x].cat)
+    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="fleaTick").order_by('prevention_due')
+    for x in range (0, len(ftp)):
+        if ftp[x].cat not in cat_alert:
+            cat_alert.append(ftp[x].cat)
+    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    for x in range (0, len(hwt)):
+        if hwt[x].cat not in cat_alert:
+            cat_alert.append(hwt[x].cat)
+    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
+    for x in range (0, len(fct)):
+        if fct[x].cat not in cat_alert:
+            cat_alert.append(fct[x].cat)
+    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
+    for x in range (0, len(dwd)):
+        if dwd[x].cat not in cat_alert:
+            cat_alert.append(dwd[x].cat)
+
+    return cat_alert
+
 
 def index(request):
     if 'user_id' in request.session:
-        vaccines_due()
+        dog_alert()
+        cat_alert()
 
         context = {
         "avail_dogs" : Dog.objects.exclude(adopted=True),
-        "rabies" : Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
-        "da2pp" : Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
-        "lepto" : Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
-        "bord" : Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
-        "civs" : Vaccine.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
-        "vaccines_due" : vaccines_due,
-        "heartwormPrev" : Prevention.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
-        "fleaTick" : Prevention.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
-        "heartwormTest" : Test.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        "fecalTest" : Test.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        "dewormer" : Test.objects.filter(test_due__lte=dateToday).order_by('test_due')
+        "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
+        "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
+        "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
+        "bord" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
+        "civs" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
+        "dog_alert" : dog_alert,
+        "heartwormPrev" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+        "fleaTick" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+        "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due')
         }
         return render(request, 'resQmia_app/dashboard.html', context)
     else:
@@ -141,66 +216,70 @@ def rescue_dog(request):
         rabies = request.POST['rabiesVac']
         if rabies == "False":
             rabies_due = request.POST['rabies_due']
-            rv = Vaccine.objects.create(vaccine_name="rabies", vaccine_due=rabies_due, dog_id=d.id)
+            rv = VaccineDog.objects.create(vaccine_name="rabies", vaccine_due=rabies_due, dog_id=d.id)
 
         elif rabies == "True":
             rabies_given = request.POST['rabies_given']
             rabies_due = request.POST['rabies_due']
             rabies_number = request.POST['rabies_number']
-            rv = Vaccine.objects.create(vaccine_name="rabies", vaccine_given=rabies_given, vaccine_due=rabies_due, vaccine_number=rabies_number, dog_id=d.id)
+            rv = VaccineDog.objects.create(vaccine_name="rabies", vaccine_given=rabies_given, vaccine_due=rabies_due, vaccine_number=rabies_number, dog_id=d.id)
 
         da2pp = request.POST['da2ppVac']
         if da2pp == "False":
             da2pp_due = dateToday
+            da2pp_given = '1999-01-01'
             
         elif da2pp == "True":
-            da2pp_given = request.POST['da2ppGiven']
-            da2pp_due = request.POST['da2ppDue']
-        dv = Vaccine.objects.create(vaccine_name="da2pp", vaccine_given=da2pp_given, vaccine_due=da2pp_due, dog_id=d.id)
+            da2pp_given = request.POST['da2pp_given']
+            da2pp_due = request.POST['da2pp_due']
+        dv = VaccineDog.objects.create(vaccine_name="da2pp", vaccine_given=da2pp_given, vaccine_due=da2pp_due, dog_id=d.id)
 
         lepto = request.POST['leptoVac']
         if lepto == "False":
             lepto_due = dateToday
+            lepto_given = '1999-01-01'
         
         elif lepto == "True":
             lepto_given = request.POST['leptoGiven']
             lepto_due = request.POST['leptoDue']
-        lv = Vaccine.objects.create(vaccine_name="lepto", vaccine_given=lepto_given, vaccine_due=lepto_due, dog_id=d.id)
+        lv = VaccineDog.objects.create(vaccine_name="lepto", vaccine_given=lepto_given, vaccine_due=lepto_due, dog_id=d.id)
 
         bord = request.POST['bordVac']
         if bord == "False":
             bord_due = dateToday
+            bord_given = '1999-01-01'
 
         elif bord == "True":    
             bord_given = request.POST['bordGiven']
             bord_due = request.POST['bordDue']
-        bv = Vaccine.objects.create(vaccine_name="bord", vaccine_given=bord_given, vaccine_due=bord_due, dog_id=d.id)
+        bv = VaccineDog.objects.create(vaccine_name="bord", vaccine_given=bord_given, vaccine_due=bord_due, dog_id=d.id)
 
         civ = request.POST['civVac']
         if civ == "False":
             civ_due = dateToday
+            civ_given = '1999-01-01'
 
         elif civ == "True":
             civ_given = request.POST['civGiven']
             civ_due = request.POST['civDue']    
-        cv = Vaccine.objects.create(vaccine_name="civ", vaccine_given=civ_given, vaccine_due=civ_due, dog_id=d.id)
+        cv = VaccineDog.objects.create(vaccine_name="civ", vaccine_given=civ_given, vaccine_due=civ_due, dog_id=d.id)
 
         # ************************    PREVENTIONS
 
         heartworm_prev_due = request.POST['heartwormPrevDue']
-        hwp = Prevention.objects.create(prevention_name="heartworm", prevention_due=heartworm_prev_due, dog_id=d.id)
+        hwp = PreventionDog.objects.create(prevention_name="heartworm", prevention_due=heartworm_prev_due, dog_id=d.id)
 
         flea_tick_due = request.POST['fleaPrevDue']
-        ftp = Prevention.objects.create(prevention_name="fleaTick", prevention_due=flea_tick_due, dog_id=d.id)
+        ftp = PreventionDog.objects.create(prevention_name="fleaTick", prevention_due=flea_tick_due, dog_id=d.id)
 
         heartworm_test_due = request.POST['heartwormTestDue']
-        hwt = Test.objects.create(test_name="heartworm", test_due=heartworm_test_due, dog_id=d.id)
+        hwt = TestDog.objects.create(test_name="heartworm", test_due=heartworm_test_due, dog_id=d.id)
 
         fecal_test_due = request.POST['fecalTestDue']
-        fft = Test.objects.create(test_name="fecal", test_due=fecal_test_due, dog_id=d.id)
+        fft = TestDog.objects.create(test_name="fecal", test_due=fecal_test_due, dog_id=d.id)
 
         dewormer_due = request.POST['dewormerTestDue']
-        dwt = Test.objects.create(test_name="dewormer", test_due=dewormer_due, dog_id=d.id)
+        dwt = TestDog.objects.create(test_name="dewormer", test_due=dewormer_due, dog_id=d.id)
         
 
     return redirect ('/our_dogs')
@@ -208,16 +287,16 @@ def rescue_dog(request):
 
 def select_our_dogs(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
-    current_rabies = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="rabies")
-    current_da2pp = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
-    current_lepto = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="lepto")
-    current_bord = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="bord")
-    current_civ = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="civ")
-    current_heartworm_prev = Prevention.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = Prevention.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
-    current_heartworm_test = Test.objects.filter(dog_id=dog_id, test_name="heartworm")
-    current_fecal = Test.objects.filter(dog_id=dog_id, test_name="fecal")
-    current_dewormer = Test.objects.filter(dog_id=dog_id, test_name="dewormer")  
+    current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
+    current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
+    current_lepto = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="lepto")
+    current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
+    current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
+    current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
+    current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
+    current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
 
@@ -243,16 +322,16 @@ def select_our_dogs(request, dog_id):
 def select_dashboard(request, dog_id):
     
     current_dog = Dog.objects.filter(id=dog_id)
-    current_rabies = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="rabies")
-    current_da2pp = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
-    current_lepto = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="lepto")
-    current_bord = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="bord")
-    current_civ = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="civ")
-    current_heartworm_prev = Prevention.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = Prevention.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
-    current_heartworm_test = Test.objects.filter(dog_id=dog_id, test_name="heartworm")
-    current_fecal = Test.objects.filter(dog_id=dog_id, test_name="fecal")
-    current_dewormer = Test.objects.filter(dog_id=dog_id, test_name="dewormer")  
+    current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
+    current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
+    current_lepto = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="lepto")
+    current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
+    current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
+    current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
+    current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
+    current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
 
@@ -263,7 +342,7 @@ def select_dashboard(request, dog_id):
         'current_lepto' : current_lepto,
         'current_bord' : current_bord,
         'current_civ' : current_civ,
-        'vaccines_due' : vaccines_due,
+        'dog_alert' : dog_alert,
         'current_heartworm_prev' : current_heartworm_prev,
         'current_flea_tick' : current_flea_tick,
         'current_heartworm_test' : current_heartworm_test,
@@ -277,24 +356,18 @@ def select_dashboard(request, dog_id):
     return render(request, 'resQmia_app/dashboard.html', context)
 
 
-def delete(request, dog_id):
-    dog = Dog.objects.filter(id=dog_id)
-    dog.delete()
-    
-    return redirect('/our_dogs')
-
 def select_our_dogs(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
-    current_rabies = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="rabies")
-    current_da2pp = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
-    current_lepto = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="lepto")
-    current_bord = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="bord")
-    current_civ = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="civ")
-    current_heartworm_prev = Prevention.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = Prevention.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
-    current_heartworm_test = Test.objects.filter(dog_id=dog_id, test_name="heartworm")
-    current_fecal = Test.objects.filter(dog_id=dog_id, test_name="fecal")
-    current_dewormer = Test.objects.filter(dog_id=dog_id, test_name="dewormer")  
+    current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
+    current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
+    current_lepto = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="lepto")
+    current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
+    current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
+    current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
+    current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
+    current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
 
@@ -317,7 +390,7 @@ def select_our_dogs(request, dog_id):
     
     return render(request, 'resQmia_app/our_dogs.html', context)
 
-def delete(request, dog_id):
+def delete_dog(request, dog_id):
     dog = Dog.objects.filter(id=dog_id)
     dog.delete()
     
@@ -325,16 +398,16 @@ def delete(request, dog_id):
 
 def select_day(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
-    current_rabies = Vaccine.objects.filter(dog_id=dog_id)
-    current_da2pp = Vaccine.objects.filter(dog_id=dog_id)
-    current_lepto = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="lepto")
-    current_bord = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="bord")
-    current_civ = Vaccine.objects.filter(dog_id=dog_id, vaccine_name="civ")
-    current_heartworm_prev = Prevention.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = Prevention.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
-    current_heartworm_test = Test.objects.filter(dog_id=dog_id, test_name="heartworm")
-    current_fecal = Test.objects.filter(dog_id=dog_id, test_name="fecal")
-    current_dewormer = Test.objects.filter(dog_id=dog_id, test_name="dewormer")  
+    current_rabies = VaccineDog.objects.filter(dog_id=dog_id)
+    current_da2pp = VaccineDog.objects.filter(dog_id=dog_id)
+    current_lepto = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="lepto")
+    current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
+    current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
+    current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
+    current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
+    current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
 
@@ -397,10 +470,10 @@ def our_dogs(request):
 
 
 
-def new_vaccine(request, id):
+def new_vaccine_dog(request, id):
     if request.method == 'POST':
         
-        current_record = Vaccine.objects.get(id=id)
+        current_record = VaccineDog.objects.get(id=id)
         
         current_record.vaccine_given = request.POST['vaccine_given']
         current_record.vaccine_due = request.POST['vaccine_due']
@@ -409,3 +482,136 @@ def new_vaccine(request, id):
         current_record.save()
 
     return redirect('/')
+
+
+def new_prevention_dog(request, id):
+    if request.method == 'POST':
+        
+        current_record = PreventionDog.objects.get(id=id)
+        
+        current_record.prevention_given = request.POST['prevention_given']
+        current_record.prevention_due = request.POST['prevention_due']
+
+        current_record.save()
+
+    return redirect('/')
+
+
+def new_test_dog(request, id):
+    if request.method == 'POST':
+    
+        current_record = TestDog.objects.get(id=id)
+    
+        current_record.test_given = request.POST['test_given']
+        current_record.test_due = request.POST['test_due']
+
+        current_record.save()
+
+    return redirect('/')
+
+    # CATS!!!!!!!!!!!!!! =============================================================
+
+
+
+def delete_cat(request, cat_id):
+    cat = Cat.objects.filter(id=cat_id)
+    cat.delete()
+
+    return redirect('/our_cats')
+
+
+
+def our_cats(request):
+    avail_cats = Cat.objects.exclude(adopted=True)
+
+    context = {
+        "avail_cats" : avail_cats,
+    }
+    print avail_cats
+    return render(request, 'resQmia_app/our_cats.html', context)    
+
+def new_cat(request):
+    return render(request, 'resQmia_app/new_cat.html')
+
+def rescue_cat(request):
+    dateToday = date.today()
+    if request.method == 'POST':
+        name = request.POST['name']
+        microchip_number = 0
+        if 'microchip' in request.POST:
+            microchip_number = request.POST['microchip_number']
+        gender = request.POST['gender']
+        birthdate = request.POST['birthdate']
+        description = request.POST['description']
+        weight = request.POST['weight']
+        fixed = False
+        if 'fixed' in request.POST:
+            fixed = True
+        adopted = False
+        d = Cat.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
+
+        # ************************    VACCINATIONS
+        rabies = request.POST['rabiesVac']
+        if rabies == "False":
+            rabies_due = request.POST['rabies_due']
+            rv = VaccineCat.objects.create(vaccine_name="rabies", vaccine_due=rabies_due, cat_id=d.id)
+
+        elif rabies == "True":
+            rabies_given = request.POST['rabies_given']
+            rabies_due = request.POST['rabies_due']
+            rabies_number = request.POST['rabies_number']
+            rv = VaccineCat.objects.create(vaccine_name="rabies", vaccine_given=rabies_given, vaccine_due=rabies_due, vaccine_number=rabies_number, cat_id=d.id)
+
+        fvrcp = request.POST['fvrcpVac']
+        if fvrcp == "False":
+            fvrcp_due = dateToday
+            fvrcp_given = '1999-01-01'
+            
+        elif fvrcp == "True":
+            fvrcp_given = request.POST['fvrcp_given']
+            fvrcp_due = request.POST['fvrcp_due']
+        dv = VaccineCat.objects.create(vaccine_name="fvrcp", vaccine_given=fvrcp_given, vaccine_due=fvrcp_due, cat_id=d.id)
+
+        # ************************    PREVENTIONS
+
+        flea_tick_due = request.POST['fleaPrevDue']
+        ftp = PreventionCat.objects.create(prevention_name="fleaTick", prevention_due=flea_tick_due, cat_id=d.id)
+
+        revolution_prev_due = request.POST['revolutionPrevDue']
+        rvp = PreventionCat.objects.create(prevention_name="revolution", prevention_due=revolution_prev_due, cat_id=d.id)
+
+        fivfelv_due = request.POST['fivfelvTestDue']
+        fft = TestCat.objects.create(test_name="fivfelv", test_due=fivfelv_due, cat_id=d.id)
+
+        fecal_test_due = request.POST['fecalTestDue']
+        fft = TestCat.objects.create(test_name="fecal", test_due=fecal_test_due, cat_id=d.id)
+
+        
+        
+    return redirect ('/our_cats')
+
+def select_our_cats(request, cat_id):
+    current_cat = Cat.objects.filter(id=cat_id)
+    current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
+    current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
+    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="fleaTick")
+    current_revolution = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="revolution")        
+    current_fivfelv = TestCat.objects.filter(cat_id=cat_id, test_name="fivfelv")
+    current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
+    
+    avail_cats = Cat.objects.exclude(adopted=True)
+
+    context = {
+        'current_cat' : current_cat,
+        'current_rabies' : current_rabies,
+        'current_fvrcp' : current_fvrcp,
+        'current_flea' : current_flea,
+        'current_revolution' : current_revolution,
+        'current_fivfelv' : current_fivfelv,
+        'current_fecal' : current_fecal,
+
+        'avail_cats' : avail_cats,
+
+    }
+    
+    return render(request, 'resQmia_app/our_cats.html', context)

@@ -34,13 +34,13 @@ $(document).ready(function(){
     // get the time every 1000 [increments of time which I believe to be milliseconds]
     setInterval(timeOutput, 1000);
 
-    // function newDogName() {
-    //     new_dog_name = document.getElementById('#new_dog_name').value;
-    //     console.log(new_dog_name)
+    function newDogName() {
+        new_dog_name = document.getElementById('#new_dog_name').value;
+        console.log(new_dog_name)
     
-    //     document.getElementById('#current_dog_name').innerHTML=new_dog_name;
-    //     return new_dog_name;
-    // }
+        document.getElementById('#current_dog_name').innerHTML=new_dog_name;
+        return new_dog_name;
+    }
     
     var microchip = $('#microchip')
     microchip.click(function(){
@@ -85,16 +85,16 @@ $(document).ready(function(){
     da2ppVacTrue.change(function(){
         $('#da2ppVacTrue').toggleClass('purple-form')
         $('#da2ppVacFalse').toggleClass('purple-form')
-        $('#da2ppGiven').toggleClass("hidden")
-        $('#da2ppDue').toggleClass("hidden")
+        $('#da2pp_given').toggleClass("hidden")
+        $('#da2pp_due').toggleClass("hidden")
     })
 
     var da2ppVacFalse = $('#da2ppVacFalse')
     da2ppVacFalse.change(function(){
         $('#da2ppVacFalse').toggleClass('purple-form')
         $('#da2ppVacTrue').toggleClass('purple-form')
-        $('#da2ppGiven').toggleClass("hidden")
-        $('#da2ppDue').toggleClass("hidden")
+        $('#da2pp_given').toggleClass("hidden")
+        $('#da2pp_due').toggleClass("hidden")
     })
 
     var leptoVacTrue = $('#leptoVacTrue')
@@ -252,4 +252,87 @@ $(document).ready(function(){
         $('#new_civ').toggleClass("hidden");
     })
 
+
+    $('#new_heart_prev_button').click(function(){
+        $('#new_heart_prev').toggleClass("hidden");
+    })
+
+    $('#new_flea_prev_button').click(function(){
+        $('#new_flea_prev').toggleClass("hidden");
+    })
+
+
+    $('#new_heart_test_button').click(function(){
+        $('#new_heart_test').toggleClass("hidden");
+    })
+
+    $('#new_fecal_test_button').click(function(){
+        $('#new_fecal_test').toggleClass("hidden");
+    })
+
+    $('#new_dewormer_button').click(function(){
+        $('#new_dewormer').toggleClass("hidden");
+    })
+
 });
+
+
+// CAT ONLY BELOW **********************
+
+var fvrcpVacTrue = $('#fvrcpVacTrue')
+fvrcpVacTrue.change(function(){
+    $('#fvrcpVacTrue').toggleClass('purple-form')
+    $('#fvrcpVacFalse').toggleClass('purple-form')
+    $('#fvrcp_given').toggleClass("hidden")
+    $('#fvrcp_due').toggleClass("hidden")
+})
+
+var fvrcpVacFalse = $('#fvrcpVacFalse')
+fvrcpVacFalse.change(function(){
+    $('#fvrcpVacFalse').toggleClass('purple-form')
+    $('#fvrcpVacTrue').toggleClass('purple-form')
+    $('#fvrcp_given').toggleClass("hidden")
+    $('#fvrcp_due').toggleClass("hidden")
+})
+
+var fivfelvTestTrue = $('#fivfelvTestTrue')
+fivfelvTestTrue.change(function(){
+    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestGiven').toggleClass("hidden")
+    $('#fivfelvTestDue').toggleClass("hidden")
+})
+
+var fivfelvTestFalse = $('#fivfelvTestFalse')
+fivfelvTestFalse.change(function(){
+    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestGiven').toggleClass("hidden")
+    $('#fivfelvTestDue').toggleClass("hidden")
+})
+
+
+function newCatName() {
+    new_cat_name = document.getElementById('#new_cat_name').value;
+    console.log(new_cat_name)
+
+    document.getElementById('#current_cat_name').innerHTML=new_cat_name;
+    return new_cat_name;
+}
+
+
+var fivfelvTestTrue = $('#fivfelvTestTrue')
+fivfelvTestTrue.change(function(){
+    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestGiven').toggleClass("hidden")
+    $('#fivfelvTestDue').toggleClass("hidden")
+})
+
+var fivfelvTestFalse = $('#fivfelvTestFalse')
+fivfelvTestFalse.change(function(){
+    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+    $('#fivfelvTestGiven').toggleClass("hidden")
+    $('#fivfelvTestDue').toggleClass("hidden")
+})

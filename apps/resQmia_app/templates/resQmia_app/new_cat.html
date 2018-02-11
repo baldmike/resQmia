@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
+    
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="{% static 'resQmia_app/resQmia.js' %}"></script>
+</head>
+<body>
+   <div class="container-fluid">
+
+    {% include 'resQmia_app/nav_bar.html' %}
+
+    <div class="col-md-4 col-md-offset-4 col-xs-12 new-animal-form">
+            <h1 class="header">New Cat</h1>
+
+            <form class="form-horizontal" action="/rescue_cat" method="post" id="new_cat_form">
+            {% csrf_token %}
+            
+                <div class="form-group">
+                    <label for="name" class="sr-only">Cat's Name</label>
+                    <input type="text" class="form-control" name="name" id="new_cat_name" placeholder="Cat's Name" style="text-align: center" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate" class="sr-only">Birthdate</label>
+                    <input placeholder="Birthdate" type="text" class="form-control" name="birthdate" id="birthdate" onfocus="(this.type='date')" onblur="(this.type='text')">
+							
+					<label for="description" class="sr-only">Description</label>
+					<input type="text" class="form-control" name="description" id="description" placeholder="Breed/Description">
+				
+					<label for="weight" class="sr-only">Weight in pounds</label>
+					<input type="number" class="form-control" name="weight" id="weight" placeholder="Weight">
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                    <div class="col-md-6 col-xs-12">
+                        <label class="radio-inline"><input type="radio"name="gender" id="male" value="male" checked="checked">Male</label>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <label class="radio-inline"><input type="radio" name="gender" id="female" value="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align: center;">						
+                    <label for="fixed" class="checkbox-inline">
+                    <input type="checkbox" name="fixed" id="fixed">Fixed</label>
+                
+                    <label for="fixed" class="checkbox-inline">
+                    <input type="checkbox" name="microchip" id="microchip">Microchipped</label>
+                </div>
+        
+                <div class="form-group hidden" id="microchip-number">
+                    <label for="microchip-number" class="sr-only">Microchip Number</label>
+                    <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
+                </div>
+
+                <div class="center">
+                    <a href="#vaccinations"><button class="btn btn-success form-advance-button" id="show_vacs">Vaccinations</button></a>
+                </div>
+
+
+                <!-- ************************    VACCINATIONS -->
+
+                
+                <div class="form-group" id="vaccinations">
+                    <h1>Vaccinations</h1>
+
+                    <div class="form-group rabies">
+                        <h4 class="center">RABIES</h4>
+                        <div class="form-control red-form" id="rabiesVacFalse">
+                            <input type="radio" name="rabiesVac" value="False" checked="checked">
+                            <label for="rabiesVac"> Needs Rabies Vaccine</label>
+                            <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                    
+                        <div class="form-control" id="rabiesVacTrue">
+                            <input type="radio" name="rabiesVac" value="True">
+                            <label for="rabiesVac"> Rabies vaccine given on</label>
+                            <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                    
+                        <div class="form-control hidden red-form center" id="rabies_number">
+                            <input type="number" name="rabies_number" style="color: black;">
+                            <label class="control-label" for="rabies_number">Rabies Number</label>
+                        </div>
+                    </div>
+                
+                    <div class="form-group fvrcp">
+                        <h4 class="center">FVRCP</h4>
+                        <div class="form-control purple-form" id="fvrcpVacFalse">
+                            <input type="radio" name="fvrcpVac" value="False" checked="checked">
+                            <label class="control-label" for="fvrcpVacFalse">Needs FVRCP vaccine</label>
+                            <input type="date" style="float: right; color: black;" name="fvrcp_due" value={% now 'Y-m-d' %}>
+                        </div>
+
+                        <div class="form-control" id="fvrcpVacTrue">
+                            <input type="radio" name="fvrcpVac" value="True">
+                            <label type="date" class="control-label" for="fvrcpVac"> FVRCP vaccine given on </label>
+                            <input type="date" style="float: right; color: black" name="fvrcp_given" value= {% now 'Y-m-d' %} placeholder="FVRCP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="center">
+                    <a href="#preventions"><button class="btn btn-success form-advance-button" id="show_prevs">Preventions & Tests</button></a>
+                </div>
+
+                <!-- *******************  PREVENTIONS -->
+                
+                <div class="form-group" id="preventions">	
+                    <div class="form-group">
+                        <h1>Preventions</h1>
+                        <h4 class="center">Flea/Tick Prevention</h4>
+                        <div class="form-control flea-prev-form" id="fleaPrevFalse">
+                            <input type="radio" name="fleaPrev" value="False" checked="checked">
+                            <label class="control-label" for="fleaPrevFalse">Needs Flea/Tick</label>
+                            <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
+                        </div>
+                        <div class="form-control" id="fleaPrevTrue">
+                            <input type="radio" name="fleaPrev" value="True">
+                            <label class="control-label" for="fleaPrev">Flea/Tick Given on </label>
+                            <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="center">Revolution Prevention</h4>
+                        <div class="form-control revolution-prev-form" id="revolutionPrevFalse">
+                            <input type="radio" name="revolutionPrev" value="False" checked="checked">
+                            <label class="control-label" for="revolutionPrevFalse">Needs Revolution prev</label>
+                            <input type="date" style="float: right; color: black;" name="revolutionPrevDue" value={% now 'Y-m-d' %}>
+                        </div>
+                        <div class="form-control" id="revolutionPrevTrue">
+                            <input type="radio" name="revolutionPrev" value="True">
+                            <label class="control-label" for="revolutionPrevGiven">Revolution prev given</label>
+                            <input type="date" style="float: right; color: black" name="revolutionPrevGiven" value={% now 'Y-m-d' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h1>Tests</h1>
+                        <h4 class="center">Fiv-Felv Test</h4>
+                        <div class="form-control fivfelv-test-form" id="fivfelvTestFalse">
+                            <input type="radio" name="fivfelvTest" value="False" checked="checked">
+                            <label class="control-label" for="fivfelvTestFalse">Needs Fiv-Felv Test</label>
+                            <input type="date" style="float: right; color: black;" name="fivfelvTestDue" value={% now 'Y-m-d' %}>
+                        </div>
+                        <div class="form-control" id="fivfelvTestTrue">
+                            <input type="radio" name="fivfelvTest" value="True">
+                            <label class="control-label" for="fivfelvTestGiven">Fiv-Felv Test Given</label>
+                            <input type="date" style="float: right; color: black" name="fivfelvTestGiven" value={% now 'Y-m-d' %}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="center">Fecal</h4>
+                        <div class="form-control fecal-test-form" id="fecalTestFalse">
+                            <input type="radio" name="fecalTest" value="False" checked="checked">
+                            <label class="control-label" for="fecalTestFalse">Needs Fecal</label>
+                            <input type="date" style="float: right; color: black;" name="fecalTestDue" value={% now 'Y-m-d' %}>
+                        </div>
+                        <div class="form-control" id="fecalTestTrue">
+                            <input type="radio" name="fecalTest" value="True">
+                            <label class="control-label" for="fecalTest">Fecal Done On </label>
+                            <input type="date" style="float: right; color: black" name="fecalTestGiven" value= {% now 'Y-m-d' %}>
+                        </div>
+                    </div>
+
+			    </div>
+			    <br>
+			    <div class="col-xs-12 center">
+				    <button type="submit" class="btn btn-success form-advance-button">Rescue <span id="current_cat_name"> !</span></button>
+			    </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

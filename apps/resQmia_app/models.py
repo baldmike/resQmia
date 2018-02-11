@@ -72,7 +72,7 @@ class Dog(models.Model):
         return self.name
 
 
-class Vaccine(models.Model):
+class VaccineDog(models.Model):
     vaccine_name = models.CharField(max_length=100)
     vaccine_given = models.DateField(null=True, blank=True)
     vaccine_due = models.DateField()
@@ -85,7 +85,7 @@ class Vaccine(models.Model):
     def __str__(self):
         return self.vaccine_name
 
-class Prevention(models.Model):
+class PreventionDog(models.Model):
     prevention_name = models.CharField(max_length=100)
     prevention_given = models.DateField(null=True, blank=True)
     prevention_due = models.DateField()
@@ -94,11 +94,73 @@ class Prevention(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Test(models.Model):
+    def __str__(self):
+        return self.prevention_name
+
+class TestDog(models.Model):
     test_name = models.CharField(max_length=100)
     test_given = models.DateField(null=True, blank=True)
     test_due = models.DateField()
     test_notes = models.TextField(max_length=500)
-    dog = models.ForeignKey(Dog, related_name="exams", on_delete=models.CASCADE)
+    dog = models.ForeignKey(Dog, related_name="tests", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.test_name
+
+
+class Cat(models.Model):
+    name = models.CharField(max_length = 255)
+    microchip_number = models.CharField(max_length = 255)
+    gender = models.CharField(max_length = 10)
+    birthdate = models.DateField()
+    description = models.CharField(max_length = 255)
+    weight = models.IntegerField()
+    fixed = models.BooleanField()
+    adopted = models.BooleanField(default = False)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+    on_delete=models.CASCADE
+
+    def __str__(self):
+        return self.name
+
+class VaccineCat(models.Model):
+    vaccine_name = models.CharField(max_length=100)
+    vaccine_given = models.DateField(null=True, blank=True)
+    vaccine_due = models.DateField()
+    vaccine_number = models.CharField(default=None, blank=True, null=True, max_length = 100)
+    vaccine_notes = models.TextField(max_length = 500)
+    cat = models.ForeignKey(Cat, related_name="vaccines", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.vaccine_name
+
+class PreventionCat(models.Model):
+    prevention_name = models.CharField(max_length=100)
+    prevention_given = models.DateField(null=True, blank=True)
+    prevention_due = models.DateField()
+    prevention_notes = models.TextField(max_length=500)
+    cat = models.ForeignKey(Cat, related_name="preventions", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.prevention_name
+
+class TestCat(models.Model):
+    test_name = models.CharField(max_length=100)
+    test_given = models.DateField(null=True, blank=True)
+    test_due = models.DateField()
+    test_notes = models.TextField(max_length=500)
+    cat = models.ForeignKey(Cat, related_name="tests", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.test_name
+
