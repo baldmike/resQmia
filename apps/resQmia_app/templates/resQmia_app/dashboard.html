@@ -28,17 +28,16 @@
             <li><h3><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></h3></li>
         </ul>
         {% endfor %}
+
+        <h3>These cats have shit due today or before!</h3>
+        {% for cat in cat_alert %}
+        <ul>
+            <li><h3><a href="/select_dashboard_cat/{{ cat.id }}">{{ cat.name }}</a></h3></li>
+        </ul>
+        {% endfor %}
     </div>
 
-            
-                <div class="col-md-4 col-md-offset-2">
-                <h3>These cats have shit due today or before!</h3>
-                {% for cat in cat_alert %}
-                <ul>
-                    <li><h3><a href="/select_dashboard/{{ cat.id }}">{{ cat.name }}</a></h3></li>
-                </ul>
-                {% endfor %}
-            </div>
+    
 
 
         <div class="col-md-4">
@@ -57,11 +56,11 @@
                 <h4 {% if current_dog %}><hr>Vaccinations Due:</h4>{% endif %}
                 {% for rabies in current_rabies %}
                 <div class="new-vac">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>Rabies due: {{ rabies.vaccine_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_rabies_button" class="new-vac-button">New Rabies</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_rabies">
@@ -90,11 +89,11 @@
 
                 {% for da2pp in current_da2pp %}
                 <div class="new-vac">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>DA2PP due: {{ da2pp.vaccine_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_da2pp_button" class="new-vac-button">New DA2PP</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_da2pp">
@@ -119,11 +118,11 @@
                 
                 {% for lepto in current_lepto %}
                 <div class="new-vac">
-                    <div class="col-md-6">
-                        <li>Leptospirosis due: {{ lepto.vaccine_due }}</li>
+                    <div class="col-md-8">
+                        <li>Lepto due: {{ lepto.vaccine_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_lepto_button" class="new-vac-button">New Lepto</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_lepto">
@@ -149,11 +148,11 @@
 
                 {% for bord in current_bord %}
                 <div class="new-vac">
-                    <div class="col-md-6">
-                        <li>Bordatella due: {{ bord.vaccine_due }}</li>
+                    <div class="col-md-8">
+                        <li>Bord due: {{ bord.vaccine_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_bord_button" class="new-vac-button">New Bord</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_bord">
@@ -179,11 +178,11 @@
                 
                 {% for civ in current_civ %}
                 <div class="new-vac">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>CIV due: {{ civ.vaccine_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_civ_button" class="new-vac-button">New CIV</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_civ">
@@ -212,11 +211,11 @@
                 <h4 {% if current_dog %}><hr>Preventions Due:</h4>{% endif %}
                 {% for heart_prev in current_heartworm_prev %}
                 <div class="new-prev">
-                    <div class="col-md-6">
-                        <li>{{ heart_prev.prevention_name }} prev due: {{ heart_prev.prevention_due }}</li>
+                    <div class="col-md-8">
+                        <li>Hrtwrm Prev due: {{ heart_prev.prevention_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_heart_prev_button" class="new-prev-button">Heartworm</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_heart_prev">
@@ -241,11 +240,11 @@
                 {% for flea in current_flea_tick %}
                 
                 <div class="new-prev">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>Flea/Tick prev due: {{ flea.prevention_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_flea_prev_button" class="new-prev-button">Fleas!</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_flea_prev">
@@ -277,11 +276,11 @@
                 {% for heart_test in current_heartworm_test %}
 
                 <div class="new-test">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>{{ heart_test.test_name }} test due: {{ heart_test.test_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_heart_test_button" class="new-test-button">Worm Test!!</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_heart_test">
@@ -306,11 +305,11 @@
 
                 {% for fecal in current_fecal %}
                 <div class="new-test">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_fecal_test_button" class="new-test-button">POOP Test!!</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_fecal_test">
@@ -334,11 +333,11 @@
 
                 {% for worm in current_dewormer %}
                 <div class="new-test">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <li>{{ worm.test_name }} due: {{ worm.test_due }}</li>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button id="new_dewormer_button" class="new-test-button">DEWORMER!!</button>
                     </div>
                     <div class="col-md-12 hidden" id="new_dewormer">

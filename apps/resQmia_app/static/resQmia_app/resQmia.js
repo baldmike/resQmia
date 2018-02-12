@@ -35,11 +35,11 @@ $(document).ready(function(){
     setInterval(timeOutput, 1000);
 
     function newDogName() {
-        new_dog_name = document.getElementById('#new_dog_name').value;
-        console.log(new_dog_name)
+        new_rescue_name = document.getElementById('#new_rescue_name').value;
+        console.log(new_rescue_name)
     
-        document.getElementById('#current_dog_name').innerHTML=new_dog_name;
-        return new_dog_name;
+        document.getElementById('#current_rescue_name').innerHTML=new_rescue_name;
+        return new_rescue_name;
     }
     
     var microchip = $('#microchip')
@@ -52,8 +52,8 @@ $(document).ready(function(){
         $('html, body').animate({
             scrollTop: $("#vaccinations").offset().top
         }, 1500);
-        var new_dog_name = $('#new_dog_name').val()
-        $('#current_dog_name').html(new_dog_name + "!");
+        var new_rescue_name = $('#new_rescue_name').val()
+        $('#current_rescue_name').html(new_rescue_name + "!");
     });
 
     $("#show_prevs").click(function() {
@@ -233,14 +233,12 @@ $(document).ready(function(){
 // CAT ONLY BELOW **********************
 
     var fvrcpVacTrue = $('#fvrcpVacTrue')
-    console.log('FIVER!')
     fvrcpVacTrue.change(function(){
         $('#fvrcpVacFalse').toggleClass('fvrcp-form')
         $('#fvrcpVacTrue').toggleClass('fvrcp-form')
     })
 
     var fvrcpVacFalse = $('#fvrcpVacFalse')
-    console.log('FIVER!')
     fvrcpVacFalse.change(function(){
         $('#fvrcpVacFalse').toggleClass('fvrcp-form')
         $('#fvrcpVacTrue').toggleClass('fvrcp-form')
@@ -272,20 +270,27 @@ $(document).ready(function(){
 
 
 
-
-
-
     function newCatName() {
-        new_cat_name = document.getElementById('#new_cat_name').value;
-        console.log(new_cat_name)
+        new_rescue_name = document.getElementById('#new_rescue_name').value;
+        console.log(new_rescue_name)
 
-        document.getElementById('#current_cat_name').innerHTML=new_cat_name;
-        return new_cat_name;
+        document.getElementById('#current_rescue_name').innerHTML=new_rescue_name;
+        return new_rescue_name;
     }
 
 
 
+    $('#new_fvrcp_button').click(function(){
+        $('#new_fvrcp').toggleClass("hidden");
+    })
 
+    $('#new_revolution_button').click(function(){
+        $('#new_revolution').toggleClass("hidden");
+    })
+
+    $('#new_fivfelv_button').click(function(){
+        $('#new_fivfelv').toggleClass("hidden");
+    })
 
 
 

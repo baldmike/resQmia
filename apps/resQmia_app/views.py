@@ -43,7 +43,7 @@ def dog_alert():
     for x in range (0, len(hwp)):
         if hwp[x].dog not in dog_alert:
             dog_alert.append(hwp[x].dog)
-    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="fleaTick").order_by('prevention_due')
+    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('prevention_due')
     for x in range (0, len(ftp)):
         if ftp[x].dog not in dog_alert:
             dog_alert.append(ftp[x].dog)
@@ -88,23 +88,23 @@ def cat_alert():
         if civ[x].cat not in cat_alert:
             cat_alert.append(civ[x].cat)
 
-    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    hwp = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
     for x in range (0, len(hwp)):
         if hwp[x].cat not in cat_alert:
             cat_alert.append(hwp[x].cat)
-    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="fleaTick").order_by('prevention_due')
+    ftp = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('prevention_due')
     for x in range (0, len(ftp)):
         if ftp[x].cat not in cat_alert:
             cat_alert.append(ftp[x].cat)
-    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    hwt = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
     for x in range (0, len(hwt)):
         if hwt[x].cat not in cat_alert:
             cat_alert.append(hwt[x].cat)
-    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
+    fct = TestCat.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
     for x in range (0, len(fct)):
         if fct[x].cat not in cat_alert:
             cat_alert.append(fct[x].cat)
-    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
+    dwd = TestCat.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
     for x in range (0, len(dwd)):
         if dwd[x].cat not in cat_alert:
             cat_alert.append(dwd[x].cat)
@@ -115,7 +115,7 @@ def cat_alert():
 def index(request):
     if 'user_id' in request.session:
         dog_alert()
-        # cat_alert()
+        cat_alert()
 
         context = {
         "avail_dogs" : Dog.objects.exclude(adopted=True),
@@ -125,8 +125,9 @@ def index(request):
         "bord" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
         "civs" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
         "dog_alert" : dog_alert,
+        "cat_alert" : cat_alert,
         "heartwormPrev" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
-        "fleaTick" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+        "flea" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
         "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
         "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
         "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due')
@@ -270,7 +271,7 @@ def rescue_dog(request):
         hwp = PreventionDog.objects.create(prevention_name="heartworm", prevention_due=heartworm_prev_due, dog_id=d.id)
 
         flea_tick_due = request.POST['fleaPrevDue']
-        ftp = PreventionDog.objects.create(prevention_name="fleaTick", prevention_due=flea_tick_due, dog_id=d.id)
+        ftp = PreventionDog.objects.create(prevention_name="flea", prevention_due=flea_tick_due, dog_id=d.id)
 
         heartworm_test_due = request.POST['heartwormTestDue']
         hwt = TestDog.objects.create(test_name="heartworm", test_due=heartworm_test_due, dog_id=d.id)
@@ -293,7 +294,7 @@ def select_our_dogs(request, dog_id):
     current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
     current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
     current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="flea")
     current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
     current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
@@ -328,7 +329,7 @@ def select_dashboard(request, dog_id):
     current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
     current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
     current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="flea")
     current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
     current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
@@ -343,6 +344,7 @@ def select_dashboard(request, dog_id):
         'current_bord' : current_bord,
         'current_civ' : current_civ,
         'dog_alert' : dog_alert,
+        'cat_alert' : cat_alert,
         'current_heartworm_prev' : current_heartworm_prev,
         'current_flea_tick' : current_flea_tick,
         'current_heartworm_test' : current_heartworm_test,
@@ -356,6 +358,36 @@ def select_dashboard(request, dog_id):
     return render(request, 'resQmia_app/dashboard.html', context)
 
 
+def select_dashboard_cat(request, cat_id):
+    
+    current_cat = Cat.objects.filter(id=cat_id)
+    current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
+    current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
+    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="flea")
+    current_revolution = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="revolution")
+    current_fivfelv = TestCat.objects.filter(cat_id=cat_id, test_name="fivfelv")
+    current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
+    
+    avail_cats = Cat.objects.exclude(adopted=True)
+
+    context = {
+        'current_cat' : current_cat,
+        'cat_alert' : cat_alert,
+        'dog_alert' : dog_alert,
+        'current_rabies' : current_rabies,
+        'current_fvrcp' : current_fvrcp,
+        'current_flea' : current_flea,
+        'current_revolution' : current_revolution,
+        'current_fivfelv' : current_fivfelv,
+        'current_fecal' : current_fecal,
+
+        'avail_cats' : avail_cats,
+
+    }
+    
+    return render(request, 'resQmia_app/dashboard_cat.html', context)
+
+
 def select_our_dogs(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
@@ -364,7 +396,7 @@ def select_our_dogs(request, dog_id):
     current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
     current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
     current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="flea")
     current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
     current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
@@ -404,7 +436,7 @@ def select_day(request, dog_id):
     current_bord = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="bord")
     current_civ = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="civ")
     current_heartworm_prev = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="heartworm")
-    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="fleaTick")
+    current_flea_tick = PreventionDog.objects.filter(dog_id=dog_id, prevention_name="flea")
     current_heartworm_test = TestDog.objects.filter(dog_id=dog_id, test_name="heartworm")
     current_fecal = TestDog.objects.filter(dog_id=dog_id, test_name="fecal")
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
@@ -575,7 +607,7 @@ def rescue_cat(request):
         # ************************    PREVENTIONS
 
         flea_tick_due = request.POST['fleaPrevDue']
-        ftp = PreventionCat.objects.create(prevention_name="fleaTick", prevention_due=flea_tick_due, cat_id=d.id)
+        ftp = PreventionCat.objects.create(prevention_name="flea", prevention_due=flea_tick_due, cat_id=d.id)
 
         revolution_prev_due = request.POST['revolutionPrevDue']
         rvp = PreventionCat.objects.create(prevention_name="revolution", prevention_due=revolution_prev_due, cat_id=d.id)
@@ -594,7 +626,7 @@ def select_our_cats(request, cat_id):
     current_cat = Cat.objects.filter(id=cat_id)
     current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
     current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
-    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="fleaTick")
+    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="flea")
     current_revolution = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="revolution")        
     current_fivfelv = TestCat.objects.filter(cat_id=cat_id, test_name="fivfelv")
     current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
@@ -615,3 +647,44 @@ def select_our_cats(request, cat_id):
     }
     
     return render(request, 'resQmia_app/our_cats.html', context)
+
+
+
+def new_vaccine_cat(request, id):
+    if request.method == 'POST':
+        
+        current_record = VaccineCat.objects.get(id=id)
+        
+        current_record.vaccine_given = request.POST['vaccine_given']
+        current_record.vaccine_due = request.POST['vaccine_due']
+        current_record.vaccine_number = request.POST['vaccine_number']
+
+        current_record.save()
+
+    return redirect('/')
+
+
+def new_prevention_cat(request, id):
+    if request.method == 'POST':
+        
+        current_record = PreventionCat.objects.get(id=id)
+        
+        current_record.prevention_given = request.POST['prevention_given']
+        current_record.prevention_due = request.POST['prevention_due']
+
+        current_record.save()
+
+    return redirect('/')
+
+
+def new_test_cat(request, id):
+    if request.method == 'POST':
+    
+        current_record = TestCat.objects.get(id=id)
+    
+        current_record.test_given = request.POST['test_given']
+        current_record.test_due = request.POST['test_due']
+
+        current_record.save()
+
+    return redirect('/')

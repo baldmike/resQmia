@@ -198,3 +198,12 @@
     height: 40px;
     font-size: 15px;
 }
+
+input:required:invalid, input:focus:invalid {
+    border: 1px solid red;
+  }
+
+input:required:valid, input:focus:valid {
+    border: 1px solid green;
+    background-color: lightgray;
+}

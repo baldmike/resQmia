@@ -28,18 +28,46 @@
             
                 <div class="form-group">
                     <label for="name" class="sr-only">Cat's Name</label>
-                    <input type="text" class="form-control" name="name" id="new_cat_name" placeholder="Cat's Name" style="text-align: center" required autofocus>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="name" id="new_rescue_name" 
+                    placeholder="Cat's Name" 
+                    style="text-align: center" 
+                    required 
+                    autofocus>
                 </div>
 
                 <div class="form-group">
                     <label for="birthdate" class="sr-only">Birthdate</label>
-                    <input placeholder="Birthdate" type="text" class="form-control" name="birthdate" id="birthdate" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input 
+                    type="text" 
+                    name="birthdate"
+                    id="birthdate"
+                    class="form-control" 
+                    placeholder="Birthdate"
+                    onfocus="(this.type='date')" onblur="(this.type='text')"
+                    required>
 							
 					<label for="description" class="sr-only">Description</label>
-					<input type="text" class="form-control" name="description" id="description" placeholder="Breed/Description">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="description" 
+                    id="description" 
+                    placeholder="Breed/Description"
+                    minlength="3"
+                    required>
 				
 					<label for="weight" class="sr-only">Weight in pounds</label>
-					<input type="number" class="form-control" name="weight" id="weight" placeholder="Weight">
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    name="weight" 
+                    id="weight" 
+                    placeholder="Weight"
+                    required>
+
                 </div>
 
                 <div class="form-group" style="text-align: center;">
@@ -180,7 +208,7 @@
 			    </div>
 			    <br>
 			    <div class="col-xs-12 center">
-				    <button type="submit" class="btn btn-success form-advance-button">Rescue <span id="current_cat_name"> !</span></button>
+				    <button type="submit" class="btn btn-success form-advance-button">Rescue <span id="current_rescue_name"> !</span></button>
 			    </div>
             </div>
         </form>

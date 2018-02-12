@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^select_our_dogs/(?P<dog_id>\d+)$', views.select_our_dogs),
     url(r'^select_our_cats/(?P<cat_id>\d+)$', views.select_our_cats),
     url(r'^select_dashboard/(?P<dog_id>\d+)$', views.select_dashboard),
+    url(r'^select_dashboard_cat/(?P<cat_id>\d+)$', views.select_dashboard_cat),
 
     url(r'^our_dogs$', views.our_dogs),
     url(r'^our_cats$', views.our_cats),
@@ -26,6 +27,9 @@ urlpatterns = [
     url(r'^new_vaccine_dog/(?P<id>\d+)$', views.new_vaccine_dog),
     url(r'^new_prevention_dog/(?P<id>\d+)$', views.new_prevention_dog),
     url(r'^new_test_dog/(?P<id>\d+)$', views.new_test_dog),
+    url(r'^new_vaccine_cat/(?P<id>\d+)$', views.new_vaccine_cat),
+    url(r'^new_prevention_cat/(?P<id>\d+)$', views.new_prevention_cat),
+    url(r'^new_test_cat/(?P<id>\d+)$', views.new_test_cat),
 
     url(r'^select_adopted/(?P<dog_id>\d+)$', views.select_adopted),
     url(r'^adopted/(?P<dog_id>\d+)$', views.adopted),
