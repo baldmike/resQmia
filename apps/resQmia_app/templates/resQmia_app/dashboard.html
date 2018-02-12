@@ -1,54 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name='viewport' content="width=device-width initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
-    
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% include 'resQmia_app/head.html' %}
 
-    <script src="{% static 'resQmia_app/resQmia.js' %}"></script>
-</head>
 <body>
     <div class="container-fluid">
 
-    {% include 'resQmia_app/nav_bar.html' %}
+        {% include 'resQmia_app/nav_bar.html' %}
 
-        
-    <div class="col-md-4 col-md-offset-2">
-        <h3>These dogs have shit due today or before!</h3>
-        {% for dog in dog_alert %}
-        <ul>
-            <li><h3><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></h3></li>
-        </ul>
-        {% endfor %}
-
-        <h3>These cats have shit due today or before!</h3>
-        {% for cat in cat_alert %}
-        <ul>
-            <li><h3><a href="/select_dashboard_cat/{{ cat.id }}">{{ cat.name }}</a></h3></li>
-        </ul>
-        {% endfor %}
-    </div>
-
+        {% include 'resQmia_app/need_attention.html' %}
     
 
-
-        <div class="col-md-4">
+        <div class="col-md-4 col-md-offset-1">
             {% for dog in current_dog %}
             <ul>
-                <h1>{{ dog.name }}</h1>
-                <li{% if dog.fixed == False %} style="background-color: red">NOT FIXED!!{% endif %}</li>
+                <li class="title">{{ dog.name }}</li>
+                <li{% if dog.fixed == False %} class="subtitle attn-alert">NOT FIXED!!{% endif %}</li>
+                <li {% if dog.microchip_number == "0" %} class="subtitle attn-alert">NEEDS MICROCHIP!</li {% endif %}>
+
+                <li class="subtitle">{{ dog.description }}, {{ dog.weight }}lbs.</li>
                 <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
-                <li {% if dog.microchip_number == "0" %} style="background-color: red">NEEDS MICROCHIP!</li {% endif %}>
-                <li>Birthdate: {{ dog.birthdate }}</li>
-                <li>{{ dog.description }}, {{ dog.weight }}lbs.</li>
+                
+                <li class="subtitle attn-alert">Birthdate: {{ dog.birthdate }}</li>
+                
             </ul>
             {% endfor %}
             

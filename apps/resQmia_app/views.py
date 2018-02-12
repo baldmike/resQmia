@@ -358,36 +358,6 @@ def select_dashboard(request, dog_id):
     return render(request, 'resQmia_app/dashboard.html', context)
 
 
-def select_dashboard_cat(request, cat_id):
-    
-    current_cat = Cat.objects.filter(id=cat_id)
-    current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
-    current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
-    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="flea")
-    current_revolution = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="revolution")
-    current_fivfelv = TestCat.objects.filter(cat_id=cat_id, test_name="fivfelv")
-    current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
-    
-    avail_cats = Cat.objects.exclude(adopted=True)
-
-    context = {
-        'current_cat' : current_cat,
-        'cat_alert' : cat_alert,
-        'dog_alert' : dog_alert,
-        'current_rabies' : current_rabies,
-        'current_fvrcp' : current_fvrcp,
-        'current_flea' : current_flea,
-        'current_revolution' : current_revolution,
-        'current_fivfelv' : current_fivfelv,
-        'current_fecal' : current_fecal,
-
-        'avail_cats' : avail_cats,
-
-    }
-    
-    return render(request, 'resQmia_app/dashboard_cat.html', context)
-
-
 def select_our_dogs(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
@@ -688,3 +658,33 @@ def new_test_cat(request, id):
         current_record.save()
 
     return redirect('/')
+
+
+def select_dashboard_cat(request, cat_id):
+    
+    current_cat = Cat.objects.filter(id=cat_id)
+    current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
+    current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
+    current_flea = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="flea")
+    current_revolution = PreventionCat.objects.filter(cat_id=cat_id, prevention_name="revolution")
+    current_fivfelv = TestCat.objects.filter(cat_id=cat_id, test_name="fivfelv")
+    current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
+    
+    avail_cats = Cat.objects.exclude(adopted=True)
+
+    context = {
+        'current_cat' : current_cat,
+        'cat_alert' : cat_alert,
+        'dog_alert' : dog_alert,
+        'current_rabies' : current_rabies,
+        'current_fvrcp' : current_fvrcp,
+        'current_flea' : current_flea,
+        'current_revolution' : current_revolution,
+        'current_fivfelv' : current_fivfelv,
+        'current_fecal' : current_fecal,
+
+        'avail_cats' : avail_cats,
+
+    }
+    
+    return render(request, 'resQmia_app/dashboard_cat.html', context)

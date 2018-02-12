@@ -1,7 +1,19 @@
 * {
+    padding: 0px;
+    margin: 0px;
     font-family: 'Montserrat', sans-serif;
 }
 
+li {
+    list-style-type: none;
+}
+
+.attn-alert {
+    text-align: center;
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 
 .reg {
     margin-top: 500px;
@@ -9,13 +21,6 @@
 
 .center {
     text-align: center;
-}
-
-
-* {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .navbar-default {
@@ -174,6 +179,24 @@
     background-color: hotpink;
 }
 
+.title {
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    opacity: .9;
+    border-radius: 5px;
+}
+
+.subtitle {
+    font-size: 22px;
+    text-align: center;
+    background-color: gray;
+    color: black;
+    border-radius: 5px;
+
+}
 
 
 /* CAT ONLY BELOW */
@@ -206,4 +229,19 @@ input:required:invalid, input:focus:invalid {
 input:required:valid, input:focus:valid {
     border: 1px solid green;
     background-color: lightgray;
+}
+
+
+.alert-dogs {
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow: scroll;
+}
+
+.alert-cats {
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow: scroll;
 }
