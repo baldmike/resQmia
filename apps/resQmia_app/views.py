@@ -115,7 +115,7 @@ def cat_alert():
 def index(request):
     if 'user_id' in request.session:
         dog_alert()
-        cat_alert()
+        # cat_alert()
 
         context = {
         "avail_dogs" : Dog.objects.exclude(adopted=True),

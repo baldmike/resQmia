@@ -45,7 +45,7 @@
     margin-top: 1000px;
 }
 
-.red-form {
+.rabies-form {
     background-color: red;
     color: white;
     height: 40px;
@@ -178,6 +178,13 @@
 
 /* CAT ONLY BELOW */
 
+.fvrcp-form {
+    background-color: rgb(194, 9, 250);
+    color: white;
+    height: 40px;
+    font-size: 15px;
+}
+
 .revolution-prev-form {
     background-color: rgb(125, 148, 170);
     color: white;
@@ -186,7 +193,7 @@
 }
 
 .fivfelv-test-form {
-    background-color: rgb(189, 19, 241);
+    background-color: rgb(84, 66, 243);
     color: white;
     height: 40px;
     font-size: 15px;

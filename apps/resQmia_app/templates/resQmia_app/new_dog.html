@@ -77,7 +77,7 @@
 
                     <div class="form-group rabies">
                         <h4 class="center">RABIES</h4>
-                        <div class="form-control red-form" id="rabiesVacFalse">
+                        <div class="form-control rabies-form" id="rabiesVacFalse">
                             <input type="radio" name="rabiesVac" value="False" checked="checked">
                             <label for="rabiesVac"> Needs Rabies Vaccine</label>
                             <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
@@ -89,7 +89,7 @@
                             <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
-                        <div class="form-control hidden red-form center" id="rabies_number">
+                        <div class="form-control hidden rabies-form center" id="rabies_number">
                             <input type="number" name="rabies_number" style="color: black;">
                             <label class="control-label" for="rabies_number">Rabies Number</label>
                         </div>

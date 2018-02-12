@@ -64,169 +64,125 @@ $(document).ready(function(){
     });
 
     var rabiesVacTrue = $('#rabiesVacTrue')
-    rabiesVacTrue.click(function(){
-        $('#rabiesVacFalse').toggleClass('red-form')
-        $('#rabiesVacTrue').toggleClass('red-form')
-        $('#rabies_given').toggleClass("hidden")
+    rabiesVacTrue.change(function(){
+        $('#rabiesVacFalse').toggleClass('rabies-form')
+        $('#rabiesVacTrue').toggleClass('rabies-form')
         $('#rabies_number').toggleClass("hidden")
-        $('#rabies_due').toggleClass("hidden")
     })
 
     var rabiesVacFalse = $('#rabiesVacFalse')
-    rabiesVacFalse.click(function(){
-        $('#rabiesVacFalse').toggleClass('red-form')
-        $('#rabiesVacTrue').toggleClass('red-form')
-        $('#rabies_given').toggleClass("hidden")
+    rabiesVacFalse.change(function(){
+        $('#rabiesVacFalse').toggleClass('rabies-form')
+        $('#rabiesVacTrue').toggleClass('rabies-form')
         $('#rabies_number').toggleClass("hidden")
-        $('#rabies_due').toggleClass("hidden")
     })
 
     var da2ppVacTrue = $('#da2ppVacTrue')
     da2ppVacTrue.change(function(){
         $('#da2ppVacTrue').toggleClass('purple-form')
         $('#da2ppVacFalse').toggleClass('purple-form')
-        $('#da2pp_given').toggleClass("hidden")
-        $('#da2pp_due').toggleClass("hidden")
     })
 
     var da2ppVacFalse = $('#da2ppVacFalse')
     da2ppVacFalse.change(function(){
         $('#da2ppVacFalse').toggleClass('purple-form')
         $('#da2ppVacTrue').toggleClass('purple-form')
-        $('#da2pp_given').toggleClass("hidden")
-        $('#da2pp_due').toggleClass("hidden")
     })
 
     var leptoVacTrue = $('#leptoVacTrue')
     leptoVacTrue.change(function(){
         $('#leptoVacTrue').toggleClass('orange-form')
         $('#leptoVacFalse').toggleClass('orange-form')
-        $('#leptoGiven').toggleClass("hidden")
-        $('#leptoNumber').toggleClass("hidden")
-        $('#leptoDue').toggleClass("hidden")
     })
 
     var leptoVacFalse = $('#leptoVacFalse')
     leptoVacFalse.change(function(){
         $('#leptoVacFalse').toggleClass('orange-form')
         $('#leptoVacTrue').toggleClass('orange-form')
-        $('#leptoGiven').toggleClass("hidden")
-        $('#leptoNumber').toggleClass("hidden")
-        $('#leptoDue').toggleClass("hidden")
     })
 
     var bordVacTrue = $('#bordVacTrue')
     bordVacTrue.change(function(){
         $('#bordVacTrue').toggleClass('blue-form')
         $('#bordVacFalse').toggleClass('blue-form')
-        $('#bordGiven').toggleClass("hidden")
-        $('#bordNumber').toggleClass("hidden")
-        $('#bordDue').toggleClass("hidden")
     })
 
     var bordVacFalse = $('#bordVacFalse')
     bordVacFalse.change(function(){
         $('#bordVacFalse').toggleClass('blue-form')
         $('#bordVacTrue').toggleClass('blue-form')
-        $('#bordGiven').toggleClass("hidden")
-        $('#bordNumber').toggleClass("hidden")
-        $('#bordDue').toggleClass("hidden")
     })
 
     var civVacTrue = $('#civVacTrue')
     civVacTrue.change(function(){
         $('#civVacTrue').toggleClass('pink-form')
         $('#civVacFalse').toggleClass('pink-form')
-        $('#civGiven').toggleClass("hidden")
-        $('#civDue').toggleClass("hidden")
     })
 
     var civVacFalse = $('#civVacFalse')
     civVacFalse.change(function(){
         $('#civVacFalse').toggleClass('pink-form')
         $('#civVacTrue').toggleClass('pink-form')
-        $('#civGiven').toggleClass("hidden")
-        $('#civDue').toggleClass("hidden")
     })
 
     var heartwormPrevTrue = $('#heartwormPrevTrue')
     heartwormPrevTrue.change(function(){
         $('#heartwormPrevTrue').toggleClass('heartworm-prev-form')
         $('#heartwormPrevFalse').toggleClass('heartworm-prev-form')
-        $('#heartwormPrevGiven').toggleClass("hidden")
-        $('#Due').toggleClass("hidden")
     })
 
     var heartwormPrevFalse = $('#heartwormPrevFalse')
     heartwormPrevFalse.change(function(){
         $('#heartwormPrevFalse').toggleClass('heartworm-prev-form')
         $('#heartwormPrevTrue').toggleClass('heartworm-prev-form')
-        $('#heartwormPrevGiven').toggleClass("hidden")
-        $('#heartwormPrevDue').toggleClass("hidden")
     })
 
     var fleaPrevTrue = $('#fleaPrevTrue')
     fleaPrevTrue.change(function(){
         $('#fleaPrevTrue').toggleClass('flea-prev-form')
         $('#fleaPrevFalse').toggleClass('flea-prev-form')
-        $('#fleaPrevGiven').toggleClass("hidden")
-        $('#Due').toggleClass("hidden")
     })
 
     var fleaPrevFalse = $('#fleaPrevFalse')
     fleaPrevFalse.change(function(){
         $('#fleaPrevFalse').toggleClass('flea-prev-form')
         $('#fleaPrevTrue').toggleClass('flea-prev-form')
-        $('#fleaPrevGiven').toggleClass("hidden")
-        $('#fleaPrevDue').toggleClass("hidden")
     })
     
     var heartwormTestTrue = $('#heartwormTestTrue')
     heartwormTestTrue.change(function(){
         $('#heartwormTestTrue').toggleClass('heartworm-test-form')
         $('#heartwormTestFalse').toggleClass('heartworm-test-form')
-        $('#heartwormTestGiven').toggleClass("hidden")
-        $('#heartwormTestDue').toggleClass("hidden")
     })
 
     var heartwormTestFalse = $('#heartwormTestFalse')
     heartwormTestFalse.change(function(){
         $('#heartwormTestFalse').toggleClass('heartworm-test-form')
         $('#heartwormTestTrue').toggleClass('heartworm-test-form')
-        $('#heartwormTestGiven').toggleClass("hidden")
-        $('#heartwormTestDue').toggleClass("hidden")
     })
 
     var fecalTestTrue = $('#fecalTestTrue')
     fecalTestTrue.change(function(){
         $('#fecalTestTrue').toggleClass('fecal-test-form')
         $('#fecalTestFalse').toggleClass('fecal-test-form')
-        $('#fecalTestGiven').toggleClass("hidden")
-        $('#fecalTestDue').toggleClass("hidden")
     })
 
     var fecalTestFalse = $('#fecalTestFalse')
     fecalTestFalse.change(function(){
         $('#fecalTestFalse').toggleClass('fecal-test-form')
         $('#fecalTestTrue').toggleClass('fecal-test-form')
-        $('#fecalTestGiven').toggleClass("hidden")
-        $('#fecalTestDue').toggleClass("hidden")
     })
 
     var dewormerTestTrue = $('#dewormerTestTrue')
     dewormerTestTrue.change(function(){
         $('#dewormerTestTrue').toggleClass('dewormer-test-form')
         $('#dewormerTestFalse').toggleClass('dewormer-test-form')
-        $('#dewormerTestGiven').toggleClass("hidden")
-        $('#dewormerTestDue').toggleClass("hidden")
     })
 
     var dewormerTestFalse = $('#dewormerTestFalse')
     dewormerTestFalse.change(function(){
         $('#dewormerTestFalse').toggleClass('dewormer-test-form')
         $('#dewormerTestTrue').toggleClass('dewormer-test-form')
-        $('#dewormerTestGiven').toggleClass("hidden")
-        $('#dewormerTestDue').toggleClass("hidden")
     })
 
        
@@ -274,65 +230,66 @@ $(document).ready(function(){
         $('#new_dewormer').toggleClass("hidden");
     })
 
-});
-
-
 // CAT ONLY BELOW **********************
 
-var fvrcpVacTrue = $('#fvrcpVacTrue')
-fvrcpVacTrue.change(function(){
-    $('#fvrcpVacTrue').toggleClass('purple-form')
-    $('#fvrcpVacFalse').toggleClass('purple-form')
-    $('#fvrcp_given').toggleClass("hidden")
-    $('#fvrcp_due').toggleClass("hidden")
-})
+    var fvrcpVacTrue = $('#fvrcpVacTrue')
+    console.log('FIVER!')
+    fvrcpVacTrue.change(function(){
+        $('#fvrcpVacFalse').toggleClass('fvrcp-form')
+        $('#fvrcpVacTrue').toggleClass('fvrcp-form')
+    })
 
-var fvrcpVacFalse = $('#fvrcpVacFalse')
-fvrcpVacFalse.change(function(){
-    $('#fvrcpVacFalse').toggleClass('purple-form')
-    $('#fvrcpVacTrue').toggleClass('purple-form')
-    $('#fvrcp_given').toggleClass("hidden")
-    $('#fvrcp_due').toggleClass("hidden")
-})
+    var fvrcpVacFalse = $('#fvrcpVacFalse')
+    console.log('FIVER!')
+    fvrcpVacFalse.change(function(){
+        $('#fvrcpVacFalse').toggleClass('fvrcp-form')
+        $('#fvrcpVacTrue').toggleClass('fvrcp-form')
+    })
 
-var fivfelvTestTrue = $('#fivfelvTestTrue')
-fivfelvTestTrue.change(function(){
-    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestGiven').toggleClass("hidden")
-    $('#fivfelvTestDue').toggleClass("hidden")
-})
+    var fivfelvTestTrue = $('#fivfelvTestTrue')
+    fivfelvTestTrue.change(function(){
+        $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+        $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+    })
 
-var fivfelvTestFalse = $('#fivfelvTestFalse')
-fivfelvTestFalse.change(function(){
-    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestGiven').toggleClass("hidden")
-    $('#fivfelvTestDue').toggleClass("hidden")
-})
+    var fivfelvTestFalse = $('#fivfelvTestFalse')
+    fivfelvTestFalse.change(function(){
+        $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
+        $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
+    })
 
+    var revolutionPrevTrue = $('#revolutionPrevTrue')
+    revolutionPrevTrue.change(function(){
+        $('#revolutionPrevTrue').toggleClass('revolution-prev-form')
+        $('#revolutionPrevFalse').toggleClass('revolution-prev-form')
+    })
 
-function newCatName() {
-    new_cat_name = document.getElementById('#new_cat_name').value;
-    console.log(new_cat_name)
-
-    document.getElementById('#current_cat_name').innerHTML=new_cat_name;
-    return new_cat_name;
-}
+    var revolutionPrevFalse = $('#revolutionPrevFalse')
+    revolutionPrevFalse.change(function(){
+        $('#revolutionPrevFalse').toggleClass('revolution-prev-form')
+        $('#revolutionPrevTrue').toggleClass('revolution-prev-form')
+    })
 
 
-var fivfelvTestTrue = $('#fivfelvTestTrue')
-fivfelvTestTrue.change(function(){
-    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestGiven').toggleClass("hidden")
-    $('#fivfelvTestDue').toggleClass("hidden")
-})
 
-var fivfelvTestFalse = $('#fivfelvTestFalse')
-fivfelvTestFalse.change(function(){
-    $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-    $('#fivfelvTestGiven').toggleClass("hidden")
-    $('#fivfelvTestDue').toggleClass("hidden")
-})
+
+
+
+    function newCatName() {
+        new_cat_name = document.getElementById('#new_cat_name').value;
+        console.log(new_cat_name)
+
+        document.getElementById('#current_cat_name').innerHTML=new_cat_name;
+        return new_cat_name;
+    }
+
+
+
+
+
+
+
+
+
+
+});

@@ -77,19 +77,19 @@
 
                     <div class="form-group rabies">
                         <h4 class="center">RABIES</h4>
-                        <div class="form-control red-form" id="rabiesVacFalse">
-                            <input type="radio" name="rabiesVac" value="False" checked="checked">
+                        <div class="form-control rabies-form" id="rabiesVacFalse">
+                            <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="False" checked="checked">
                             <label for="rabiesVac"> Needs Rabies Vaccine</label>
                             <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
                         <div class="form-control" id="rabiesVacTrue">
-                            <input type="radio" name="rabiesVac" value="True">
+                            <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="True">
                             <label for="rabiesVac"> Rabies vaccine given on</label>
                             <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
-                        <div class="form-control hidden red-form center" id="rabies_number">
+                        <div class="form-control hidden rabies-form center" id="rabies_number">
                             <input type="number" name="rabies_number" style="color: black;">
                             <label class="control-label" for="rabies_number">Rabies Number</label>
                         </div>
@@ -97,15 +97,15 @@
                 
                     <div class="form-group fvrcp">
                         <h4 class="center">FVRCP</h4>
-                        <div class="form-control purple-form" id="fvrcpVacFalse">
+                        <div class="form-control fvrcp-form" id="fvrcpVacFalse">
                             <input type="radio" name="fvrcpVac" value="False" checked="checked">
-                            <label class="control-label" for="fvrcpVacFalse">Needs FVRCP vaccine</label>
+                            <label class="control-label">Needs FVRCP vaccine</label>
                             <input type="date" style="float: right; color: black;" name="fvrcp_due" value={% now 'Y-m-d' %}>
                         </div>
 
                         <div class="form-control" id="fvrcpVacTrue">
                             <input type="radio" name="fvrcpVac" value="True">
-                            <label type="date" class="control-label" for="fvrcpVac"> FVRCP vaccine given on </label>
+                            <label type="date" class="control-label"> FVRCP vaccine given on </label>
                             <input type="date" style="float: right; color: black" name="fvrcp_given" value= {% now 'Y-m-d' %} placeholder="FVRCP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     </div>
