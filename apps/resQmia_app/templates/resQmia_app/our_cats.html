@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name='viewport' content="width=device-width initial-scale=1.0">
+{% include 'resQmia_app/head.html' %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
-    
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <script src="{% static 'resQmia_app/resQmia.js' %}"></script>
-</head>
 <body>
     <div class="container-fluid">
 
@@ -33,50 +18,8 @@
                 </ul>
             </div>
 
-            <div class="col-md-4">
-                {% for cat in current_cat %}
-                <ul>
-                    <h1>{{ cat.name }}</h1>
-                    <li>{{ cat.description }}, {{ cat.weight }}lbs.</li>
-                    <li>Birthdate: {{ cat.birthdate }}</li>
-                    <li{% if cat.fixed == False %} style="background-color: red">NOT FIXED!! {% endif %}</li>
-                    <li{% if cat.microchip_number != "0" %}>Microchip Number: {{ cat.microchip_number }} {% endif %}</li>
-                    <li{% if cat.microchip_number == "0" %} style="background-color: red">NEEDS MICROCHIP!</li {% endif %}>
-                    
-                    
-                    
-                {% endfor %}
-                
-                    <hr>
-                    {% for rabies in current_rabies %}
-                    <li>Rabies due: {{ rabies.vaccine_due }} </li>
-                    {% endfor %}
+            {% include 'resQmia_app/current_cat.html' %}
 
-                    {% for fvrcp in current_fvrcp %}
-                    <li>FVRCP due: {{ fvrcp.vaccine_due }}</li>
-                    <hr>
-                    {% endfor %}
-                              
-                    {% for revolution in current_revolution %}
-                    <li>{{ revolution.prevention_name }} prevention due: {{ revolution.prevention_due }}</li>
-                    {% endfor %}
-
-                    {% for flea in current_flea %}
-                    <li>{{ flea.prevention_name }} prevention due: {{ flea.prevention_due }}</li>
-                    <hr>
-                    {% endfor %}
-
-                    {% for fivfelv in current_fivfelv %}
-                    <li>{{ fivfelv.test_name }} test due: {{ fivfelv.test_due }}</li>
-                    {% endfor %}
-
-                    {% for fecal in current_fecal %}
-                    <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
-                    {% endfor %}
-
-                </ul>
-
-            </div>
         </div>
     </div>
 </body>

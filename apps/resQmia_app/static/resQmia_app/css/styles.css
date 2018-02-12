@@ -4,6 +4,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    background-color: lightcyan;
+}
+
 li {
     list-style-type: none;
 }
@@ -187,6 +191,7 @@ li {
     color: white;
     opacity: .9;
     border-radius: 5px;
+    padding: 6px;
 }
 
 .subtitle {
@@ -244,4 +249,9 @@ input:required:valid, input:focus:valid {
     border: 2px solid black;
     border-radius: 5px;
     overflow: scroll;
+}
+
+.alert-box {
+    padding: 10px;
+    text-align: center;
 }

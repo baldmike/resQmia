@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name='viewport' content="width=device-width initial-scale=1.0">
+{% include 'resQmia_app/head.html' %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
-    
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <script src="{% static 'resQmia_app/resQmia.js' %}"></script>
-</head>
 <body>
     <div class="container-fluid">
 
@@ -33,67 +18,8 @@
                 </ul>
             </div>
 
-            <div class="col-md-4">
-                {% for dog in current_dog %}
-                <ul>
-                    <h1>{{ dog.name }}</h1>
-                    <li>{{ dog.description }}, {{ dog.weight }}lbs.</li>
-                    <li>Birthdate: {{ dog.birthdate }}</li>
-                    <li{% if dog.fixed == False %} style="background-color: red">NOT FIXED!! {% endif %}</li>
-                    <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
-                    <li{% if dog.microchip_number == "0" %} style="background-color: red">NEEDS MICROCHIP!</li {% endif %}>
-                    
-                    
-                    
-                {% endfor %}
-                
-                    <hr>
-                    {% for rabies in current_rabies %}
-                    <li>Rabies due: {{ rabies.vaccine_due }} </li>
-                    {% endfor %}
-
-                    {% for da2pp in current_da2pp %}
-                    <li>DA2PP due: {{ da2pp.vaccine_due }}</li>
-                    {% endfor %}
-                    
-                    {% for lepto in current_lepto %}
-                    <li>Lepto due: {{ lepto.vaccine_due }}</li>
-                    {% endfor %}
-
-                    {% for bord in current_bord %}
-                    <li>Bord due: {{ bord.vaccine_due }}</li>
-                    {% endfor %}
-
-                    {% for civ in current_civ %}
-                    <li>CIV due: {{ civ.vaccine_due }}</li>
-                    <hr>
-                    {% endfor %}
-                
-                    {% for heart_prev in current_heartworm_prev %}
-                    <li>{{ heart_prev.prevention_name }} prevention due: {{ heart_prev.prevention_due }}</li>
-                    {% endfor %}
-
-                    {% for flea in current_flea_tick %}
-                    <li>{{ flea.prevention_name }} prevention due: {{ flea.prevention_due }}</li>
-                    <hr>
-                    {% endfor %}
-
-                    {% for heart_test in current_heartworm_test %}
-                    <li>{{ heart_test.test_name }} test due: {{ heart_test.test_due }}</li>
-                    {% endfor %}
-
-                    {% for fecal in current_fecal %}
-                    <li>{{ fecal.test_name }} test due: {{ fecal.test_due }}</li>
-                    {% endfor %}
-
-                    {% for worm in current_dewormer %}
-                    <li>{{ worm.test_name }} due: {{ worm.test_due }}</li>
-                    {% endfor %}
-                </ul>
-
-
-                
-            </div>
+           
+            {% include 'resQmia_app/current_dog.html' %}
 
         </div>
     </div>
