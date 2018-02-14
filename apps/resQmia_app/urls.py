@@ -24,6 +24,12 @@ urlpatterns = [
     
     url(r'^select_day/(?P<dog_id>\d+)$', views.select_day),
 
+    url(r'^fix/(?P<dog_id>\d+)$', views.fix),
+    url(r'^microchip/(?P<dog_id>\d+)$', views.microchip),
+
+    url(r'^fix_cat/(?P<cat_id>\d+)$', views.fix_cat),
+    url(r'^microchip_cat/(?P<cat_id>\d+)$', views.microchip_cat),
+
     url(r'^new_vaccine_dog/(?P<id>\d+)$', views.new_vaccine_dog),
     url(r'^new_prevention_dog/(?P<id>\d+)$', views.new_prevention_dog),
     url(r'^new_test_dog/(?P<id>\d+)$', views.new_test_dog),

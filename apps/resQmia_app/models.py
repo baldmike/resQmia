@@ -56,6 +56,7 @@ class User(models.Model):
 
 class Dog(models.Model):
     name = models.CharField(max_length = 255)
+    rescue_date = models.DateField()
     microchip_number = models.CharField(max_length = 255)
     gender = models.CharField(max_length = 10)
     birthdate = models.DateField()
@@ -112,6 +113,7 @@ class TestDog(models.Model):
 
 class Cat(models.Model):
     name = models.CharField(max_length = 255)
+    rescue_date = models.DateField()
     microchip_number = models.CharField(max_length = 255)
     gender = models.CharField(max_length = 10)
     birthdate = models.DateField()

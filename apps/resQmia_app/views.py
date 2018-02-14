@@ -521,6 +521,28 @@ def new_test_dog(request, id):
 
     return redirect('/')
 
+def fix(request, dog_id):
+    if request.method == 'POST':
+        
+        current_record = Dog.objects.get(id=dog_id)
+
+        current_record.fixed = True
+
+        current_record.save()
+
+    return redirect('/')
+
+def microchip(request, dog_id):
+    if request.method == 'POST':
+        
+        current_record = Dog.objects.get(id=dog_id)
+
+        current_record.microchip_number = request.POST['microchip_number']
+
+        current_record.save()
+
+    return redirect('/')
+
     # CATS!!!!!!!!!!!!!! =============================================================
 
 
@@ -600,7 +622,7 @@ def rescue_cat(request):
 
         
         
-    return redirect ('/our_cats')
+    return redirect ('/dashboard')
 
 def select_our_cats(request, cat_id):
     current_cat = Cat.objects.filter(id=cat_id)
@@ -702,3 +724,28 @@ def select_dashboard_cat(request, cat_id):
     }
     
     return render(request, 'resQmia_app/dashboard_cat.html', context)
+
+
+
+
+def fix_cat(request, cat_id):
+    if request.method == 'POST':
+    
+        current_record = Cat.objects.get(id=cat_id)
+
+        current_record.fixed = True
+
+        current_record.save()
+
+    return redirect('/')
+
+def microchip_cat(request, cat_id):
+    if request.method == 'POST':
+        
+        current_record = Cat.objects.get(id=cat_id)
+
+        current_record.microchip_number = request.POST['microchip_number']
+
+        current_record.save()
+
+    return redirect('/')

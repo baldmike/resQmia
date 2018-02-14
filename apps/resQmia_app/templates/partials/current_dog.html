@@ -4,19 +4,39 @@
         <p class="title">{{ dog.name }}</p>
     </div>
     <div class="attentions">
-        <div class="col-md-6 padding">
-            <li{% if dog.fixed == False %} class="attn-alert" id="fix_alert">NOT FIXED!!{% endif %}</li>
+        <div class="row">
+            <div class="col-md-6 padding">
+                <li{% if dog.fixed == False %} class="attn-alert" id="fix_alert">NOT FIXED!!{% endif %}</li>
+            </div>
+            <div class="col-md-6 padding">
+                <li {% if dog.microchip_number == "0" %} class="attn-alert" id="chip_alert">NEEDS MICROCHIP!</li {% endif %}>
+            </div>
         </div>
-        <div class="col-md-6 padding">
-            <li {% if dog.microchip_number == "0" %} class="attn-alert" id="chip_alert">NEEDS MICROCHIP!</li {% endif %}>
+        <div class="row">
+            <div class="col-md-12 hidden" id="fix_box">
+                <form action="/fix/{{ dog.id }}" method="post">
+                    {% csrf_token %}
+                    <label for="fixed" class="checkbox-inline">
+                    <input type="checkbox" name="fixed" id="fixed" required>Fixed</label>
+                    <br>
+                    <div class="col-md-12">
+                        <button type="submit" class="button-red" style="float: none">FIXED!</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="col-md-6 hidden" id="fix_box">
-            <label for="fixed" class="checkbox-inline">
-            <input type="checkbox" name="fixed" id="fixed">Fixed</label>
-        </div>
-        <div class="col-md-6 hidden" id="chip_box">
-            <label for="microchip-number" class="sr-only">Microchip Number</label>
-            <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
+        <div class="row">
+            <div class="col-md-12 hidden" id="chip_box">
+                <form action="/microchip/{{ dog.id }}" method="post">
+                    {% csrf_token %}
+                    <label for="microchip-number" class="sr-only">Microchip Number</label>
+                    <input type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
+                    <br>
+                    <div class="col-md-12">
+                        <button type="submit" class="button-red" style="float: none">CHIPPED!</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <li class="col-md-6 center">{{ dog.description }}, {{ dog.weight }}lbs.</li>
@@ -24,6 +44,7 @@
         <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
     </div>
 {% endfor %}
+
 
     
 
@@ -238,13 +259,15 @@
             </div>
         </div>
         {% endfor %}
-    
+
+        <br>
 
     
-        <h4 {% if current_dog %}><hr>Tests Due:</h4>{% endif %}
+        <h4 {% if current_dog %}>Tests Due:</h4>{% endif %}
         {% for heart_test in current_heartworm_test %}
 
         <div class="new-test">
+            
             <div class="col-md-8">
                 <li>{{ heart_test.test_name }} test due: {{ heart_test.test_due }}</li>
             </div>

@@ -13,14 +13,10 @@
             
                 <div class="form-group">
                     <label for="name" class="sr-only">Cat's Name</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    name="name" id="new_rescue_name" 
-                    placeholder="Cat's Name" 
-                    style="text-align: center" 
-                    required 
-                    autofocus>
+                    <input type="text" class="form-control" name="name" id="new_rescue_name" placeholder="Cat's Name" style="text-align: center" required autofocus>
+
+                    <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
+                    <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
                 </div>
 
                 <div class="form-group">
@@ -55,27 +51,31 @@
 
                 </div>
 
-                <div class="form-group" style="text-align: center;">
-                    <div class="col-md-6 col-xs-12">
-                        <label class="radio-inline"><input type="radio"name="gender" id="male" value="male" checked="checked">Male</label>
+                <div class="fun-box">
+                        <div class="form-group" style="text-align: center;">
+                            <div class="col-md-6 col-xs-12">
+                                <label class="radio-inline"><input type="radio"name="gender" id="male" value="male" checked="checked">Male</label>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <label class="radio-inline"><input type="radio" name="gender" id="female" value="female">Female</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-xs-12">
-                        <label class="radio-inline"><input type="radio" name="gender" id="female" value="female">Female</label>
+    
+                    <div class="fun-box">
+                        <div class="form-group" style="text-align: center;">						
+                            <label for="fixed" class="checkbox-inline">
+                            <input type="checkbox" name="fixed" id="fixed">Fixed</label>
+                        
+                            <label for="microchip" class="checkbox-inline">
+                            <input type="checkbox" name="microchip" id="microchip">Microchipped</label>
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-group" style="text-align: center;">						
-                    <label for="fixed" class="checkbox-inline">
-                    <input type="checkbox" name="fixed" id="fixed">Fixed</label>
-                
-                    <label for="fixed" class="checkbox-inline">
-                    <input type="checkbox" name="microchip" id="microchip">Microchipped</label>
-                </div>
-        
-                <div class="form-group hidden" id="microchip-number">
-                    <label for="microchip-number" class="sr-only">Microchip Number</label>
-                    <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
-                </div>
+            
+                    <div class="form-group hidden" id="microchip-number">
+                        <label for="microchip-number" class="sr-only">Microchip Number</label>
+                        <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
+                    </div>
 
                 <div class="center">
                     <a href="#vaccinations"><button class="btn btn-success form-advance-button" id="show_vacs">Vaccinations</button></a>
@@ -122,44 +122,45 @@
                             <input type="date" style="float: right; color: black" name="fvrcp_given" value= {% now 'Y-m-d' %} placeholder="FVRCP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     </div>
+                
+                    <div class="center">
+                        <a href="#preventions"><button class="btn btn-success form-advance-button" id="show_prevs">Preventions & Tests</button></a>
+                    </div>
                     
                 </div>
 
-                <div class="center">
-                    <a href="#preventions"><button class="btn btn-success form-advance-button" id="show_prevs">Preventions & Tests</button></a>
-                </div>
+                
 
                 <!-- *******************  PREVENTIONS -->
                 
-                <div class="form-group" id="preventions">	
-                    <div class="form-group">
-                        <h1>Preventions</h1>
-                        <h4 class="center">Flea/Tick Prevention</h4>
-                        <div class="form-control flea-prev-form" id="fleaPrevFalse">
-                            <input type="radio" name="fleaPrev" value="False" checked="checked">
-                            <label class="control-label" for="fleaPrevFalse">Needs Flea/Tick</label>
-                            <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
-                        </div>
-                        <div class="form-control" id="fleaPrevTrue">
-                            <input type="radio" name="fleaPrev" value="True">
-                            <label class="control-label" for="fleaPrev">Flea/Tick Given on </label>
-                            <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
-                        </div>
+                <div class="form-group" id="preventions">
+                    <h1>Preventions</h1>
+                    <h4 class="center">Flea/Tick Prevention</h4>
+                    <div class="form-control flea-prev-form" id="fleaPrevFalse">
+                        <input type="radio" name="fleaPrev" value="False" checked="checked">
+                        <label class="control-label" for="fleaPrevFalse">Needs Flea/Tick</label>
+                        <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
                     </div>
+                    <div class="form-control" id="fleaPrevTrue">
+                        <input type="radio" name="fleaPrev" value="True">
+                        <label class="control-label" for="fleaPrev">Flea/Tick Given on </label>
+                        <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <h4 class="center">Revolution Prevention</h4>
-                        <div class="form-control revolution-prev-form" id="revolutionPrevFalse">
-                            <input type="radio" name="revolutionPrev" value="False" checked="checked">
-                            <label class="control-label" for="revolutionPrevFalse">Needs Revolution prev</label>
-                            <input type="date" style="float: right; color: black;" name="revolutionPrevDue" value={% now 'Y-m-d' %}>
-                        </div>
-                        <div class="form-control" id="revolutionPrevTrue">
-                            <input type="radio" name="revolutionPrev" value="True">
-                            <label class="control-label" for="revolutionPrevGiven">Revolution prev given</label>
-                            <input type="date" style="float: right; color: black" name="revolutionPrevGiven" value={% now 'Y-m-d' %}>
-                        </div>
+                <div class="form-group">
+                    <h4 class="center">Revolution Prevention</h4>
+                    <div class="form-control revolution-prev-form" id="revolutionPrevFalse">
+                        <input type="radio" name="revolutionPrev" value="False" checked="checked">
+                        <label class="control-label" for="revolutionPrevFalse">Needs Revolution prev</label>
+                        <input type="date" style="float: right; color: black;" name="revolutionPrevDue" value={% now 'Y-m-d' %}>
                     </div>
+                    <div class="form-control" id="revolutionPrevTrue">
+                        <input type="radio" name="revolutionPrev" value="True">
+                        <label class="control-label" for="revolutionPrevGiven">Revolution prev given</label>
+                        <input type="date" style="float: right; color: black" name="revolutionPrevGiven" value={% now 'Y-m-d' %}>
+                    </div>
+                </div>
 
                     <div class="form-group">
                         <h1>Tests</h1>
@@ -192,7 +193,7 @@
 
 			    </div>
 			    <br>
-			    <div class="col-xs-12 center">
+			    <div class="col-xs-12 center button-bottom">
 				    <button type="submit" class="btn btn-success form-advance-button">Rescue <span id="current_rescue_name"> !</span></button>
 			    </div>
             </div>

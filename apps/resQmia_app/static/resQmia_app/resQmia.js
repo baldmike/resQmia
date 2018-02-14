@@ -299,7 +299,15 @@ $(document).ready(function(){
         $('#new_fivfelv').toggleClass("hidden");
     })
 
+    $('#fix_alert').click(function(){
+        console.log('FIX BUTTON FIX')
+        $('#fix_box').toggleClass("hidden")
+    })
 
+    $('#chip_alert').click(function(){
+        console.log('chip BUTTON chip')
+        $('#chip_box').toggleClass("hidden")
+    })
 
 
 

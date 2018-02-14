@@ -1,15 +1,42 @@
 {% for cat in current_cat %}
-<div class="header">
-    <p class="title title-brindle">{{ cat.name }}</p>
-</div>
-
 <div class="list-box2">
+    <div class="header">
+        <p class="title">{{ cat.name }}</p>
+    </div>
     <div class="attentions">
-        <div class="col-md-6 padding">
-            <li{% if cat.fixed == False %} class="attn-alert">NOT FIXED!!{% endif %}</li>
+        <div class="row">
+            <div class="col-md-6 padding">
+                <li{% if cat.fixed == False %} class="attn-alert" id="fix_alert">NOT FIXED!!{% endif %}</li>
+            </div>
+            <div class="col-md-6 padding">
+                <li {% if cat.microchip_number == "0" %} class="attn-alert" id="chip_alert">NEEDS MICROCHIP!</li {% endif %}>
+            </div>
         </div>
-        <div class="col-md-6 padding">
-            <li {% if cat.microchip_number == "0" %} class="attn-alert">NEEDS MICROCHIP!</li {% endif %}>
+        <div class="row">
+            <div class="col-md-12 hidden" id="fix_box">
+                <form action="/fix_cat/{{ cat.id }}" method="post">
+                    {% csrf_token %}
+                    <label for="fixed" class="checkbox-inline">
+                    <input type="checkbox" name="fixed" id="fixed" required>Fixed</label>
+                    <br>
+                    <div class="col-md-12">
+                        <button type="submit" class="button-red" style="float: none">FIXED!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 hidden" id="chip_box">
+                <form action="/microchip_cat/{{ cat.id }}" method="post">
+                    {% csrf_token %}
+                    <label for="microchip-number" class="sr-only">Microchip Number</label>
+                    <input type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
+                    <br>
+                    <div class="col-md-12">
+                        <button type="submit" class="button-red" style="float: none">CHIPPED!</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <li class="col-md-6 center">{{ cat.description }}, {{ cat.weight }}lbs.</li>
@@ -105,7 +132,7 @@
                         <input placeholder="Revolution is now DUE on: " type="text" class="form-control" name="prevention_due" id="revolution_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="button-red">REVOLUTION!</button>
+                        <button type="submit" class="button-red">ADD!</button>
                     </div>
                 </form>
             </div>
