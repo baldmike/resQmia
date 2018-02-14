@@ -1,19 +1,33 @@
-<div class="col-md-4 col-md-offset-1">
-    {% for dog in current_dog %}
-    <ul>
-        <li class="title">{{ dog.name }}</li>
-        <li{% if dog.fixed == False %} class="subtitle attn-alert">NOT FIXED!!{% endif %}</li>
-        <li {% if dog.microchip_number == "0" %} class="subtitle attn-alert">NEEDS MICROCHIP!</li {% endif %}>
+ {% for dog in current_dog %}
+<div class="list-box2">
+    <div class="header">
+        <p class="title">{{ dog.name }}</p>
+    </div>
+    <div class="attentions">
+        <div class="col-md-6 padding">
+            <li{% if dog.fixed == False %} class="attn-alert" id="fix_alert">NOT FIXED!!{% endif %}</li>
+        </div>
+        <div class="col-md-6 padding">
+            <li {% if dog.microchip_number == "0" %} class="attn-alert" id="chip_alert">NEEDS MICROCHIP!</li {% endif %}>
+        </div>
+        <div class="col-md-6 hidden" id="fix_box">
+            <label for="fixed" class="checkbox-inline">
+            <input type="checkbox" name="fixed" id="fixed">Fixed</label>
+        </div>
+        <div class="col-md-6 hidden" id="chip_box">
+            <label for="microchip-number" class="sr-only">Microchip Number</label>
+            <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
+        </div>
 
-        <li class="subtitle">{{ dog.description }}, {{ dog.weight }}lbs.</li>
+        <li class="col-md-6 center">{{ dog.description }}, {{ dog.weight }}lbs.</li>
+        <li class="col-md-6 center">Birthdate: {{ dog.birthdate }}</li>
         <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
-        
-        <li class="subtitle attn-alert">Birthdate: {{ dog.birthdate }}</li>
-        
-    </ul>
-    {% endfor %}
+    </div>
+{% endfor %}
+
     
-    <ul>    
+
+    <div class="col-md-10 col-md-offset-1">    
         <h4 {% if current_dog %}><hr>Vaccinations Due:</h4>{% endif %}
         {% for rabies in current_rabies %}
         <div class="new-vac">
@@ -22,7 +36,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_rabies_button" class="new-vac-button">New Rabies</button>
+                <button id="new_rabies_button" class="button">New Rabies</button>
             </div>
             <div class="col-md-12 hidden" id="new_rabies">
                 <form action="/new_vaccine_dog/{{ rabies.id }}" method="post">
@@ -41,12 +55,12 @@
                     </div>
                     <div class="col-md-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="add-vac-button">Add RABIES</button>
+                        <button type="submit" class="button-red">Add RABIES</button>
                     </div>
                 </form>
             </div>
         </div>
-        {% endfor %} 
+        {% endfor %}
 
         {% for da2pp in current_da2pp %}
         <div class="new-vac">
@@ -55,7 +69,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_da2pp_button" class="new-vac-button">New DA2PP</button>
+                <button id="new_da2pp_button" class="button">New DA2PP</button>
             </div>
             <div class="col-md-12 hidden" id="new_da2pp">
                 <form action="/new_vaccine_dog/{{ da2pp.id }}" method="post">
@@ -70,7 +84,7 @@
                     </div>
                     <div class="col-md-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="add-vac-button">Add DA2PP</button>
+                        <button type="submit" class="button-red">Add DA2PP</button>
                     </div>
                 </form>
             </div>
@@ -84,7 +98,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_lepto_button" class="new-vac-button">New Lepto</button>
+                <button id="new_lepto_button" class="button">New Lepto</button>
             </div>
             <div class="col-md-12 hidden" id="new_lepto">
                 <form action="/new_vaccine_dog/{{ lepto.id }}" method="post">
@@ -99,7 +113,7 @@
                     </div>
                     <div class="col-md-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="add-vac-button">Add LEPTO</button>
+                        <button type="submit" class="button-red">Add LEPTO</button>
                     </div>
                 </form>
             </div>
@@ -114,7 +128,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_bord_button" class="new-vac-button">New Bord</button>
+                <button id="new_bord_button" class="button">New Bord</button>
             </div>
             <div class="col-md-12 hidden" id="new_bord">
                 <form action="/new_vaccine_dog/{{ bord.id }}" method="post">
@@ -129,7 +143,7 @@
                     </div>
                     <div class="col-md-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="add-vac-button">Add BORD</button>
+                        <button type="submit" class="button-red">Add BORD</button>
                     </div>
                 </form>
             </div>
@@ -144,7 +158,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_civ_button" class="new-vac-button">New CIV</button>
+                <button id="new_civ_button" class="button">New CIV</button>
             </div>
             <div class="col-md-12 hidden" id="new_civ">
                 <form action="/new_vaccine_dog/{{ civ.id }}" method="post">
@@ -159,17 +173,15 @@
                     </div>
                     <div class="col-md-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="add-vac-button">Add CIV</button>
+                        <button type="submit" class="button-red">Add CIV</button>
                     </div>
                 </form>
             </div>
         </div>
         {% endfor %}
         
-        
 
-        <hr>
-        <h4 {% if current_dog %}><hr>Preventions Due:</h4>{% endif %}
+        <h4 {% if current_dog %}>Preventions Due:</h4>{% endif %}
         {% for heart_prev in current_heartworm_prev %}
         <div class="new-prev">
             <div class="col-md-8">
@@ -177,7 +189,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_heart_prev_button" class="new-prev-button">Heartworm</button>
+                <button id="new_heart_prev_button" class="button">Heartworm</button>
             </div>
             <div class="col-md-12 hidden" id="new_heart_prev">
                 <form action="/new_prevention_dog/{{ heart_prev.id }}" method="post">
@@ -191,7 +203,7 @@
                         <input placeholder="HW Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="heart_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="add-prev-button">HEARTWORM</button>
+                        <button type="submit" class="button-red">WORMS!</button>
                     </div>
                 </form>
             </div>
@@ -206,29 +218,29 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_flea_prev_button" class="new-prev-button">Fleas!</button>
+                <button id="new_flea_prev_button" class="button">Flea/Tick</button>
             </div>
             <div class="col-md-12 hidden" id="new_flea_prev">
                 <form action="/new_prevention_dog/{{ flea.id }}" method="post">
                     {% csrf_token %}
                     <div class="col-md-8">
                         <label class="sr-only">New Flea/Tick Prevention Given </label>
-                        <input placeholder="Flea Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="flea_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input placeholder="Flea Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="flea_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')"  required>
                     </div>
                     <div class="col-md-8">
                         <label class="sr-only">Flea Prevention Due Date</label>
-                        <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="add-prev-button">FLEAS!</button>
+                        <button type="submit" class="button-red">FLEAS!</button>
                     </div>
                 </form>
             </div>
         </div>
         {% endfor %}
-    </ul>
+    
 
-    <ul>
+    
         <h4 {% if current_dog %}><hr>Tests Due:</h4>{% endif %}
         {% for heart_test in current_heartworm_test %}
 
@@ -238,7 +250,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_heart_test_button" class="new-test-button">Worm Test!!</button>
+                <button id="new_heart_test_button" class="button">Worm Test!!</button>
             </div>
             <div class="col-md-12 hidden" id="new_heart_test">
                 <form action="/new_test_dog/{{ heart_test.id }}" method="post">
@@ -252,7 +264,7 @@
                         <input placeholder="Heartworm Test is now DUE on: " type="text" class="form-control" name="test_due" id="heart_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="add-test-button">Worm Test!</button>
+                        <button type="submit" class="button-red">Worm Test!</button>
                     </div>
                 </form>
             </div>
@@ -267,7 +279,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_fecal_test_button" class="new-test-button">POOP Test!!</button>
+                <button id="new_fecal_test_button" class="button">POOP Test!!</button>
             </div>
             <div class="col-md-12 hidden" id="new_fecal_test">
                 <form action="/new_test_dog/{{ fecal.id }}" method="post">
@@ -281,7 +293,7 @@
                         <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="add-test-button">POOP Test!</button>
+                        <button type="submit" class="button-red">POOP Test!</button>
                     </div>
                 </form>
             </div>
@@ -295,7 +307,7 @@
             </div>
         
             <div class="col-md-4">
-                <button id="new_dewormer_button" class="new-test-button">DEWORMER!!</button>
+                <button id="new_dewormer_button" class="button">DEWORM!!!</button>
             </div>
             <div class="col-md-12 hidden" id="new_dewormer">
                 <form action="/new_test_dog/{{ worm.id }}" method="post">
@@ -309,12 +321,15 @@
                         <input placeholder="Dewormer is now DUE on: " type="text" class="form-control" name="test_due" id="dewormer_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="add-test-button">DEWORMER!</button>
+                        <button type="submit" class="button-red">DEWORM!!</button>
                     </div>
                 </form>
             </div>
         </div>
         {% endfor %}
-    </ul>
-        
+    </div>
+
+
+
+    
 </div>

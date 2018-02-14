@@ -119,6 +119,7 @@ def index(request):
 
         context = {
         "avail_dogs" : Dog.objects.exclude(adopted=True),
+        "avail_cats" : Cat.objects.exclude(adopted=True),
         "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
         "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
         "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
@@ -130,9 +131,10 @@ def index(request):
         "flea" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
         "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
         "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due')
+        "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        
         }
-        return render(request, 'resQmia_app/dashboard.html', context)
+        return render(request, 'resQmia_app/dashboard_cat.html', context)
     else:
         return render(request, 'resQmia_app/index.html')
 
@@ -148,7 +150,7 @@ def register(request):
     if len(errors):
         for tag, error in errors.iteritems():
             messages.add_message(request, messages.ERROR, errors[tag])
-        return redirect('login_app:login')
+        return redirect('resQmia_app:login')
     else:
         first_name =  request.POST['first_name']
         last_name = request.POST['last_name']
@@ -283,7 +285,7 @@ def rescue_dog(request):
         dwt = TestDog.objects.create(test_name="dewormer", test_due=dewormer_due, dog_id=d.id)
         
 
-    return redirect ('/our_dogs')
+    return redirect ('/')
 
 
 def select_our_dogs(request, dog_id):
@@ -300,6 +302,7 @@ def select_our_dogs(request, dog_id):
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
+    avail_cats = Cat.objects.exclude(adopted=True)
 
     context = {
         'current_dog' : current_dog,
@@ -315,6 +318,7 @@ def select_our_dogs(request, dog_id):
         'current_dewormer' : current_dewormer,
 
         'avail_dogs' : avail_dogs,
+        'avail_cats' : avail_cats,
 
     }
     
@@ -335,6 +339,7 @@ def select_dashboard(request, dog_id):
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
+    avail_cats = Cat.objects.exclude(adopted=True)
 
     context = {
         'current_dog' : current_dog,
@@ -352,6 +357,7 @@ def select_dashboard(request, dog_id):
         'current_dewormer' : current_dewormer,
 
         'avail_dogs' : avail_dogs,
+        'avail_cats' : avail_cats,
 
     }
     
@@ -372,6 +378,7 @@ def select_our_dogs(request, dog_id):
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
+    avail_cats = Cat.objects.exclude(adopted=True)
 
     context = {
         'current_dog' : current_dog,
@@ -387,6 +394,7 @@ def select_our_dogs(request, dog_id):
         'current_dewormer' : current_dewormer,
 
         'avail_dogs' : avail_dogs,
+        'avail_cats' : avail_cats,
 
     }
     
@@ -412,6 +420,7 @@ def select_day(request, dog_id):
     current_dewormer = TestDog.objects.filter(dog_id=dog_id, test_name="dewormer")  
     
     avail_dogs = Dog.objects.exclude(adopted=True)
+    avail_cats = Cat.objects.exclude(adopted=True)
 
     context = {
         'current_dog' : current_dog,
@@ -427,6 +436,7 @@ def select_day(request, dog_id):
         'current_dewormer' : current_dewormer,
 
         'avail_dogs' : avail_dogs,
+        'avail_cats' : avail_cats,
 
     }
     
@@ -467,7 +477,7 @@ def our_dogs(request):
         "avail_dogs" : avail_dogs,
     }
     print avail_dogs
-    return render(request, 'resQmia_app/our_dogs.html', context)
+    return render(request, 'resQmia_app/dashboard.html', context)
 
 
 
@@ -602,6 +612,7 @@ def select_our_cats(request, cat_id):
     current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
     
     avail_cats = Cat.objects.exclude(adopted=True)
+    avail_dogs = Dog.objects.exclude(adopted=True)
 
     context = {
         'current_cat' : current_cat,
@@ -613,6 +624,7 @@ def select_our_cats(request, cat_id):
         'current_fecal' : current_fecal,
 
         'avail_cats' : avail_cats,
+        'avail_dogs' : avail_dogs,
 
     }
     
@@ -671,6 +683,7 @@ def select_dashboard_cat(request, cat_id):
     current_fecal = TestCat.objects.filter(cat_id=cat_id, test_name="fecal")
     
     avail_cats = Cat.objects.exclude(adopted=True)
+    avail_dogs = Dog.objects.exclude(adopted=True)
 
     context = {
         'current_cat' : current_cat,
@@ -684,6 +697,7 @@ def select_dashboard_cat(request, cat_id):
         'current_fecal' : current_fecal,
 
         'avail_cats' : avail_cats,
+        'avail_dogs' : avail_dogs,
 
     }
     

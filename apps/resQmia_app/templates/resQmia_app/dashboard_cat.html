@@ -1,14 +1,22 @@
 
-    {% include 'resQmia_app/head.html' %}
+    {% include 'partials/head.html' %}
 
-<body>
+    <body>
+        <div class="container-fluid">
+            {% include 'partials/nav_bar.html' %}
+            <div class="col-md-4">
+                {% include 'partials/need_attention.html' %}
+            </div>
+        
+            <div class="col-md-4">
+                {% include 'partials/current_cat.html' %}
+            </div>
 
-    <div class="container-fluid">
-
-        {% include 'resQmia_app/nav_bar.html' %}
-
-        {% include 'resQmia_app/need_attention.html' %}
-
-        {% include 'resQmia_app/current_cat.html' %}
-
-    </div>
+            <div class="col-md-4">
+                {% include 'partials/our_dogs.html' %}
+                {% include 'partials/our_cats.html' %}
+            </div>
+            
+        </div>
+    </body>
+    

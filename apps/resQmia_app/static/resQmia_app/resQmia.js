@@ -1,6 +1,13 @@
 $(document).ready(function(){
     
     console.log("resQmia_app is now ready to rock.");
+    $('.brand').fadeIn(2000);
+    $('.login').fadeIn(2000);
+
+    $('#login_button').click(function(){
+        $('.brand').fadeOut(1000);
+        $('.login').fadeOut(1000);
+    })
 
     function theDay() {
         var d = new Date(),

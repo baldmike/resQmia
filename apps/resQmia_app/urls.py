@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^new_cat$', views.new_cat),
     url(r'^rescue_cat$', views.rescue_cat),
     
-    url(r'^select_our_dogs/(?P<dog_id>\d+)$', views.select_our_dogs),
+    url(r'^select_dashboard/(?P<dog_id>\d+)$', views.select_dashboard),
     url(r'^select_our_cats/(?P<cat_id>\d+)$', views.select_our_cats),
     url(r'^select_dashboard/(?P<dog_id>\d+)$', views.select_dashboard),
     url(r'^select_dashboard_cat/(?P<cat_id>\d+)$', views.select_dashboard_cat),

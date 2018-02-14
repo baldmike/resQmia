@@ -1,0 +1,7 @@
+<p class="title title-dog2">Our Dogs</p>
+<div class="list-box">
+    {% for dog in avail_dogs %}
+    <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></li>
+    {% endfor %}
+</div>
+
