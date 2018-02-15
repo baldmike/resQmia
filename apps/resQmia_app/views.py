@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse, redirect
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from time import strftime, localtime
 from datetime import date, time
@@ -496,7 +497,7 @@ def new_vaccine_dog(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_prevention_dog(request, id):
@@ -509,7 +510,7 @@ def new_prevention_dog(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_test_dog(request, id):
@@ -522,7 +523,7 @@ def new_test_dog(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def fix(request, dog_id):
     if request.method == 'POST':
@@ -533,7 +534,7 @@ def fix(request, dog_id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def microchip(request, dog_id):
     if request.method == 'POST':
@@ -544,7 +545,7 @@ def microchip(request, dog_id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     # CATS!!!!!!!!!!!!!! =============================================================
 
@@ -564,7 +565,6 @@ def our_cats(request):
     context = {
         "avail_cats" : avail_cats,
     }
-    print avail_cats
     return render(request, 'resQmia_app/our_cats.html', context)    
 
 def new_cat(request):
@@ -668,7 +668,7 @@ def new_vaccine_cat(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_prevention_cat(request, id):
@@ -681,7 +681,7 @@ def new_prevention_cat(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_test_cat(request, id):
@@ -694,7 +694,7 @@ def new_test_cat(request, id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def select_dashboard_cat(request, cat_id):
@@ -740,7 +740,7 @@ def fix_cat(request, cat_id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def microchip_cat(request, cat_id):
     if request.method == 'POST':
@@ -751,4 +751,4 @@ def microchip_cat(request, cat_id):
 
         current_record.save()
 
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
