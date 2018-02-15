@@ -121,23 +121,24 @@ def index(request):
         cat_alert()
 
         context = {
-        "avail_dogs" : Dog.objects.exclude(adopted=True),
-        "avail_cats" : Cat.objects.exclude(adopted=True),
-        "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
-        "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
-        "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
-        "bord" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
-        "civs" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
-        "dog_alert" : dog_alert,
-        "cat_alert" : cat_alert,
-        "heartwormPrev" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
-        "flea" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
-        "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
-        
+
+            "avail_dogs" : Dog.objects.exclude(adopted=True),
+            "avail_cats" : Cat.objects.exclude(adopted=True),
+            "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
+            "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
+            "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
+            "bord" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
+            "civs" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
+            "dog_alert" : dog_alert,
+            "cat_alert" : cat_alert,
+            "heartwormPrev" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+            "flea" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+            "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+            "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+            "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+            "date_today" : dateToday
         }
-        return render(request, 'resQmia_app/dashboard_cat.html', context)
+        return render(request, 'resQmia_app/dashboard.html', context)
     else:
         return render(request, 'resQmia_app/index.html')
 
@@ -324,6 +325,7 @@ def select_our_dogs(request, dog_id):
         'avail_dogs' : avail_dogs,
         'avail_cats' : avail_cats,
 
+        'date_today' : dateToday,
     }
     
     return render(request, 'resQmia_app/our_dogs.html', context)
@@ -363,6 +365,8 @@ def select_dashboard(request, dog_id):
         'avail_dogs' : avail_dogs,
         'avail_cats' : avail_cats,
 
+        'date_today' : dateToday,
+
     }
     
     return render(request, 'resQmia_app/dashboard.html', context)
@@ -399,6 +403,8 @@ def select_our_dogs(request, dog_id):
 
         'avail_dogs' : avail_dogs,
         'avail_cats' : avail_cats,
+
+        'date_today' : dateToday,
 
     }
     
@@ -441,6 +447,8 @@ def select_day(request, dog_id):
 
         'avail_dogs' : avail_dogs,
         'avail_cats' : avail_cats,
+
+        'date_today' : dateToday,
 
     }
     
@@ -651,6 +659,8 @@ def select_our_cats(request, cat_id):
         'avail_cats' : avail_cats,
         'avail_dogs' : avail_dogs,
 
+        'date_today' : dateToday,
+
     }
     
     return render(request, 'resQmia_app/our_cats.html', context)
@@ -723,6 +733,8 @@ def select_dashboard_cat(request, cat_id):
 
         'avail_cats' : avail_cats,
         'avail_dogs' : avail_dogs,
+
+        'date_today' : dateToday,
 
     }
     

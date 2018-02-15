@@ -9,37 +9,37 @@ $(document).ready(function(){
         $('.login').fadeOut(1000);
     })
 
-    function theDay() {
-        var d = new Date(),
-        months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        return days[d.getDay()]+'&nbsp &nbsp &nbsp &nbsp &nbsp'+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear();
-    }
+    // function theDay() {
+    //     var d = new Date(),
+    //     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    //     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    //     return days[d.getDay()]+'&nbsp &nbsp &nbsp &nbsp &nbsp'+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear();
+    // }
     
-    function theTime() {
+    // function theTime() {
         
-        var t = new Date(),
-        minutes = t.getMinutes().toString().length == 1 ? '0' + t.getMinutes() : t.getMinutes(),
-        hours = hoursTime(),
-        ampm = t.getHours() >= 12 ? 'pm' : 'am';
-        hoursTime(hours);
+    //     var t = new Date(),
+    //     minutes = t.getMinutes().toString().length == 1 ? '0' + t.getMinutes() : t.getMinutes(),
+    //     hours = hoursTime(),
+    //     ampm = t.getHours() >= 12 ? 'pm' : 'am';
+    //     hoursTime(hours);
 
-        function hoursTime() {
-            var hour = t.getHours().toString().length == 1 ? '0' + t.getHours() : t.getHours();
-                if (hour > 12) {
-                    hour -= 12;
-                } return hour;
-        }
+    //     function hoursTime() {
+    //         var hour = t.getHours().toString().length == 1 ? '0' + t.getHours() : t.getHours();
+    //             if (hour > 12) {
+    //                 hour -= 12;
+    //             } return hour;
+    //     }
         
-        return hours + ':' + minutes + ampm
-    }
+    //     return hours + ':' + minutes + ampm
+    // }
 
-    function timeOutput() {
-        document.getElementById('date').innerHTML=theDay();
-        document.getElementById('time').innerHTML=theTime();
-    }
-    // get the time every 1000 [increments of time which I believe to be milliseconds]
-    setInterval(timeOutput, 1000);
+    // function timeOutput() {
+    //     document.getElementById('date').innerHTML=theDay();
+    //     document.getElementById('time').innerHTML=theTime();
+    // }
+    // // get the time every 1000 [increments of time which I believe to be milliseconds]
+    // setInterval(timeOutput, 1000);
 
     function newDogName() {
         new_rescue_name = document.getElementById('#new_rescue_name').value;

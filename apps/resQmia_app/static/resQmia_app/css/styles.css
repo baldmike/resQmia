@@ -19,9 +19,9 @@ li {
 
 a {
     color: black;
-    font-weight: bold;
     text-shadow: 1px 1px 1px grey;
 }
+
 
 #preventions {
     margin-top: 1000px;
@@ -63,6 +63,15 @@ a {
     opacity: .7;
     text-shadow: 2px 2px 2px gray;
     overflow: scroll;
+}
+
+.button-new {
+    font-size: 1.4em;
+    margin-top: 5px;
+    padding: 4px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
 }
 
 .list-box2 {
@@ -240,7 +249,7 @@ a {
 }
 
 .title {
-    font-size: 28px;
+    font-size: 18px;
     text-align: center;
     font-weight: bold;
     background-color: gray;
@@ -256,17 +265,6 @@ a {
     border: 2px solid black;
     border-radius: 100px;
 }
-
-.subtitle {
-    font-size: 22px;
-    text-align: center;
-    background-color: gray;
-    color: black;
-    border: 1px solid black;
-    border-radius: 5px;
-
-}
-
 
 /* CAT ONLY BELOW */
 

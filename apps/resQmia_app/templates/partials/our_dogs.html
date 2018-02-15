@@ -1,7 +1,10 @@
-<p class="title title-dog2">Our Dogs</p>
+<p class="title">Our Dogs</p>
 <div class="list-box">
     {% for dog in avail_dogs %}
-    <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></li>
+    <ul>
+        <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></li>
+    </ul>
     {% endfor %}
 </div>
+
 
