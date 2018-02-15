@@ -79,7 +79,11 @@ a {
 .brand {
     display: none;
     font-size: 6em;
-    text-shadow: 2px 2px 2px red;    
+    text-shadow: 2px 2px 2px hotpink;    
+}
+
+.brand2 {
+
 }
 
 .login {
@@ -101,7 +105,7 @@ a {
 
 
 .reg {
-    margin-top: 1000px;
+    margin-top: 2000px;
 }
 
 .center {
@@ -244,7 +248,7 @@ a {
     opacity: .9;
     border-radius: 5px;
     padding: 6px;
-    text-shadow: 2px 2px 2px red;
+    text-shadow: 2px 2px 2px hotpink;
 }
 
 .button-dog {
