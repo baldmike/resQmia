@@ -207,13 +207,14 @@ def rescue_dog(request):
             microchip_number = request.POST['microchip_number']
         gender = request.POST['gender']
         birthdate = request.POST['birthdate']
+        rescue_date = request.POST['rescue_date']
         description = request.POST['description']
         weight = request.POST['weight']
         fixed = False
         if 'fixed' in request.POST:
             fixed = True
         adopted = False
-        d = Dog.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
+        d = Dog.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, rescue_date=rescue_date, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
 
         # ************************    VACCINATIONS
         rabies = request.POST['rabiesVac']
