@@ -5,6 +5,10 @@ from django.contrib import admin
 
 from models import *
 
+class UserAdmin(admin.ModelAdmin):
+    class Meta:
+        model = User
+
 class DogAdmin(admin.ModelAdmin):
     class Meta:
         model = Dog
@@ -39,7 +43,7 @@ class TestCatAdmin(admin.ModelAdmin):
         model = TestCat
 
 
-
+admin.site.register(User, UserAdmin)
 
 admin.site.register(Dog, DogAdmin)
 admin.site.register(VaccineDog, VaccineDogAdmin)
