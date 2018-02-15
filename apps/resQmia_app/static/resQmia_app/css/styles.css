@@ -50,7 +50,8 @@ a {
 
 .fun-box {
     background-color: white;
-    border-radius: 45px;
+    border-radius: 5px;
+    background-color: mediumblue
 }
 
 .list-box {
