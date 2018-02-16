@@ -1,11 +1,6 @@
-{% include 'partials/head.html' %}
 
-<body>
-   <div class="container-fluid">
 
-    {% include 'partials/nav_bar.html' %}
-
-    <div class="col-md-4 col-md-offset-4 col-xs-12 new-animal-form">
+    <div class="list-box2">
             <h1 class="title">New Cat</h1>
 
             <form class="form-horizontal" action="/rescue_cat" method="post" id="new_cat_form">
@@ -13,45 +8,25 @@
             
                 <div class="form-group">
                     <label for="name" class="sr-only">Cat's Name</label>
-                    <input type="text" class="form-control" name="name" id="new_rescue_name" placeholder="Cat's Name" style="text-align: center" required autofocus>
+                    <input type="text" class="form-input" name="name" id="new_rescue_name" placeholder="Cat's Name" style="text-align: center" required autofocus>
 
                     <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
-                    <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
+                    <input type="text" name="rescue_date" id="rescue_date" class="form-input" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
                 </div>
 
                 <div class="form-group">
                     <label for="birthdate" class="sr-only">Birthdate</label>
-                    <input 
-                    type="text" 
-                    name="birthdate"
-                    id="birthdate"
-                    class="form-control" 
-                    placeholder="Birthdate"
-                    onfocus="(this.type='date')" onblur="(this.type='text')"
-                    required>
+                    <input type="text" name="birthdate" id="birthdate" class="form-input" placeholder="Birthdate" onfocus="(this.type='date')" onblur="(this.type='text')" required>
 							
 					<label for="description" class="sr-only">Description</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    name="description" 
-                    id="description" 
-                    placeholder="Breed/Description"
-                    minlength="3"
-                    required>
+                    <input type="text" class="form-input" name="description" id="description" placeholder="Breed/Description" minlength="3"required>
 				
 					<label for="weight" class="sr-only">Weight in pounds</label>
-                    <input 
-                    type="number" 
-                    class="form-control" 
-                    name="weight" 
-                    id="weight" 
-                    placeholder="Weight"
-                    required>
+                    <input type="number" class="form-input" name="weight" id="weight" placeholder="Weight" required>
 
                 </div>
 
-                <div class="fun-box">
+                <!-- <div class="fun-box"> -->
                         <div class="form-group" style="text-align: center;">
                             <div class="col-md-6 col-xs-12">
                                 <label class="radio-inline"><input type="radio"name="gender" id="male" value="male" checked="checked">Male</label>
@@ -60,9 +35,9 @@
                                 <label class="radio-inline"><input type="radio" name="gender" id="female" value="female">Female</label>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
     
-                    <div class="fun-box">
+                    <!-- <div class="fun-box"> -->
                         <div class="form-group" style="text-align: center;">						
                             <label for="fixed" class="checkbox-inline">
                             <input type="checkbox" name="fixed" id="fixed">Fixed</label>
@@ -70,11 +45,11 @@
                             <label for="microchip" class="checkbox-inline">
                             <input type="checkbox" name="microchip" id="microchip">Microchipped</label>
                         </div>
-                    </div>
+                    <!-- </div> -->
             
                     <div class="form-group hidden" id="microchip-number">
                         <label for="microchip-number" class="sr-only">Microchip Number</label>
-                        <input type="text" name="microchip_number" class="form-control" placeholder="Microchip Number">
+                        <input type="text" name="microchip_number" class="form-input" placeholder="Microchip Number">
                     </div>
 
                 <div class="center">
@@ -90,19 +65,19 @@
 
                     <div class="form-group rabies">
                         <h4 class="center">RABIES</h4>
-                        <div class="form-control rabies-form" id="rabiesVacFalse">
+                        <div class="form-input rabies-form" id="rabiesVacFalse">
                             <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="False" checked="checked">
                             <label for="rabiesVac"> Needs Rabies Vaccine</label>
                             <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
-                        <div class="form-control" id="rabiesVacTrue">
+                        <div class="form-input" id="rabiesVacTrue">
                             <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="True">
                             <label for="rabiesVac"> Rabies vaccine given on</label>
                             <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         </div>
                     
-                        <div class="form-control hidden rabies-form center" id="rabies_number">
+                        <div class="form-input hidden rabies-form center" id="rabies_number">
                             <input type="number" name="rabies_number" style="color: black;">
                             <label class="control-label" for="rabies_number">Rabies Number</label>
                         </div>
@@ -110,13 +85,13 @@
                 
                     <div class="form-group fvrcp">
                         <h4 class="center">FVRCP</h4>
-                        <div class="form-control fvrcp-form" id="fvrcpVacFalse">
+                        <div class="form-input fvrcp-form" id="fvrcpVacFalse">
                             <input type="radio" name="fvrcpVac" value="False" checked="checked">
                             <label class="control-label">Needs FVRCP vaccine</label>
                             <input type="date" style="float: right; color: black;" name="fvrcp_due" value={% now 'Y-m-d' %}>
                         </div>
 
-                        <div class="form-control" id="fvrcpVacTrue">
+                        <div class="form-input" id="fvrcpVacTrue">
                             <input type="radio" name="fvrcpVac" value="True">
                             <label type="date" class="control-label"> FVRCP vaccine given on </label>
                             <input type="date" style="float: right; color: black" name="fvrcp_given" value= {% now 'Y-m-d' %} placeholder="FVRCP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
@@ -136,12 +111,12 @@
                 <div class="form-group" id="preventions">
                     <h1>Preventions</h1>
                     <h4 class="center">Flea/Tick Prevention</h4>
-                    <div class="form-control flea-prev-form" id="fleaPrevFalse">
+                    <div class="form-input flea-prev-form" id="fleaPrevFalse">
                         <input type="radio" name="fleaPrev" value="False" checked="checked">
                         <label class="control-label" for="fleaPrevFalse">Needs Flea/Tick</label>
                         <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
                     </div>
-                    <div class="form-control" id="fleaPrevTrue">
+                    <div class="form-input" id="fleaPrevTrue">
                         <input type="radio" name="fleaPrev" value="True">
                         <label class="control-label" for="fleaPrev">Flea/Tick Given on </label>
                         <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
@@ -150,12 +125,12 @@
 
                 <div class="form-group">
                     <h4 class="center">Revolution Prevention</h4>
-                    <div class="form-control revolution-prev-form" id="revolutionPrevFalse">
+                    <div class="form-input revolution-prev-form" id="revolutionPrevFalse">
                         <input type="radio" name="revolutionPrev" value="False" checked="checked">
                         <label class="control-label" for="revolutionPrevFalse">Needs Revolution prev</label>
                         <input type="date" style="float: right; color: black;" name="revolutionPrevDue" value={% now 'Y-m-d' %}>
                     </div>
-                    <div class="form-control" id="revolutionPrevTrue">
+                    <div class="form-input" id="revolutionPrevTrue">
                         <input type="radio" name="revolutionPrev" value="True">
                         <label class="control-label" for="revolutionPrevGiven">Revolution prev given</label>
                         <input type="date" style="float: right; color: black" name="revolutionPrevGiven" value={% now 'Y-m-d' %}>
@@ -165,12 +140,12 @@
                     <div class="form-group">
                         <h1>Tests</h1>
                         <h4 class="center">Fiv-Felv Test</h4>
-                        <div class="form-control fivfelv-test-form" id="fivfelvTestFalse">
+                        <div class="form-input fivfelv-test-form" id="fivfelvTestFalse">
                             <input type="radio" name="fivfelvTest" value="False" checked="checked">
                             <label class="control-label" for="fivfelvTestFalse">Needs Fiv-Felv Test</label>
                             <input type="date" style="float: right; color: black;" name="fivfelvTestDue" value={% now 'Y-m-d' %}>
                         </div>
-                        <div class="form-control" id="fivfelvTestTrue">
+                        <div class="form-input" id="fivfelvTestTrue">
                             <input type="radio" name="fivfelvTest" value="True">
                             <label class="control-label" for="fivfelvTestGiven">Fiv-Felv Test Given</label>
                             <input type="date" style="float: right; color: black" name="fivfelvTestGiven" value={% now 'Y-m-d' %}>
@@ -179,12 +154,12 @@
 
                     <div class="form-group">
                         <h4 class="center">Fecal</h4>
-                        <div class="form-control fecal-test-form" id="fecalTestFalse">
+                        <div class="form-input fecal-test-form" id="fecalTestFalse">
                             <input type="radio" name="fecalTest" value="False" checked="checked">
                             <label class="control-label" for="fecalTestFalse">Needs Fecal</label>
                             <input type="date" style="float: right; color: black;" name="fecalTestDue" value={% now 'Y-m-d' %}>
                         </div>
-                        <div class="form-control" id="fecalTestTrue">
+                        <div class="form-input" id="fecalTestTrue">
                             <input type="radio" name="fecalTest" value="True">
                             <label class="control-label" for="fecalTest">Fecal Done On </label>
                             <input type="date" style="float: right; color: black" name="fecalTestGiven" value= {% now 'Y-m-d' %}>
@@ -199,5 +174,3 @@
             </div>
         </form>
     </div>
-</body>
-</html>

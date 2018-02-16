@@ -38,10 +38,13 @@
                 </form>
             </div>
         </div>
-
-        <li class="col-md-6 center">{{ dog.description }}, {{ dog.weight }}lbs.</li>
-        <li class="col-md-6 center">Birthdate: {{ dog.birthdate }}</li>
-        <li{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</li>
+        <div class="row">
+            <div class="col-md-6 center">{{ dog.description }}, {{ dog.weight }}lbs.</div>
+            <div class="col-md-6 center">Birthdate: {{ dog.birthdate }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"{% if dog.microchip_number != "0" %}>Microchip Number: {{ dog.microchip_number }} {% endif %}</div>
+        </div>
     </div>
 {% endfor %}
 

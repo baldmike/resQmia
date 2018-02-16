@@ -138,7 +138,7 @@ def index(request):
             "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
             "date_today" : dateToday
         }
-        return render(request, 'resQmia_app/dashboard.html', context)
+        return render(request, 'resQmia_app/dashboard_new_cat.html', context)
     else:
         return render(request, 'resQmia_app/index.html')
 
@@ -576,7 +576,24 @@ def our_cats(request):
     return render(request, 'resQmia_app/our_cats.html', context)    
 
 def new_cat(request):
-    return render(request, 'resQmia_app/new_cat.html')
+    dog_alert()
+    cat_alert()
+
+    avail_cats = Cat.objects.exclude(adopted=True)
+    avail_dogs = Dog.objects.exclude(adopted=True)
+
+    context = {
+    
+        'dog_alert' : dog_alert,
+        'cat_alert' : cat_alert,
+        'avail_cats' : avail_cats,
+        'avail_dogs' : avail_dogs,
+
+        'date_today' : dateToday,
+
+    }
+    
+    return render(request, 'resQmia_app/dashboard_new_cat.html', context)
 
 def rescue_cat(request):
     dateToday = date.today()
