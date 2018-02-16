@@ -22,7 +22,14 @@ a {
     text-shadow: 1px 1px 1px grey;
 }
 
+.brand-nav {
+    
+    text-shadow: 2px 2px 2px black;
+}
 
+.navbar {
+    background-color: hotpink;
+}
 #preventions {
     margin-top: 1000px;
 }

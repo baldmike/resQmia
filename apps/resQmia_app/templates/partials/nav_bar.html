@@ -1,15 +1,14 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">resQmia</a>
+            <a class="navbar-text brand-nav" href="/">resQmia</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">DATE! {{ date_today }}</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+
+        <ul class="nav nav-tabs nav-justified">
+            
             <li><a href="/new_dog"><span class="glyphicon glyphicon-star"></span>New Dog</a></li>
             <li><a href="/new_cat"><span class="glyphicon glyphicon-star"></span>New Cat</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
