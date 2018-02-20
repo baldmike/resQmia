@@ -3,11 +3,15 @@
     padding: 0px;
 }
 
-body {
+/* body {
     background-image: url('../images/puppy6.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+} */
+
+label {
+    font-size: 1.1em;
 }
 
 input:required:invalid, input:focus:invalid {
@@ -23,6 +27,13 @@ li {
     list-style: none;
 }
 
+.title {
+    height: 2.6vh;
+    background-color: white;
+    padding-left: 15px;
+    opacity: .4;
+    border-radius: 40px;
+}
 .center {
     text-align: center;
 }
@@ -32,7 +43,15 @@ li {
     margin-bottom: 2%;
     opacity: .9;
     overflow: scroll;
-    /* border-bottom: 1px solid gray; */
+    border-bottom: 1px solid gray;
+}
+
+.list-box2 {
+    height: 100vh;
+    margin-bottom: 2%;
+    opacity: .9;
+    overflow: scroll;
+    border-bottom: 1px solid gray;
 }
 
 .picture-upload-box {
@@ -58,4 +77,13 @@ li {
 
 .gender {
     padding-bottom: 20px;
+}
+
+.api-strip {
+    font-size: 1em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.page-header {
+    font-size: 1em;
 }

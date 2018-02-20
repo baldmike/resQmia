@@ -144,7 +144,7 @@ def index(request):
 
 def dashboard(request):
     if 'user_id' in request.session:
-        return render(request, 'resQmia_app/dashboard.html')
+        return render(request, 'resQmia_app/dashboard_dog.html')
     else:
         return render(request, 'resQmia_app/index.html')
 
@@ -386,7 +386,7 @@ def select_dashboard(request, dog_id):
 
     }
     
-    return render(request, 'resQmia_app/dashboard.html', context)
+    return render(request, 'resQmia_app/dashboard_dog.html', context)
 
 
 def select_our_dogs(request, dog_id):
@@ -469,7 +469,7 @@ def select_day(request, dog_id):
 
     }
     
-    return render(request, 'resQmia_app/dashboard.html', context)
+    return render(request, 'resQmia_app/dashboard_dog.html', context)
 
 def select_adopted(request, dog_id):
     current_dog = Dog.objects.filter(id=dog_id)
@@ -506,7 +506,7 @@ def our_dogs(request):
         "avail_dogs" : avail_dogs,
     }
     print avail_dogs
-    return render(request, 'resQmia_app/dashboard.html', context)
+    return render(request, 'resQmia_app/dashboard_dog.html', context)
 
 
 

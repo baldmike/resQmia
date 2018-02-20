@@ -1,11 +1,10 @@
-<p class="page-header">NEW DOG!</p>
+<h1 class="page-header title">Add a new dog</h1>
 <div class="list-box2">
     <form class="form-vertical" action="/rescue_dog" method="post" id="new_dog_form">
     {% csrf_token %}
-    
-    
 
     <div class="form-group gender center">
+            
         <div class="col-xs-6">
             <label class="radio-inline"><input type="radio" name="gender" id="male" value="male">Male</label>
         </div>
@@ -16,7 +15,7 @@
     
     <div class="form-group">
         <label for="name" class="sr-only">Dog's Name</label>
-        <input type="text" class="form-control" name="name" id="new_rescue_name" placeholder="Cat's Name" required autofocus>
+        <input type="text" class="form-control" name="name" id="new_rescue_name" placeholder="Dog's Name" required autofocus>
     </div>
 
     <div class="form-group center">
@@ -63,13 +62,12 @@
             <input class="upload-margin2" id="thumb_dog" type="file" name="thumb" placeholder="Add a Pic!">
         </div>
     </div>
-
-
+    <br>
     <!-- ************************    VACCINATIONS -->
 
     
     <div class="form-group" id="vaccinations">
-        <h1>Vaccinations</h1>
+        <h1 class="page-header">Vaccinations</h1>
 
         <div class="form-group rabies">
             <h4 class="center">RABIES</h4>

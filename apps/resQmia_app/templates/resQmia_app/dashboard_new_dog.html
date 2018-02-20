@@ -5,10 +5,15 @@
         <div class="container-fluid">
             {% include 'partials/nav_bar.html' %}
             
+            <div class="row api-strip">
+                <h3 class="api-strip center">{{ date_today }}</h3>
+            </div>
+
             <div class="row">
                 
                 <div class="col-sm-4 left-box">
-                    {% include 'partials/need_attention.html' %}
+                    {% include 'partials/need_attention_dog.html' %}
+                    {% include 'partials/need_attention_cat.html' %}
                 </div>
                 
                 
