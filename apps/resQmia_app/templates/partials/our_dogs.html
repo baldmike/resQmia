@@ -1,9 +1,11 @@
-<p class="title">Our Dogs</p>
+<p class="page-header">Our Dogs</p>
 <div class="list-box">
-    {% for dog in avail_dogs %}
-    <ul>
-        <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }}</a></li>
-    </ul>
+        {% for dog in avail_dogs %}
+    <div class="col-lg-4">
+        <ul>
+            <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}">{{ dog.name }} <br><img src="{{ dog.thumb.url }}" class="img-responsive"/></a></li>
+        </ul>
+    </div>
     {% endfor %}
 </div>
 

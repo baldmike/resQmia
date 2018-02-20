@@ -1,17 +1,24 @@
-<p class="title">{{ date_today }} Dogs:</p>
+<p class="page-header">These dogs need something!</p>
 <div class="list-box">
     {% for dog in dog_alert %}
-    <ul>
-        <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}"> {{ dog.name }}</a></li>
-    </ul>
-    {% endfor %}
+    <div class="col-sm-4">
+        <ul>
+            <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}"> {{ dog.name }} <br><img src="{{ dog.thumb.url }}" class="img-responsive img-rounded"/></a></li>
+        </ul>
+    </div>
+        {% endfor %}
 </div>
 
-<p class="title">{{ date_today }} Cats:</p>
+
+
+<p class="page-header">These cats need something!</p>
 <div class="list-box">
     {% for cat in cat_alert %}
-    <ul>
-        <li class="animal-list"><a href="/select_dashboard_cat/{{ cat.id }}"> {{ cat.name }}</a></li>
-    </ul>
+    <div class="col-sm-4">
+        <ul>
+            <li class="animal-list"><a href="/select_dashboard_cat/{{ cat.id }}"> {{ cat.name }} <br><img src="{{ cat.thumb.url }}" class="img-responsive img-rounded"/></a></li>
+        </ul>
+    </div>
+    
     {% endfor %}
 </div>

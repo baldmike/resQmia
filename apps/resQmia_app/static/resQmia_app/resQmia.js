@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    $('[data-toggle="tooltip"]').tooltip(); 
     
     console.log("resQmia_app is now ready to rock.");
     $('.brand').fadeIn(2000);

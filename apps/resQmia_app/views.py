@@ -122,7 +122,7 @@ def index(request):
 
         context = {
 
-            "avail_dogs" : Dog.objects.exclude(adopted=True),
+            "avail_dogs" : Dog.objects.exclude(adopted=True).order_by('name'),
             "avail_cats" : Cat.objects.exclude(adopted=True),
             "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
             "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
@@ -195,12 +195,29 @@ def logout(request):
     return redirect('/')
 
 
-
-
-
-
 def new_dog(request):
-    return render(request, 'resQmia_app/new_dog.html')
+    dog_alert()
+    cat_alert()
+
+    context = {
+
+        "avail_dogs" : Dog.objects.exclude(adopted=True).order_by('name'),
+        "avail_cats" : Cat.objects.exclude(adopted=True),
+        "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
+        "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
+        "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
+        "bord" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due'),
+        "civs" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due'),
+        "dog_alert" : dog_alert,
+        "cat_alert" : cat_alert,
+        "heartwormPrev" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+        "flea" : PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('prevention_due'),
+        "heartwormTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        "fecalTestDog" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        "dewormer" : TestDog.objects.filter(test_due__lte=dateToday).order_by('test_due'),
+        "date_today" : dateToday
+    }
+    return render(request, 'resQmia_app/dashboard_new_dog.html', context)
 
 def rescue_dog(request):
     dateToday = date.today()
@@ -603,6 +620,7 @@ def rescue_cat(request):
         if 'microchip' in request.POST:
             microchip_number = request.POST['microchip_number']
         gender = request.POST['gender']
+        rescue_date = request.POST['rescue_date']
         birthdate = request.POST['birthdate']
         description = request.POST['description']
         weight = request.POST['weight']
@@ -610,7 +628,7 @@ def rescue_cat(request):
         if 'fixed' in request.POST:
             fixed = True
         adopted = False
-        d = Cat.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
+        d = Cat.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, rescue_date=rescue_date, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
 
         # ************************    VACCINATIONS
         rabies = request.POST['rabiesVac']

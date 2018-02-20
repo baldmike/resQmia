@@ -42,7 +42,6 @@ class UserManager(models.Manager):
             return errors     
 
 
-
 class User(models.Model): 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -56,7 +55,6 @@ class User(models.Model):
         return self.first_name + self.last_name
 
 
-
 class Dog(models.Model):
     name = models.CharField(max_length = 255)
     rescue_date = models.DateField()
@@ -67,6 +65,7 @@ class Dog(models.Model):
     weight = models.IntegerField()
     fixed = models.BooleanField()
     adopted = models.BooleanField(default = False)
+    thumb = models.ImageField(blank=True, default="default_dog.jpg")
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
@@ -123,6 +122,7 @@ class Cat(models.Model):
     description = models.CharField(max_length = 255)
     weight = models.IntegerField()
     fixed = models.BooleanField()
+    thumb = models.ImageField(blank=True, default="default_cat.jpg")
     adopted = models.BooleanField(default = False)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)

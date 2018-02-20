@@ -6,7 +6,7 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" title="resQmia" charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'resQmia_app/css/styles.css' %}" media="screen" page-header="resQmia" charset="UTF-8">
     <link rel="stylesheet" href="{% static 'resQmia_app/animate.css/animate.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -16,15 +16,15 @@
 
 <body>
     <div class="container-fluid">
-        <div class="col-md-4">
-            <div class="col-md-12 animated lightSpeedIn">
+        <div class="col-sm-4">
+            <div class="col-sm-12 animated lightSpeedIn">
                 <h1 class="brand">res<span class="brand2">Q</span>mia</h1>
             </div>
             {% for message in messages %}
             <h2>{{message}}</h2>
             {% endfor %}
         
-            <div class="login col-md-6 col-md-offset-1">
+            <div class="login col-sm-6 col-sm-offset-1">
                 <form action="/login" method="post">
                     {% csrf_token %}
                 
