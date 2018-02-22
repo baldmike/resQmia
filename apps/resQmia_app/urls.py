@@ -1,4 +1,7 @@
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib import admin
 from . import views
 
 urlpatterns = [
@@ -24,8 +27,8 @@ urlpatterns = [
     
     url(r'^select_day/(?P<dog_id>\d+)$', views.select_day),
 
-    url(r'^fix/(?P<dog_id>\d+)$', views.fix),
-    url(r'^microchip/(?P<dog_id>\d+)$', views.microchip),
+    url(r'^fix_dog/(?P<dog_id>\d+)$', views.fix),
+    url(r'^microchip_dog/(?P<dog_id>\d+)$', views.microchip),
 
     url(r'^fix_cat/(?P<cat_id>\d+)$', views.fix_cat),
     url(r'^microchip_cat/(?P<cat_id>\d+)$', views.microchip_cat),
@@ -47,3 +50,5 @@ urlpatterns = [
     url(r'^delete_cat/(?P<cat_id>\d+)$', views.delete_cat),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

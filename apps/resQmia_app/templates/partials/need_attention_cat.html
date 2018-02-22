@@ -1,10 +1,8 @@
-<p class="page-header title">These cats need something!<p>
+<h3 class="title">These CATS need attention!</h3>
 <div class="list-box">
     {% for cat in cat_alert %}
     <div class="col-sm-4">
-        <ul>
-            <li class="animal-list"><a href="/select_dashboard_cat/{{ cat.id }}"> {{ cat.name }} <br><img src="{{ cat.thumb.url }}" class="img-responsive img-rounded"/></a></li>
-        </ul>
+            <a href="/select_dashboard_cat/{{ cat.id }}"> {{ cat.name }} <br><img src="{{ cat.thumb.url }}" width="70" height="70"/></a>
     </div>
     
     {% endfor %}

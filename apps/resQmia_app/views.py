@@ -123,7 +123,7 @@ def index(request):
         context = {
 
             "avail_dogs" : Dog.objects.exclude(adopted=True).order_by('name'),
-            "avail_cats" : Cat.objects.exclude(adopted=True),
+            "avail_cats" : Cat.objects.exclude(adopted=True).order_by('name'),
             "rabies" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due'),
             "da2pp" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due'),
             "lepto" : VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due'),
@@ -223,19 +223,24 @@ def rescue_dog(request):
     dateToday = date.today()
     if request.method == 'POST':
         name = request.POST['name']
+        rescue_date = request.POST['rescue_date']
+        source = request.POST['source']
+        source_note = request.POST['source_note']
         microchip_number = 0
         if 'microchip' in request.POST:
             microchip_number = request.POST['microchip_number']
         gender = request.POST['gender']
         birthdate = request.POST['birthdate']
-        rescue_date = request.POST['rescue_date']
+        
         description = request.POST['description']
         weight = request.POST['weight']
+        thumb=request.FILES['thumb']
         fixed = False
         if 'fixed' in request.POST:
             fixed = True
         adopted = False
-        d = Dog.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, rescue_date=rescue_date, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
+
+        d = Dog.objects.create(name=name, rescue_date=rescue_date, source=source, source_note=source_note,  microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted, thumb=thumb)        
 
         # ************************    VACCINATIONS
         rabies = request.POST['rabiesVac']
@@ -616,19 +621,22 @@ def rescue_cat(request):
     dateToday = date.today()
     if request.method == 'POST':
         name = request.POST['name']
+        rescue_date = request.POST['rescue_date']
+        source = request.POST['source']
+        source_note = request.POST['source_note']
         microchip_number = 0
         if 'microchip' in request.POST:
             microchip_number = request.POST['microchip_number']
         gender = request.POST['gender']
-        rescue_date = request.POST['rescue_date']
         birthdate = request.POST['birthdate']
         description = request.POST['description']
         weight = request.POST['weight']
+        thumb = request.FILES['thumb']
         fixed = False
         if 'fixed' in request.POST:
             fixed = True
         adopted = False
-        d = Cat.objects.create(name=name, microchip_number=microchip_number, birthdate=birthdate, rescue_date=rescue_date, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted)
+        d = Cat.objects.create(name=name, rescue_date=rescue_date, source=source, source_note=source_note, microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, thumb=thumb, fixed=fixed, adopted=adopted)
 
         # ************************    VACCINATIONS
         rabies = request.POST['rabiesVac']
@@ -668,7 +676,7 @@ def rescue_cat(request):
 
         
         
-    return redirect ('/dashboard')
+    return redirect ('/')
 
 def select_our_cats(request, cat_id):
     current_cat = Cat.objects.filter(id=cat_id)
@@ -799,3 +807,5 @@ def microchip_cat(request, cat_id):
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+

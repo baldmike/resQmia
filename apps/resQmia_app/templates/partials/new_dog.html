@@ -1,6 +1,6 @@
-<h1 class="page-header title">Add a new dog</h1>
+<h3 class="title center">Add a new dog</h3>
 <div class="list-box2">
-    <form class="form-vertical" action="/rescue_dog" method="post" id="new_dog_form">
+    <form class="form-vertical" action="/rescue_dog" method="post" id="new_dog_form" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="form-group gender center">
@@ -19,23 +19,43 @@
     </div>
 
     <div class="form-group center">
-        <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
-        <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
-    </div>
-
-    <div class="form-group center">
-        <label for="birthdate" class="sr-only">Birthdate</label>
+        <label for="birthdate" class="sr-only">Born </label>
         <input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="Birthdate" onfocus="(this.type='date')" onblur="(this.type='text')" required>
     </div>
     
     <div class="form-group">
         <label for="description" class="sr-only">Description</label>
-        <input type="text" class="form-control" name="description" id="description" placeholder="Breed/Description" minlength="3"required>
+        <input type="text" class="form-control" name="description" id="description" placeholder="Breed/Description" minlength="3" required>
     </div>
     
     <div class="form-group">
         <label for="weight" class="sr-only">Weight in pounds</label>
         <input type="number" class="form-control" name="weight" id="weight" placeholder="Weight" required>
+    </div>
+
+    <hr>
+    
+    <div class="form-group center">
+        <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
+        <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
+    </div>
+
+    <div class="form-group center">
+        <label for="source" class="sr-only">Select source </label>
+        <select name="source" id="source" class="form-control" required>
+            <option value="" selected>--Select Source--</option>
+            <option value="crisp">CRISP</option>
+            <option value="cacc">CACC</option>
+            <option value="awl">AWL</option>
+            <option value="stray">Stray</option>
+            <option value="crisp">Alive!</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group center">
+        <label for="source_note" class="sr-only">Source Note</label>
+        <textarea name="source_note" class="form-control" rows="3" placeholder="Source notes:" required></textarea>
     </div>
 
     <div class="form-group">
@@ -73,13 +93,13 @@
             <h4 class="center">RABIES</h4>
             <div class="form-control rabies-form" id="rabiesVacFalse">
                 <input type="radio" name="rabiesVac" value="False" checked="checked">
-                <label for="rabiesVac"> Needs Rabies Vaccine</label>
+                <label for="rabiesVac"> NEEDS by </label>
                 <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         
             <div class="form-control" id="rabiesVacTrue">
                 <input type="radio" name="rabiesVac" value="True">
-                <label for="rabiesVac"> Rabies vaccine given on</label>
+                <label for="rabiesVac">GIVEN on</label>
                 <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         
@@ -94,13 +114,13 @@
             <h4 class="center">DA2PP</h4>
             <div class="form-control purple-form" id="da2ppVacFalse">
                 <input type="radio" name="da2ppVac" value="False" checked="checked">
-                <label class="control-label" for="da2ppVacFalse">Needs DA2PP vaccine</label>
+                <label class="control-label" for="da2ppVacFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="da2pp_due" value={% now 'Y-m-d' %}>
             </div>
 
             <div class="form-control" id="da2ppVacTrue">
                 <input type="radio" name="da2ppVac" value="True">
-                <label type="date" class="control-label" for="da2ppVac"> DA2PP vaccine given on </label>
+                <label type="date" class="control-label" for="da2ppVac">GIVEN on </label>
                 <input type="date" style="float: right; color: black" name="da2pp_given" value= {% now 'Y-m-d' %} placeholder="DA2PP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         </div>
@@ -109,13 +129,13 @@
             <h4 class="center">LEPTO</h4>
             <div class="form-control orange-form" id="leptoVacFalse">
                 <input type="radio" name="leptoVac" value="False" checked="checked">
-                <label class="control-label" for="leptoVacFalse">Needs Lepto vaccine</label>
+                <label class="control-label" for="leptoVacFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="leptoDue" value={% now 'Y-m-d' %}>
             </div>
 
             <div class="form-control" id="leptoVacTrue">
                 <input type="radio" name="leptoVac" value="True">
-                <label type="date" class="control-label" for="leptoVac"> Lepto vaccine given on </label>
+                <label type="date" class="control-label" for="leptoVac">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="leptoGiven" value= {% now 'Y-m-d' %} placeholder="lepto due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         </div>
@@ -124,13 +144,13 @@
             <h4 class="center">BORD</h4>
             <div class="form-control blue-form" id="bordVacFalse">
                 <input type="radio" name="bordVac" value="False" checked="checked">
-                <label class="control-label" for="bordVacFalse">Needs Bord vaccine</label>
+                <label class="control-label" for="bordVacFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="bordDue" value={% now 'Y-m-d' %}>
             </div>
 
             <div class="form-control" id="bordVacTrue">
                 <input type="radio" name="bordVac" value="True">
-                <label class="control-label" for="leptoVac">Bord vaccine given on </label>
+                <label class="control-label" for="leptoVac">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="leptoGiven" value= {% now 'Y-m-d' %} placeholder="Bord due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         </div>
@@ -139,13 +159,13 @@
             <h4 class="center">CIV</h4>
             <div class="form-control pink-form" id="civVacFalse">
                 <input type="radio" name="civVac" value="False" checked="checked">
-                <label for="civVacFalse" class="control-label">Needs CIV</label>
+                <label for="civVacFalse" class="control-label">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="civDue" value={% now 'Y-m-d' %}>
             </div>
 
             <div class="form-control" id="civVacTrue">
                 <input type="radio" name="civVac" value="True">
-                <label class="control-label" for="civVac">CIV given on </label>
+                <label class="control-label" for="civVac">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="civGiven" value= {% now 'Y-m-d' %} placeholder="CIV due date" onfocus="(this.type='date')" onblur="(this.type='text')">
             </div>
         </div>
@@ -158,12 +178,12 @@
         <h4 class="center">Heartworm</h4>
             <div class="form-control heartworm-prev-form" id="heartwormPrevFalse">
                 <input type="radio" name="heartwormPrev" value="False" checked="checked">
-                <label class="control-label" for="heartwormPrevFalse">Needs Heartworm prev</label>
+                <label class="control-label" for="heartwormPrevFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="heartwormPrevDue" value={% now 'Y-m-d' %}>
             </div>
             <div class="form-control" id="heartwormPrevTrue">
                 <input type="radio" name="heartwormPrev" value="True">
-                <label class="control-label" for="heartwormPrevGiven">Heartworm prev given</label>
+                <label class="control-label" for="heartwormPrevGiven">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="heartwormPrevGiven" value={% now 'Y-m-d' %}>
             </div>
         </div>
@@ -172,12 +192,12 @@
                 <h4 class="center">Flea/Tick</h4>
             <div class="form-control flea-prev-form" id="fleaPrevFalse">
                 <input type="radio" name="fleaPrev" value="False" checked="checked">
-                <label class="control-label" for="fleaPrevFalse">Needs Flea/Tick</label>
+                <label class="control-label" for="fleaPrevFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
             </div>
             <div class="form-control" id="fleaPrevTrue">
                 <input type="radio" name="fleaPrev" value="True">
-                <label class="control-label" for="fleaPrev">Flea/Tick Given on </label>
+                <label class="control-label" for="fleaPrev">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
             </div>
         </div>
@@ -188,12 +208,12 @@
             <h4 class="center">Heartworm Test</h4>
             <div class="form-control heartworm-test-form" id="heartwormTestFalse">
                 <input type="radio" name="heartwormTest" value="False" checked="checked">
-                <label class="control-label" for="heartwormTestFalse">Needs Heartworm Test</label>
+                <label class="control-label" for="heartwormTestFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="heartwormTestDue" value={% now 'Y-m-d' %}>
             </div>
             <div class="form-control" id="heartwormTestTrue">
                 <input type="radio" name="heartwormTest" value="True">
-                <label class="control-label" for="heartwormTestGiven">Heartworm Test Given</label>
+                <label class="control-label" for="heartwormTestGiven">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="heartwormTestGiven" value={% now 'Y-m-d' %}>
             </div>
         </div>
@@ -202,12 +222,12 @@
             <h4 class="center">Fecal</h4>
             <div class="form-control fecal-test-form" id="fecalTestFalse">
                 <input type="radio" name="fecalTest" value="False" checked="checked">
-                <label class="control-label" for="fecalTestFalse">Needs Fecal</label>
+                <label class="control-label" for="fecalTestFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="fecalTestDue" value={% now 'Y-m-d' %}>
             </div>
             <div class="form-control" id="fecalTestTrue">
                 <input type="radio" name="fecalTest" value="True">
-                <label class="control-label" for="fecalTest">Fecal Done On </label>
+                <label class="control-label" for="fecalTest">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="fecalTestGiven" value= {% now 'Y-m-d' %}>
             </div>
         </div>
@@ -216,12 +236,12 @@
                 <h4 class="center">Dewormer</h4>
             <div class="form-control dewormer-test-form" id="dewormerTestFalse">
                 <input type="radio" name="dewormerTest" value="False" checked="checked">
-                <label class="control-label" for="dewormerTestFalse">Needs Dewormer</label>
+                <label class="control-label" for="dewormerTestFalse">NEEDS by</label>
                 <input type="date" style="float: right; color: black;" name="dewormerTestDue" value={% now 'Y-m-d' %}>
             </div>
             <div class="form-control" id="dewormerTestTrue">
                 <input type="radio" name="dewormerTest" value="True">
-                <label class="control-label" for="dewormerTest">Dewormer Given on </label>
+                <label class="control-label" for="dewormerTest">GIVEN on</label>
                 <input type="date" style="float: right; color: black" name="dewormerTestGiven" value= {% now 'Y-m-d' %}>
             </div>
         </div>

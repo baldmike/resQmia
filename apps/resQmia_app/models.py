@@ -58,6 +58,8 @@ class User(models.Model):
 class Dog(models.Model):
     name = models.CharField(max_length = 255)
     rescue_date = models.DateField()
+    source = models.CharField(max_length = 255)
+    source_note = models.TextField()
     microchip_number = models.CharField(max_length = 255)
     gender = models.CharField(max_length = 10)
     birthdate = models.DateField()
@@ -116,6 +118,8 @@ class TestDog(models.Model):
 class Cat(models.Model):
     name = models.CharField(max_length = 255)
     rescue_date = models.DateField()
+    source = models.CharField(max_length = 255)
+    source_note = models.TextField()
     microchip_number = models.CharField(max_length = 255)
     gender = models.CharField(max_length = 10)
     birthdate = models.DateField()
@@ -168,4 +172,3 @@ class TestCat(models.Model):
 
     def __str__(self):
         return self.test_name
-

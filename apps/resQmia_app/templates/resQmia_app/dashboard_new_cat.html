@@ -4,16 +4,12 @@
     <body>
         <div class="container-fluid">
             {% include 'partials/nav_bar.html' %}
-            
-            <div class="row api-strip">
-                <h3 class="api-strip center">{{ date_today }}</h3>
-            </div>
-
+            {% include 'partials/api_strip.html' %}
             <div class="row">
                 
                 <div class="col-sm-4 left-box">
-                    {% include 'partials/need_attention_cat.html' %}
                     {% include 'partials/need_attention_dog.html' %}
+                    {% include 'partials/our_dogs.html' %}
                 </div>
                 
                 
@@ -22,8 +18,8 @@
                 </div>
 
                 <div class="col-sm-4 right-box">
+                    {% include 'partials/need_attention_cat.html' %}
                     {% include 'partials/our_cats.html' %}
-                    {% include 'partials/our_dogs.html' %}
                 </div>
 
             </div>

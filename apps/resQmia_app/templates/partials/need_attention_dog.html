@@ -1,9 +1,9 @@
-<p class="page-header title">These dogs need something!</p>
+<h3 class="title">These DOGS need attention!</h3>
 <div class="list-box">
     {% for dog in dog_alert %}
     <div class="col-sm-4">
         <ul>
-            <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}"> {{ dog.name }} <br><img src="{{ dog.thumb.url }}" class="img-responsive img-rounded"/></a></li>
+            <li class="animal-list"><a href="/select_dashboard/{{ dog.id }}"> {{ dog.name }} <br><img src="{{ dog.thumb.url }}" width="70" height="70"/></a></li>
         </ul>
     </div>
         {% endfor %}

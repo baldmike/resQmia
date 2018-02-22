@@ -1,11 +1,8 @@
-<p class="page-header title">Our Cats</p> 
+<h3 class="title">Our Cats</h3> 
 <div class="list-box">
     {% for cat in avail_cats %}
     <div class="col-sm-4">
-        
-        <ul>
-            <li class="animal-list"><a href="/select_dashboard_cat/{{ cat.id }}">{{ cat.name }} <br><img src="{{ cat.thumb.url }}" class="img-responsive"/></a></li>
-        </ul>
+            <a href="/select_dashboard_cat/{{ cat.id }}">{{ cat.name }} <br><img src="{{ cat.thumb.url }}"  width="70" height="70"></a>
     </div>
     {% endfor %}
 </div>

@@ -1,6 +1,6 @@
-<p class="page-header title">NEW CAT!</p>
+<h3 class="title center">Add a New Cat</h3>
 <div class="list-box2">
-    <form class="form-vertical" action="/rescue_cat" method="post" id="new_cat_form">
+    <form class="form-vertical" action="/rescue_cat" method="post" id="new_cat_form" enctype="multipart/form-data">
         {% csrf_token %}
         
         
@@ -20,11 +20,6 @@
         </div>
 
         <div class="form-group center">
-            <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
-            <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
-        </div>
-
-        <div class="form-group center">
             <label for="birthdate" class="sr-only">Birthdate</label>
             <input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="Birthdate" onfocus="(this.type='date')" onblur="(this.type='text')" required>
         </div>
@@ -37,6 +32,31 @@
         <div class="form-group">
             <label for="weight" class="sr-only">Weight in pounds</label>
             <input type="number" class="form-control" name="weight" id="weight" placeholder="Weight" required>
+        </div>
+
+        <hr>
+
+        <div class="form-group center">
+            <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
+            <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')"required>
+        </div>
+
+        <div class="form-group center">
+            <label for="source" class="sr-only">Select source </label>
+            <select name="source" id="source" class="form-control">
+                <option value="" selected>--Select Source--</option>
+                <option value="crisp">CRISP</option>
+                <option value="cacc">CACC</option>
+                <option value="awl">AWL</option>
+                <option value="stray">Stray</option>
+                <option value="crisp">Alive!</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+    
+        <div class="form-group center">
+            <label for="source_note" class="sr-only">Source Note</label>
+            <textarea name="source_note" class="form-control" rows="3" placeholder="Source notes: "></textarea>
         </div>
 
         <div class="form-group">
@@ -72,17 +92,17 @@
             <div class="form-control rabies-form" id="rabiesVacFalse">
                 <div class="col-xs-6">
                     <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="False"     checked="checked">
-                    <label for="rabiesVac">NEEDS by</label>
+                    <label class="control-label" for="rabiesVac">NEEDS by</label>
                 </div>
                 <div class="col-xs-6">
-                    <input type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')" data-toggle="tooltip" page-header="This is the EARLIEST date the animal can recieve its next rabies vaccine.  The default is today.">
+                    <input type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')" data-toggle="tooltip" title="This is the EARLIEST date the animal can recieve its next rabies vaccine.  The default is today.">
                 </div>
             </div>
     
             <div class="form-control" id="rabiesVacTrue">
                 <div class="col-xs-6">
                     <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="True">
-                    <label for="rabiesVac">GIVEN on</label>
+                    <label class="control-label" for="rabiesVac">GIVEN on</label>
                 </div>
                 <div class="col-xs-6">
                     <input type="date" name="rabies_given" value={% now 'Y-m-d' %}>
