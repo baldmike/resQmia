@@ -139,3 +139,7 @@ h3 {
     background-color: #70787D;
     color: white;
 }
+
+.current-pic {
+    margin-left: 20px;
+}

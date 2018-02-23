@@ -243,73 +243,23 @@ def rescue_dog(request):
         d = Dog.objects.create(name=name, rescue_date=rescue_date, source=source, source_note=source_note,  microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted, thumb=thumb)        
 
         # ************************    VACCINATIONS
-        rabies = request.POST['rabiesVac']
-        if rabies == "False":
-            rabies_due = request.POST['rabies_due']
-            rv = VaccineDog.objects.create(vaccine_name="rabies", vaccine_due=rabies_due, dog_id=d.id)
-
-        elif rabies == "True":
-            rabies_given = request.POST['rabies_given']
-            rabies_due = request.POST['rabies_due']
-            rabies_number = request.POST['rabies_number']
-            rv = VaccineDog.objects.create(vaccine_name="rabies", vaccine_given=rabies_given, vaccine_due=rabies_due, vaccine_number=rabies_number, dog_id=d.id)
-
-        da2pp = request.POST['da2ppVac']
-        if da2pp == "False":
-            da2pp_due = dateToday
-            da2pp_given = '1999-01-01'
-            
-        elif da2pp == "True":
-            da2pp_given = request.POST['da2pp_given']
-            da2pp_due = request.POST['da2pp_due']
-        dv = VaccineDog.objects.create(vaccine_name="da2pp", vaccine_given=da2pp_given, vaccine_due=da2pp_due, dog_id=d.id)
-
-        lepto = request.POST['leptoVac']
-        if lepto == "False":
-            lepto_due = dateToday
-            lepto_given = '1999-01-01'
         
-        elif lepto == "True":
-            lepto_given = request.POST['leptoGiven']
-            lepto_due = request.POST['leptoDue']
-        lv = VaccineDog.objects.create(vaccine_name="lepto", vaccine_given=lepto_given, vaccine_due=lepto_due, dog_id=d.id)
-
-        bord = request.POST['bordVac']
-        if bord == "False":
-            bord_due = dateToday
-            bord_given = '1999-01-01'
-
-        elif bord == "True":    
-            bord_given = request.POST['bordGiven']
-            bord_due = request.POST['bordDue']
-        bv = VaccineDog.objects.create(vaccine_name="bord", vaccine_given=bord_given, vaccine_due=bord_due, dog_id=d.id)
-
-        civ = request.POST['civVac']
-        if civ == "False":
-            civ_due = dateToday
-            civ_given = '1999-01-01'
-
-        elif civ == "True":
-            civ_given = request.POST['civGiven']
-            civ_due = request.POST['civDue']    
-        cv = VaccineDog.objects.create(vaccine_name="civ", vaccine_given=civ_given, vaccine_due=civ_due, dog_id=d.id)
+        rv = VaccineDog.objects.create(vaccine_name="rabies", vaccine_due=dateToday, dog_id=d.id)
+        dv = VaccineDog.objects.create(vaccine_name="da2pp", vaccine_due=dateToday, dog_id=d.id)
+        lv = VaccineDog.objects.create(vaccine_name="lepto", vaccine_due=dateToday, dog_id=d.id)
+        bv = VaccineDog.objects.create(vaccine_name="bord", vaccine_due=dateToday, dog_id=d.id)
+        cv = VaccineDog.objects.create(vaccine_name="civ", vaccine_due=dateToday, dog_id=d.id)
 
         # ************************    PREVENTIONS
 
-        heartworm_prev_due = request.POST['heartwormPrevDue']
-        hwp = PreventionDog.objects.create(prevention_name="heartworm", prevention_due=heartworm_prev_due, dog_id=d.id)
+        hwp = PreventionDog.objects.create(prevention_name="heartworm", prevention_due=dateToday, dog_id=d.id)
+        ftp = PreventionDog.objects.create(prevention_name="flea", prevention_due=dateToday, dog_id=d.id)
+        
+        # ************************    TESTS
 
-        flea_tick_due = request.POST['fleaPrevDue']
-        ftp = PreventionDog.objects.create(prevention_name="flea", prevention_due=flea_tick_due, dog_id=d.id)
-
-        heartworm_test_due = request.POST['heartwormTestDue']
-        hwt = TestDog.objects.create(test_name="heartworm", test_due=heartworm_test_due, dog_id=d.id)
-
-        fecal_test_due = request.POST['fecalTestDue']
-        fft = TestDog.objects.create(test_name="fecal", test_due=fecal_test_due, dog_id=d.id)
-
-        dewormer_due = request.POST['dewormerTestDue']
-        dwt = TestDog.objects.create(test_name="dewormer", test_due=dewormer_due, dog_id=d.id)
+        hwt = TestDog.objects.create(test_name="heartworm", test_due=dateToday, dog_id=d.id)
+        fft = TestDog.objects.create(test_name="fecal", test_due=dateToday, dog_id=d.id)
+        dwt = TestDog.objects.create(test_name="dewormer", test_due=dateToday, dog_id=d.id)
         
 
     return redirect ('/')

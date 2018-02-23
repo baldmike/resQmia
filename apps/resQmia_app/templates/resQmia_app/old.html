@@ -1,0 +1,322 @@
+<!-- *******************  CAT VACCINATIONS -->
+<h1 class="page-header">Vaccinations</h1>
+
+<div class="form-group rabies">
+    <h4 class="center">RABIES</h4>
+    <div class="form-control rabies-form" id="rabiesVacFalse">
+        <div class="col-xs-6">
+            <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="False"     checked="checked">
+            <label class="control-label" for="rabiesVac">NEEDS by</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')" data-toggle="tooltip" title="This is the EARLIEST date the animal can recieve its next rabies vaccine.  The default is today.">
+        </div>
+    </div>
+
+    <div class="form-control" id="rabiesVacTrue">
+        <div class="col-xs-6">
+            <input type="radio" id="rabiesVacFalseRadio" name="rabiesVac" value="True">
+            <label class="control-label" for="rabiesVac">GIVEN on</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="rabies_given" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+
+    <div class="form-control hidden rabies-form center" id="rabies_number">
+        <input type="number" class="form-control" name="rabies_number">
+        <label class="control-label" for="rabies_number">Rabies Number</label>
+    </div>
+</div>
+<br>
+
+<div class="form-group fvrcp">
+    <h4 class="center">FVRCP</h4>
+    <div class="form-control fvrcp-form" id="fvrcpVacFalse">
+        <div class="col-xs-6">
+            <input type="radio" name="fvrcpVac" value="False" checked="checked">
+            <label class="control-label">NEEDS by</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fvrcp_due" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+
+    <div class="form-control" id="fvrcpVacTrue">
+        <div class="col-xs-6">
+            <input type="radio" name="fvrcpVac" value="True">
+            <label class="control-label">GIVEN on</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fvrcp_given" value= {% now 'Y-m-d' %}>
+        </div>
+    </div>
+</div>
+
+<!-- *******************  PREVENTIONS -->
+<h1 class="page-header">Preventions</h1>
+
+<div class="form-group" id="preventions">
+    <h4 class="center">Flea/Tick</h4>
+
+    <div class="form-control flea-prev-form" id="fleaPrevFalse">
+        <div class="col-xs-6">
+            <input type="radio" name="fleaPrev" value="False" checked="checked">
+            <label class="control-label" for="fleaPrevFalse">NEEDS by</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fleaPrevDue" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+
+    <div class="form-control" id="fleaPrevTrue">
+        <div class="col-xs-6">
+            <input type="radio" name="fleaPrev" value="True">
+            <label class="control-label" for="fleaPrev">GIVEN on</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h4 class="center">Revolution</h4>
+
+        <div class="form-control revolution-prev-form" id="revolutionPrevFalse">
+            <div class="col-xs-6">
+                <input type="radio" name="revolutionPrev" value="False" checked="checked">
+                <label class="control-label" for="revolutionPrevFalse">NEEDS by</label>
+            </div>
+            <div class="col-xs-6">
+                <input type="date" name="revolutionPrevDue" value={% now 'Y-m-d' %}>
+            </div>
+        </div>
+
+        <div class="form-control" id="revolutionPrevTrue">
+            <div class="col-xs-6">
+                <input type="radio" name="revolutionPrev" value="True">
+                <label class="control-label" for="revolutionPrevGiven">GIVEN on</label>
+            </div>
+            <div class="col-xs-6">
+                <input type="date" name="revolutionPrevGiven" value={% now 'Y-m-d' %}>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- *******************  TESTS -->
+<h1 class="page-header">Tests</h1>
+    
+<div class="form-group">
+    <h4 class="center">Fiv/Felv</h4>
+    <div class="form-control fivfelv-test-form" id="fivfelvTestFalse">
+        <div class="col-xs-6">
+            <input type="radio" name="fivfelvTest" value="False" checked="checked">
+            <label class="control-label" for="fivfelvTestFalse">NEEDS by</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fivfelvTestDue" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+    <div class="form-control" id="fivfelvTestTrue">
+        <div class="col-xs-6">
+            <input type="radio" name="fivfelvTest" value="True">
+            <label class="control-label" for="fivfelvTestGiven">GIVEN on</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fivfelvTestGiven" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <h4 class="center">Fecal</h4>
+    <div class="form-control fecal-test-form" id="fecalTestFalse">
+        <div class="col-xs-6">
+            <input type="radio" name="fecalTest" value="False" checked="checked">
+            <label class="control-label" for="fecalTestFalse">NEEDS by</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fecalTestDue" value={% now 'Y-m-d' %}>
+        </div>
+    </div>
+
+    <div class="form-control" id="fecalTestTrue">
+        <div class="col-xs-6">
+            <input type="radio" name="fecalTest" value="True">
+            <label class="control-label" for="fecalTest">DONE on</label>
+        </div>
+        <div class="col-xs-6">
+            <input type="date" name="fecalTestGiven" value= {% now 'Y-m-d' %}>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- ************************   DOG VACCINATIONS -->
+
+    
+<div class="form-group" id="vaccinations">
+        <h1 class="page-header">Vaccinations</h1>
+
+        <div class="form-group rabies">
+            <h4 class="center">RABIES</h4>
+            <div class="form-control current-input" id="rabiesVacFalse">
+                <input type="radio" name="rabiesVac" value="False" checked="checked">
+                <label for="rabiesVac"> NEEDS by </label>
+                <input style="float: right; color: black;" type="date" name="rabies_due" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        
+            <div class="form-control" id="rabiesVacTrue">
+                <input type="radio" name="rabiesVac" value="True">
+                <label for="rabiesVac">GIVEN on</label>
+                <input style="float: right; color: black;" type="date" name="rabies_given" value={% now 'Y-m-d' %} placeholder="Rabies due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        
+            <div class="form-control hidden current-input center" id="rabies_number">
+                <input type="number" name="rabies_number" style="color: black;">
+                <label class="control-label" for="rabies_number">Rabies Number</label>
+            </div>
+        </div>
+    
+
+        <div class="form-group da2pp">
+            <h4 class="center">DA2PP</h4>
+            <div class="form-control purple-form" id="da2ppVacFalse">
+                <input type="radio" name="da2ppVac" value="False" checked="checked">
+                <label class="control-label" for="da2ppVacFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="da2pp_due" value={% now 'Y-m-d' %}>
+            </div>
+
+            <div class="form-control" id="da2ppVacTrue">
+                <input type="radio" name="da2ppVac" value="True">
+                <label type="date" class="control-label" for="da2ppVac">GIVEN on </label>
+                <input type="date" style="float: right; color: black" name="da2pp_given" value= {% now 'Y-m-d' %} placeholder="DA2PP due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        </div>
+
+        <div class="form-group lepto">
+            <h4 class="center">LEPTO</h4>
+            <div class="form-control orange-form" id="leptoVacFalse">
+                <input type="radio" name="leptoVac" value="False" checked="checked">
+                <label class="control-label" for="leptoVacFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="leptoDue" value={% now 'Y-m-d' %}>
+            </div>
+
+            <div class="form-control" id="leptoVacTrue">
+                <input type="radio" name="leptoVac" value="True">
+                <label type="date" class="control-label" for="leptoVac">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="leptoGiven" value= {% now 'Y-m-d' %} placeholder="lepto due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        </div>
+    
+        <div class="form-group bord">
+            <h4 class="center">BORD</h4>
+            <div class="form-control blue-form" id="bordVacFalse">
+                <input type="radio" name="bordVac" value="False" checked="checked">
+                <label class="control-label" for="bordVacFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="bordDue" value={% now 'Y-m-d' %}>
+            </div>
+
+            <div class="form-control" id="bordVacTrue">
+                <input type="radio" name="bordVac" value="True">
+                <label class="control-label" for="leptoVac">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="leptoGiven" value= {% now 'Y-m-d' %} placeholder="Bord due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        </div>
+    
+        <div class="form-group civ">
+            <h4 class="center">CIV</h4>
+            <div class="form-control pink-form" id="civVacFalse">
+                <input type="radio" name="civVac" value="False" checked="checked">
+                <label for="civVacFalse" class="control-label">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="civDue" value={% now 'Y-m-d' %}>
+            </div>
+
+            <div class="form-control" id="civVacTrue">
+                <input type="radio" name="civVac" value="True">
+                <label class="control-label" for="civVac">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="civGiven" value= {% now 'Y-m-d' %} placeholder="CIV due date" onfocus="(this.type='date')" onblur="(this.type='text')">
+            </div>
+        </div>
+    </div>
+
+    <!-- *******************  PREVENTIONS -->
+    <h1 class="page-header">Preventions</h1>
+    <div class="form-group" id="preventions">	
+        <div class="form-group">
+        <h4 class="center">Heartworm</h4>
+            <div class="form-control heartworm-prev-form" id="heartwormPrevFalse">
+                <input type="radio" name="heartwormPrev" value="False" checked="checked">
+                <label class="control-label" for="heartwormPrevFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="heartwormPrevDue" value={% now 'Y-m-d' %}>
+            </div>
+            <div class="form-control" id="heartwormPrevTrue">
+                <input type="radio" name="heartwormPrev" value="True">
+                <label class="control-label" for="heartwormPrevGiven">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="heartwormPrevGiven" value={% now 'Y-m-d' %}>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <h4 class="center">Flea/Tick</h4>
+            <div class="form-control flea-prev-form" id="fleaPrevFalse">
+                <input type="radio" name="fleaPrev" value="False" checked="checked">
+                <label class="control-label" for="fleaPrevFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="fleaPrevDue" value={% now 'Y-m-d' %}>
+            </div>
+            <div class="form-control" id="fleaPrevTrue">
+                <input type="radio" name="fleaPrev" value="True">
+                <label class="control-label" for="fleaPrev">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="fleaPrevGiven" value= {% now 'Y-m-d' %}>
+            </div>
+        </div>
+
+        <!-- *******************  TESTS -->
+        <h1 class="page-header">Tests</h1>
+        <div class="form-group">
+            <h4 class="center">Heartworm Test</h4>
+            <div class="form-control heartworm-test-form" id="heartwormTestFalse">
+                <input type="radio" name="heartwormTest" value="False" checked="checked">
+                <label class="control-label" for="heartwormTestFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="heartwormTestDue" value={% now 'Y-m-d' %}>
+            </div>
+            <div class="form-control" id="heartwormTestTrue">
+                <input type="radio" name="heartwormTest" value="True">
+                <label class="control-label" for="heartwormTestGiven">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="heartwormTestGiven" value={% now 'Y-m-d' %}>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4 class="center">Fecal</h4>
+            <div class="form-control fecal-test-form" id="fecalTestFalse">
+                <input type="radio" name="fecalTest" value="False" checked="checked">
+                <label class="control-label" for="fecalTestFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="fecalTestDue" value={% now 'Y-m-d' %}>
+            </div>
+            <div class="form-control" id="fecalTestTrue">
+                <input type="radio" name="fecalTest" value="True">
+                <label class="control-label" for="fecalTest">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="fecalTestGiven" value= {% now 'Y-m-d' %}>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <h4 class="center">Dewormer</h4>
+            <div class="form-control dewormer-test-form" id="dewormerTestFalse">
+                <input type="radio" name="dewormerTest" value="False" checked="checked">
+                <label class="control-label" for="dewormerTestFalse">NEEDS by</label>
+                <input type="date" style="float: right; color: black;" name="dewormerTestDue" value={% now 'Y-m-d' %}>
+            </div>
+            <div class="form-control" id="dewormerTestTrue">
+                <input type="radio" name="dewormerTest" value="True">
+                <label class="control-label" for="dewormerTest">GIVEN on</label>
+                <input type="date" style="float: right; color: black" name="dewormerTestGiven" value= {% now 'Y-m-d' %}>
+            </div>
+        </div>
+    </div>
