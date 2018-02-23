@@ -1,9 +1,8 @@
  {% for dog in current_dog %}
-<div class="list-box2">
-    <div class="header">
-        <h3 class="title center">SELECTED DOG: {{ dog.name }}</h3>
-    </div>
-
+ <div class="header">
+    <h3 class="title center">SELECTED DOG: {{ dog.name }}</h3>
+</div>
+ <div class="list-box2">
     <div class="list-box2">
         
         <div class="attentions">
@@ -41,7 +40,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 selected">
                 <img src="{{ dog.thumb.url }}" class="img-responsive thumbnail"/>
             </div>
             <div class="col-sm-6">
@@ -212,8 +211,8 @@
     
         
         {% for heart_prev in current_heartworm_prev %}
+        <h4 {% if current_dog %}><hr>Preventions Due:</h4>{% endif %}
         <div class="new-prev">
-            <h4 {% if current_dog %}>Preventions Due:</h4>{% endif %}
             <div class="col-sm-8">
                 <li>Hrtwrm Prev due: {{ heart_prev.prevention_due }}</li>
             </div>
@@ -272,7 +271,7 @@
         <br>
 
     
-        <h4 {% if current_dog %}>Tests Due:</h4>{% endif %}
+        <h4 {% if current_dog %}><hr>Tests Due:</h4>{% endif %}
         {% for heart_test in current_heartworm_test %}
 
         <div class="new-test">

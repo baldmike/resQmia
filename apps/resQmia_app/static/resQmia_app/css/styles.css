@@ -1,14 +1,17 @@
 * {
     margin: 0px;
     padding: 0px;
+    text-align: center;
+    color: black;
 }
 
-/* body {
+body {
     background-image: url('../images/puppy6.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-} */
+}
+
 body {
     background-color: lightgray;
 }
@@ -17,17 +20,18 @@ label {
     font-size: 1.1em;
 }
 
-input:required:invalid, input:focus:invalid {
-    border-bottom: 1px solid red;
-}
+/* input:required:invalid, input:focus:invalid {
+    border: 1px solid red;
+} */
 
-input:required:valid, input:focus:valid {
-    border-bottom: 1px solid green;
-    background-color: lightgray;
-}
+
 
 li {
     list-style: none;
+}
+
+a {
+    color: black;
 }
 
 .title {
@@ -41,13 +45,19 @@ li {
     text-shadow: 1px 1px 1px black;
 }
 
+.header {
+    padding-left: 10px;
+}
+
 .center {
     text-align: center;
 }
 
 .list-box {
-    height: 45vh;
-    margin-bottom: 2%;
+    height: 47vh;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
     opacity: .9;
     overflow: scroll;
     
@@ -55,7 +65,9 @@ li {
 
 .list-box2 {
     height: 100vh;
-    margin-bottom: 2%;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
     opacity: .9;
     overflow: scroll;
     
@@ -121,4 +133,9 @@ h3 {
 
 #fix_box, #chip_box {
     margin-bottom: 20px;
+}
+
+.current-input {
+    background-color: #70787D;
+    color: white;
 }

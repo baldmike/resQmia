@@ -1,9 +1,11 @@
 {% for cat in current_cat %}
-<div class="list-box2">
-    <div class="header">
-        <h3 class="title center">SELECTED CAT: {{ cat.name }}</h3>
-    </div>
 
+<div class="header">
+    <h3 class="title center">SELECTED CAT: {{ cat.name }}</h3>
+</div>
+
+<div class="list-box2">
+    
     <div class="list-box2">
         <div class="attentions">
             <div class="col-sm-6">
@@ -39,7 +41,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 selected">
                 <img src="{{ cat.thumb.url }}" class="img-responsive thumbnail"/>
             </div>
             <div class="col-sm-6">
@@ -82,7 +84,7 @@
                     </div>
                     <div class="col-sm-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="btn btn-danger">ADD</button>
+                        <button type="submit" class="btn btn-danger">RABIES</button>
                     </div>
                 </form>
             </div>
@@ -111,7 +113,7 @@
                     </div>
                     <div class="col-sm-4">
                         <input hidden name="vaccine_number" value=0>
-                        <button type="submit" class="btn btn-danger">ADD</button>
+                        <button type="submit" class="btn btn-danger">FVRCP</button>
                     </div>
                 </form>
             </div>
@@ -123,11 +125,11 @@
         {% for revolution in current_revolution %}
         <div class="new-prev">
             <div class="col-sm-8">
-                <li>Rev. due: {{ revolution.prevention_due }}</li>
+                <li>Revo. due: {{ revolution.prevention_due }}</li>
             </div>
         
             <div class="col-sm-4">
-                <button id="new_revolution_button" class="btn btn-default">Revolution</button>
+                <button id="new_revolution_button" class="btn btn-default">New Revo</button>
             </div>
             <div class="col-sm-12 hidden" id="new_revolution">
                 <form action="/new_prevention_cat/{{ revolution.id }}" method="post">
@@ -141,7 +143,7 @@
                         <input placeholder="Revolution is now DUE on: " type="text" class="form-control" name="prevention_due" id="revolution_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-danger">ADD!</button>
+                        <button type="submit" class="btn btn-danger">REVOLUTION</button>
                     </div>
                 </form>
             </div>
@@ -156,7 +158,7 @@
             </div>
         
             <div class="col-sm-4">
-                <button id="new_flea_prev_button" class="btn btn-default">Fleas!</button>
+                <button id="new_flea_prev_button" class="btn btn-default">New Flea</button>
             </div>
             <div class="col-sm-12 hidden" id="new_flea_prev">
                 <form action="/new_prevention_cat/{{ flea.id }}" method="post">
@@ -170,7 +172,7 @@
                         <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-danger">FLEAS!</button>
+                        <button type="submit" class="btn btn-danger">FLEA/TICK</button>
                     </div>
                 </form>
             </div>
@@ -186,7 +188,7 @@
             </div>
         
             <div class="col-sm-4">
-                <button id="new_fivfelv_button" class="btn btn-default">Fiv Felv!!</button>
+                <button id="new_fivfelv_button" class="btn btn-default">New FivFelv</button>
             </div>
             <div class="col-sm-12 hidden" id="new_fivfelv">
                 <form action="/new_test_cat/{{ fivfelv.id }}" method="post">
@@ -200,7 +202,7 @@
                         <input placeholder="Fiv-Felv Test is now DUE on: " type="text" class="form-control" name="test_due" id="fivfelv_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-danger">Fiv Felv!</button>
+                        <button type="submit" class="btn btn-danger">FIV/FELV</button>
                     </div>
                 </form>
             </div>
@@ -215,7 +217,7 @@
             </div>
         
             <div class="col-sm-4">
-                <button id="new_fecal_test_button" class="btn btn-default">POOP Test!!</button>
+                <button id="new_fecal_test_button" class="btn btn-default">New Fecal</button>
             </div>
             <div class="col-sm-12 hidden" id="new_fecal_test">
                 <form action="/new_test_cat/{{ fecal.id }}" method="post">
@@ -229,7 +231,7 @@
                         <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="col-sm-4">
-                        <button type="submit" class="btn btn-danger">POOP Test!</button>
+                        <button type="submit" class="btn btn-danger">FECAL</button>
                     </div>
                 </form>
             </div>
