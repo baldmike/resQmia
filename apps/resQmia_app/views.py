@@ -21,44 +21,44 @@ print "*****"
 def dog_alert():
     dog_alert = []
 
-    rbv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due')
+    rbv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('dog')
     for x in range (0, len(rbv)):
         print rbv[x].dog
         dog_alert.append(rbv[x].dog)
-    dav = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due')
+    dav = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('dog')
     for x in range (0, len(dav)):
         if dav[x].dog not in dog_alert:
             dog_alert.append(dav[x].dog)
-    lpv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due')
+    lpv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('dog')
     for x in range (0, len(lpv)):
         if lpv[x].dog not in dog_alert:
             dog_alert.append(lpv[x].dog)
-    bdv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due')
+    bdv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('dog')
     for x in range (0, len(bdv)):
         if bdv[x].dog not in dog_alert:
             dog_alert.append(bdv[x].dog)
-    civ = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due')
+    civ = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('dog')
     for x in range (0, len(civ)):
         if civ[x].dog not in dog_alert:
             dog_alert.append(civ[x].dog)
 
-    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('dog')
     for x in range (0, len(hwp)):
         if hwp[x].dog not in dog_alert:
             dog_alert.append(hwp[x].dog)
-    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('prevention_due')
+    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('dog')
     for x in range (0, len(ftp)):
         if ftp[x].dog not in dog_alert:
             dog_alert.append(ftp[x].dog)
-    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
+    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('dog')
     for x in range (0, len(hwt)):
         if hwt[x].dog not in dog_alert:
             dog_alert.append(hwt[x].dog)
-    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
+    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('dog')
     for x in range (0, len(fct)):
         if fct[x].dog not in dog_alert:
             dog_alert.append(fct[x].dog)
-    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
+    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('dog')
     for x in range (0, len(dwd)):
         if dwd[x].dog not in dog_alert:
             dog_alert.append(dwd[x].dog)
@@ -70,23 +70,23 @@ def dog_alert():
 def cat_alert():
     cat_alert = []
 
-    rbv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('vaccine_due')
+    rbv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('cat')
     for x in range (0, len(rbv)):
         print rbv[x].cat
         cat_alert.append(rbv[x].cat)
-    dav = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('vaccine_due')
+    dav = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('cat')
     for x in range (0, len(dav)):
         if dav[x].cat not in cat_alert:
             cat_alert.append(dav[x].cat)
-    lpv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('vaccine_due')
+    lpv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('cat')
     for x in range (0, len(lpv)):
         if lpv[x].cat not in cat_alert:
             cat_alert.append(lpv[x].cat)
-    bdv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('vaccine_due')
+    bdv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('cat')
     for x in range (0, len(bdv)):
         if bdv[x].cat not in cat_alert:
             cat_alert.append(bdv[x].cat)
-    civ = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('vaccine_due')
+    civ = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('cat')
     for x in range (0, len(civ)):
         if civ[x].cat not in cat_alert:
             cat_alert.append(civ[x].cat)
