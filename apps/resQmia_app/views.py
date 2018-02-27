@@ -12,14 +12,10 @@ import bcrypt
 
 from models import *
 
-dateToday = date.today()
-print "*****"
-print "TODAY IS: ", dateToday
-print "*****"
-
 # dog_alert = [] becomes a no-duplicate list of dogs who need vetting that day
 def dog_alert():
     dog_alert = []
+    dateToday = date.today()
 
     rbv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('dog')
     for x in range (0, len(rbv)):
@@ -69,6 +65,7 @@ def dog_alert():
 # cat_alert = [] becomes a no-duplicate list of cats who need vetting that day
 def cat_alert():
     cat_alert = []
+    dateToday = date.today()
 
     rbv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('cat')
     for x in range (0, len(rbv)):
@@ -119,6 +116,7 @@ def index(request):
     if 'user_id' in request.session:
         dog_alert()
         cat_alert()
+        dateToday = date.today()
 
         context = {
             "avail_dogs" : Dog.objects.exclude(adopted=True).order_by('name'),
@@ -189,6 +187,7 @@ def logout(request):
 def new_dog(request):
     dog_alert()
     cat_alert()
+    dateToday = date.today()
 
     context = {
 
@@ -247,6 +246,7 @@ def rescue_dog(request):
 
 
 def select_our_dogs(request, dog_id):
+    dateToday = date.today()
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
     current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
@@ -285,6 +285,7 @@ def select_our_dogs(request, dog_id):
 
 def select_dashboard(request, dog_id):
     
+    dateToday = date.today()
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
     current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
@@ -326,6 +327,7 @@ def select_dashboard(request, dog_id):
 
 
 def select_our_dogs(request, dog_id):
+    dateToday = date.today()
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="rabies")
     current_da2pp = VaccineDog.objects.filter(dog_id=dog_id, vaccine_name="da2pp")
@@ -370,6 +372,8 @@ def delete_dog(request, dog_id):
     return redirect('/our_dogs')
 
 def select_day(request, dog_id):
+    dateToday = date.today()
+
     current_dog = Dog.objects.filter(id=dog_id)
     current_rabies = VaccineDog.objects.filter(dog_id=dog_id)
     current_da2pp = VaccineDog.objects.filter(dog_id=dog_id)
@@ -531,6 +535,7 @@ def our_cats(request):
 def new_cat(request):
     dog_alert()
     cat_alert()
+    dateToday = date.today()
 
     avail_cats = Cat.objects.exclude(adopted=True).order_by('name')
     avail_dogs = Dog.objects.exclude(adopted=True).order_by('name')
@@ -587,6 +592,7 @@ def rescue_cat(request):
     return redirect ('/')
 
 def select_our_cats(request, cat_id):
+    dateToday = date.today()
     current_cat = Cat.objects.filter(id=cat_id)
     current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
     current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
@@ -659,6 +665,8 @@ def new_test_cat(request, id):
 
 
 def select_dashboard_cat(request, cat_id):
+    
+    dateToday = date.today()
     
     current_cat = Cat.objects.filter(id=cat_id)
     current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
