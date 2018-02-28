@@ -17,98 +17,44 @@ def dog_alert():
     dog_alert = []
     dateToday = date.today()
 
-    rbv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('dog')
-    for x in range (0, len(rbv)):
-        print rbv[x].dog
-        dog_alert.append(rbv[x].dog)
-    dav = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('dog')
-    for x in range (0, len(dav)):
-        if dav[x].dog not in dog_alert:
-            dog_alert.append(dav[x].dog)
-    lpv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('dog')
-    for x in range (0, len(lpv)):
-        if lpv[x].dog not in dog_alert:
-            dog_alert.append(lpv[x].dog)
-    bdv = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('dog')
-    for x in range (0, len(bdv)):
-        if bdv[x].dog not in dog_alert:
-            dog_alert.append(bdv[x].dog)
-    civ = VaccineDog.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('dog')
-    for x in range (0, len(civ)):
-        if civ[x].dog not in dog_alert:
-            dog_alert.append(civ[x].dog)
+    
+    vac = VaccineDog.objects.filter(vaccine_due__lte=dateToday).order_by('dog__name')
+    for x in range (0, len(vac)):
+        if vac[x].dog not in dog_alert:
+            dog_alert.append(vac[x].dog)
 
-    hwp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('dog')
-    for x in range (0, len(hwp)):
-        if hwp[x].dog not in dog_alert:
-            dog_alert.append(hwp[x].dog)
-    ftp = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('dog')
-    for x in range (0, len(ftp)):
-        if ftp[x].dog not in dog_alert:
-            dog_alert.append(ftp[x].dog)
-    hwt = PreventionDog.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('dog')
-    for x in range (0, len(hwt)):
-        if hwt[x].dog not in dog_alert:
-            dog_alert.append(hwt[x].dog)
-    fct = TestDog.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('dog')
-    for x in range (0, len(fct)):
-        if fct[x].dog not in dog_alert:
-            dog_alert.append(fct[x].dog)
-    dwd = TestDog.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('dog')
-    for x in range (0, len(dwd)):
-        if dwd[x].dog not in dog_alert:
-            dog_alert.append(dwd[x].dog)
+    prv = PreventionDog.objects.filter(prevention_due__lte=dateToday).order_by('dog__name')
+    for x in range (0, len(prv)):
+        if prv[x].dog not in dog_alert:
+            dog_alert.append(prv[x].dog)
+    
+    tst = TestDog.objects.filter(test_due__lte=dateToday).order_by('dog__name')
+    for x in range (0, len(tst)):
+        if tst[x].dog not in dog_alert:
+            dog_alert.append(tst[x].dog)
 
     return dog_alert
-
 
 # cat_alert = [] becomes a no-duplicate list of cats who need vetting that day
 def cat_alert():
     cat_alert = []
     dateToday = date.today()
 
-    rbv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="rabies").order_by('cat')
-    for x in range (0, len(rbv)):
-        print rbv[x].cat
-        cat_alert.append(rbv[x].cat)
-    dav = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="da2pp").order_by('cat')
-    for x in range (0, len(dav)):
-        if dav[x].cat not in cat_alert:
-            cat_alert.append(dav[x].cat)
-    lpv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="lepto").order_by('cat')
-    for x in range (0, len(lpv)):
-        if lpv[x].cat not in cat_alert:
-            cat_alert.append(lpv[x].cat)
-    bdv = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="bord").order_by('cat')
-    for x in range (0, len(bdv)):
-        if bdv[x].cat not in cat_alert:
-            cat_alert.append(bdv[x].cat)
-    civ = VaccineCat.objects.filter(vaccine_due__lte=dateToday, vaccine_name="civ").order_by('cat')
-    for x in range (0, len(civ)):
-        if civ[x].cat not in cat_alert:
-            cat_alert.append(civ[x].cat)
+    vac = VaccineCat.objects.filter(vaccine_due__lte=dateToday).order_by('cat__name')
+    for x in range (0, len(vac)):
+        if vac[x].cat not in cat_alert:
+            cat_alert.append(vac[x].cat)
 
-    hwp = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
-    for x in range (0, len(hwp)):
-        if hwp[x].cat not in cat_alert:
-            cat_alert.append(hwp[x].cat)
-    ftp = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="flea").order_by('prevention_due')
-    for x in range (0, len(ftp)):
-        if ftp[x].cat not in cat_alert:
-            cat_alert.append(ftp[x].cat)
-    hwt = PreventionCat.objects.filter(prevention_due__lte=dateToday, prevention_name="heartworm").order_by('prevention_due')
-    for x in range (0, len(hwt)):
-        if hwt[x].cat not in cat_alert:
-            cat_alert.append(hwt[x].cat)
-    fct = TestCat.objects.filter(test_due__lte=dateToday, test_name="fecal").order_by('test_due')
-    for x in range (0, len(fct)):
-        if fct[x].cat not in cat_alert:
-            cat_alert.append(fct[x].cat)
-    dwd = TestCat.objects.filter(test_due__lte=dateToday, test_name="dewormer").order_by('test_due')
-    for x in range (0, len(dwd)):
-        if dwd[x].cat not in cat_alert:
-            cat_alert.append(dwd[x].cat)
+    prv = PreventionCat.objects.filter(prevention_due__lte=dateToday).order_by('cat__name')
+    for x in range (0, len(prv)):
+        if prv[x].cat not in cat_alert:
+            cat_alert.append(prv[x].cat)
 
+    tst = TestCat.objects.filter(test_due__lte=dateToday).order_by('cat__name')
+    for x in range (0, len(tst)):
+        if tst[x].cat not in cat_alert:
+            cat_alert.append(tst[x].cat)
+    
     return cat_alert
 
 
@@ -242,7 +188,7 @@ def rescue_dog(request):
         dwt = TestDog.objects.create(test_name="dewormer", test_due=dateToday, dog_id=d.id)
         
 
-    return redirect ('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def select_our_dogs(request, dog_id):
@@ -589,7 +535,7 @@ def rescue_cat(request):
         fiv = TestCat.objects.create(test_name="fivfelv", test_due=dateToday, cat_id=d.id)
         fcl = TestCat.objects.create(test_name="fecal", test_due=dateToday, cat_id=d.id)
         
-    return redirect ('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def select_our_cats(request, cat_id):
     dateToday = date.today()
@@ -667,7 +613,7 @@ def new_test_cat(request, id):
 def select_dashboard_cat(request, cat_id):
     
     dateToday = date.today()
-    
+
     current_cat = Cat.objects.filter(id=cat_id)
     current_rabies = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="rabies")
     current_fvrcp = VaccineCat.objects.filter(cat_id=cat_id, vaccine_name="fvrcp")
