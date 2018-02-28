@@ -12,37 +12,35 @@
             <label class="radio-inline"><input type="radio" name="gender" id="female" value="female" checked="checked">Female</label>
         </div>
     </div>
-    
+    <div class="2-8-2 col-sm-8 col-sm-offset-2">
     <div class="form-group">
         <label for="name" class="sr-only">Dog's Name</label>
-        <input type="text" class="form-control" name="name" id="new_rescue_name" placeholder="Dog's Name" required autofocus>
+        <input type="text" class="form-control input-box" name="name" id="new_rescue_name" placeholder="Dog's Name" required autofocus>
     </div>
 
     <div class="form-group center">
         <label for="birthdate" class="sr-only">Born </label>
-        <input type="text" name="birthdate" id="birthdate" class="form-control" placeholder="Birthdate" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input type="text" name="birthdate" id="birthdate" class="form-control input-box" placeholder="Birthdate" onfocus="(this.type='date')" onblur="(this.type='text')">
     </div>
     
     <div class="form-group">
         <label for="description" class="sr-only">Description</label>
-        <input type="text" class="form-control" name="description" id="description" placeholder="Breed/Description" minlength="3" required>
+        <input type="text" class="form-control input-box" name="description" id="description" placeholder="Breed/Description" minlength="3" required>
     </div>
     
     <div class="form-group">
         <label for="weight" class="sr-only">Weight in pounds</label>
-        <input type="number" class="form-control" name="weight" id="weight" placeholder="Weight">
+        <input type="number" class="form-control input-box" name="weight" id="weight" placeholder="Weight">
     </div>
-
-    <hr>
     
     <div class="form-group center">
         <label for="rescue_date" class="sr-only">RESCUE DATE!</label>
-        <input type="text" name="rescue_date" id="rescue_date" class="form-control" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input type="text" name="rescue_date" id="rescue_date" class="form-control input-box" placeholder="RESCUE DATE!" onfocus="(this.type='date')" onblur="(this.type='text')">
     </div>
 
     <div class="form-group center">
         <label for="source" class="sr-only">Select source </label>
-        <select name="source" id="source" class="form-control" required>
+        <select name="source" id="source" class="form-control input-box" required>
             <option value="" selected>--Select Source--</option>
             <option value="crisp">CRISP</option>
             <option value="cacc">CACC</option>
@@ -55,18 +53,18 @@
 
     <div class="form-group center">
         <label for="source_note" class="sr-only">Source Note</label>
-        <textarea name="source_note" class="form-control" rows="3" placeholder="Source notes:" ></textarea>
+        <textarea name="source_note" class="form-control input-box" rows="3" placeholder="Source notes:" ></textarea>
     </div>
 
     <div class="form-group">
         <div class="col-xs-6 center">
             <label for="fixed" class="checkbox-inline">
-            <input type="checkbox" name="fixed" id="fixed">Is animal fixed?</label>
+            <input type="checkbox" name="fixed" id="fixed">Is the dog fixed?</label>
         </div>
         
         <div class="col-xs-6 center">
             <label for="microchip" class="checkbox-inline">
-            <input type="checkbox" name="microchip" id="microchip">Microchipped</label>
+            <input type="checkbox" name="microchip" id="microchip">Microchipped?</label>
         </div>
     </div>
 
@@ -81,6 +79,7 @@
         <div class="upload-button">
             <input class="upload-margin2" id="thumb_dog" type="file" name="thumb" placeholder="Add a Pic!">
         </div>
+    </div>
     </div>
     <br>
     <div class="col-xs-12 center">

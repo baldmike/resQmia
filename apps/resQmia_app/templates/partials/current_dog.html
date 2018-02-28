@@ -32,7 +32,7 @@
             <form action="/microchip_dog/{{ dog.id }}" method="post">
                 {% csrf_token %}
                 <label for="microchip-number" class="sr-only">Microchip Number</label>
-                <input type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
+                <input class="input-box" type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
                 <br>
                 <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary" style="float: none">CHIPPED!</button>
