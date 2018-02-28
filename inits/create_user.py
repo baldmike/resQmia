@@ -12,8 +12,9 @@ first_name = raw_input('FIRST NAME OF USER:')
 last_name = raw_input('LAST NAME OF USER:')
 email = raw_input('EMAIL:')
 
-user_check = User.objects.get(email=email)
+user_check = User.objects.filter(email=email)
 if user_check:
+    print user_check
     print "user exists, start over, nerd."
 
 else:    
