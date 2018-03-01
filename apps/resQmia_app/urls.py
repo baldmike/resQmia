@@ -45,6 +45,8 @@ urlpatterns = [
     
     url(r'^adopted_dogs$', views.adopted_dogs),
 
+    url(r'^update_picture/(?P<id>\d+)$', views.update_picture),
+    url(r'^update_picture_cat/(?P<id>\d+)$', views.update_picture_cat),
 
     url(r'^delete_dog/(?P<dog_id>\d+)$', views.delete_dog),
     url(r'^delete_cat/(?P<cat_id>\d+)$', views.delete_cat),

@@ -397,8 +397,25 @@ def our_dogs(request):
     print avail_dogs
     return render(request, 'resQmia_app/dashboard_dog.html', context)
 
+def update_picture(request, id):
+    if request.method == 'POST':
+        
+        current_record = Dog.objects.get(id=id)
 
+        current_record.thumb = request.FILES['thumb']
+        current_record.save()
 
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def update_picture_cat(request, id):
+    if request.method == 'POST':
+        
+        current_record = Cat.objects.get(id=id)
+
+        current_record.thumb = request.FILES['thumb']
+        current_record.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def new_vaccine_dog(request, id):
     if request.method == 'POST':

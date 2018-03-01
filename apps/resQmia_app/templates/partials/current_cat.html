@@ -1,5 +1,4 @@
 {% for cat in current_cat %}
-
 <div class="header">
     <h3 class="title center">SELECTED CAT: {{ cat.name }}</h3>
 </div>
@@ -41,7 +40,7 @@
             </form>
         </div>
         <div class="col-sm-6 selected">
-            <img src="{{ cat.thumb.url }}" class="img-responsive thumbnail current-pic"/>
+                <img src="{{ cat.thumb.url }}" class="img-responsive thumbnail current-pic" id="picture" data-toggle="tooltip" title="Click to update image" data-placement="bottom"/>
         </div>
         <div class="col-sm-6">
             <ul>
@@ -52,6 +51,19 @@
                 <li class="col-sm-12 center"> on: {{ cat.rescue_date }}</li>
                 <li class="col-sm-12 center"{% if cat.microchip_number != "0" %}>Microchip Number: {{ cat.microchip_number }} {% endif %}</li>
             </ul>
+        </div>
+
+        <div class="form-group picture-upload-box col-xs-8 col-xs-offset-2 hidden" id="picture_box">
+            <form action="/update_picture_cat/{{ cat.id }}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <label for="thumb" class="control-label" style="float: left;"><span><strong>UPDATE PICTURE </strong><span class="glyphicon glyphicon-arrow-down"></span></span></label>
+                <br>
+                <div class="upload-button">
+                    <input class="upload-margin2" id="thumb_dog" type="file" name="thumb">
+                </div>
+                <button type="submit" class="btn btn-success margin-top">Update!</button>
+            </form>
+            
         </div>
     </div>                
     {% endfor %}
