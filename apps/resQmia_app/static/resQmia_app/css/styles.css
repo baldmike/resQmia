@@ -59,7 +59,6 @@ a {
     border-radius: 10px;
     opacity: .9;
     overflow: scroll;
-    
 }
 
 .list-box2 {
@@ -69,27 +68,13 @@ a {
     border-radius: 10px;
     opacity: .9;
     overflow: scroll;
-    
 }
 
 .picture-upload-box {
     margin-top: 5%;
-    margin-left: 15%;
     padding: 2%;
-    padding-left: 15%;
     background-color: white;
     color: gray;
-    border-radius: 10px;
-}
-
-.picture-upload-box::before {
-    margin-top: 10%;
-    margin-left: 10%;
-    padding: 5%;
-    padding-right: 15%;
-    background-color: black;
-    color: white;
-    content: "YOU LIKING THIS?"
     border-radius: 10px;
 }
 
@@ -102,7 +87,8 @@ a {
 }
 
 .gender {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    margin-top: 10px;
 }
 
 .api-strip {
@@ -182,3 +168,6 @@ h3 {
     font-family: 'Lobster', cursive;
 }
 
+.margin-top {
+    margin-top: 10%;
+}

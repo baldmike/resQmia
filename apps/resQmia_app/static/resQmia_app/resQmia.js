@@ -56,41 +56,22 @@ $(document).ready(function(){
         document.getElementById('time').innerHTML=theTime();
     }
     // get the time every 1000 [increments of time which I believe to be milliseconds]
-    // setInterval(timeOutput, 1000);
+    setInterval(timeOutput, 1000);
     timeOutput()
 
 
-    
 
-
-    function newDogName() {
-        new_rescue_name = document.getElementById('#new_rescue_name').value;
-        console.log(new_rescue_name)
-    
-        document.getElementById('#current_rescue_name').innerHTML=new_rescue_name;
-        return new_rescue_name;
-    }
     
     var microchip = $('#microchip')
     microchip.click(function(){
         $('#microchip-number').toggleClass('hidden')
+        console.log('microchip hit')
     })
 
-    $("#show_vacs").click(function() {
-        event.preventDefault();
-        $('html, body').animate({
-            scrollTop: $("#vaccinations").offset().top
-        }, 1500);
-        var new_rescue_name = $('#new_rescue_name').val()
-        $('#current_rescue_name').html(new_rescue_name + "!");
-    });
-
-    $("#show_prevs").click(function() {
-        event.preventDefault();
-        $('html, body').animate({
-            scrollTop: $("#preventions").offset().top
-        }, 1400);
-    });
+    var picture = $('#picture')
+    picture.click(function(){
+        $('#picture_box').toggleClass('hidden')
+    })
 
     var rabiesVacTrue = $('#rabiesVacTrue')
     rabiesVacTrue.change(function(){
@@ -237,7 +218,6 @@ $(document).ready(function(){
         $('#new_civ').toggleClass("hidden");
     })
 
-
     $('#new_heart_prev_button').click(function(){
         $('#new_heart_prev').toggleClass("hidden");
     })
@@ -245,7 +225,6 @@ $(document).ready(function(){
     $('#new_flea_prev_button').click(function(){
         $('#new_flea_prev').toggleClass("hidden");
     })
-
 
     $('#new_heart_test_button').click(function(){
         $('#new_heart_test').toggleClass("hidden");
@@ -258,56 +237,6 @@ $(document).ready(function(){
     $('#new_dewormer_button').click(function(){
         $('#new_dewormer').toggleClass("hidden");
     })
-
-// CAT ONLY BELOW **********************
-
-    var fvrcpVacTrue = $('#fvrcpVacTrue')
-    fvrcpVacTrue.change(function(){
-        $('#fvrcpVacFalse').toggleClass('fvrcp-form')
-        $('#fvrcpVacTrue').toggleClass('fvrcp-form')
-    })
-
-    var fvrcpVacFalse = $('#fvrcpVacFalse')
-    fvrcpVacFalse.change(function(){
-        $('#fvrcpVacFalse').toggleClass('fvrcp-form')
-        $('#fvrcpVacTrue').toggleClass('fvrcp-form')
-    })
-
-    var fivfelvTestTrue = $('#fivfelvTestTrue')
-    fivfelvTestTrue.change(function(){
-        $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-        $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-    })
-
-    var fivfelvTestFalse = $('#fivfelvTestFalse')
-    fivfelvTestFalse.change(function(){
-        $('#fivfelvTestFalse').toggleClass('fivfelv-test-form')
-        $('#fivfelvTestTrue').toggleClass('fivfelv-test-form')
-    })
-
-    var revolutionPrevTrue = $('#revolutionPrevTrue')
-    revolutionPrevTrue.change(function(){
-        $('#revolutionPrevTrue').toggleClass('revolution-prev-form')
-        $('#revolutionPrevFalse').toggleClass('revolution-prev-form')
-    })
-
-    var revolutionPrevFalse = $('#revolutionPrevFalse')
-    revolutionPrevFalse.change(function(){
-        $('#revolutionPrevFalse').toggleClass('revolution-prev-form')
-        $('#revolutionPrevTrue').toggleClass('revolution-prev-form')
-    })
-
-
-
-    function newCatName() {
-        new_rescue_name = document.getElementById('#new_rescue_name').value;
-        console.log(new_rescue_name)
-
-        document.getElementById('#current_rescue_name').innerHTML=new_rescue_name;
-        return new_rescue_name;
-    }
-
-
 
     $('#new_fvrcp_button').click(function(){
         $('#new_fvrcp').toggleClass("hidden");

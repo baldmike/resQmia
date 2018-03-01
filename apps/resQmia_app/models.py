@@ -57,17 +57,17 @@ class User(models.Model):
 
 class Dog(models.Model):
     name = models.CharField(max_length = 255)
-    rescue_date = models.DateField()
+    rescue_date = models.DateField(null=True, blank=True)
     source = models.CharField(max_length = 255)
     source_note = models.TextField(null=True, blank=True)
     microchip_number = models.CharField(max_length = 255)
     gender = models.CharField(max_length = 10)
-    birthdate = models.DateField()
+    birthdate = models.DateField(null=True, blank=True)
     description = models.CharField(max_length = 255)
     weight = models.IntegerField()
     fixed = models.BooleanField()
-    adopted = models.BooleanField(default = False)
-    thumb = models.ImageField(blank=True, default="default_dog.jpg")
+    adopted = models.BooleanField(default=False)
+    thumb = models.ImageField(blank=True, default="pup8.jpg")
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 

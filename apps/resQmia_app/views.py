@@ -148,7 +148,7 @@ def new_dog(request):
 def rescue_dog(request):
     dateToday = date.today()
     if request.method == 'POST':
-        name = request.POST['name']
+        name = request.POST['name'].capitalize()
         rescue_date = request.POST['rescue_date']
         source = request.POST['source']
         source_note = request.POST['source_note']
@@ -157,13 +157,17 @@ def rescue_dog(request):
             microchip_number = request.POST['microchip_number']
         gender = request.POST['gender']
         birthdate = request.POST['birthdate']
-        
         description = request.POST['description']
         weight = request.POST['weight']
-        thumb=request.FILES['thumb']
+
+        thumb = "../media/default.jpg"
+        if 'picture' in request.POST:
+            thumb=request.FILES['thumb']
+            
         fixed = False
         if 'fixed' in request.POST:
             fixed = True
+
         adopted = False
 
         d = Dog.objects.create(name=name, rescue_date=rescue_date, source=source, source_note=source_note,  microchip_number=microchip_number, birthdate=birthdate, gender=gender, description=description, weight=weight, fixed=fixed, adopted=adopted, thumb=thumb)        
@@ -352,7 +356,6 @@ def select_day(request, dog_id):
         'avail_cats' : avail_cats,
 
         'date_today' : dateToday,
-
     }
     
     return render(request, 'resQmia_app/dashboard_dog.html', context)
