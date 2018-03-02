@@ -7,10 +7,10 @@
 
     <div class="attentions">
         <div class="col-sm-6">
-            <button{% if dog.fixed == False %} class="btn2 btn-danger" id="fix_alert">NOT FIXED!!{% endif %}</button>
+            <button{% if cat.fixed == False %} class="btn btn2 btn-yellow" id="fix_alert">NOT FIXED{% endif %}</button>
         </div>
         <div class="col-sm-6">
-            <button{% if dog.microchip_number == "0" %} class="btn2 btn-danger" id="chip_alert">NEEDS MICROCHIP!{% endif %}</button> 
+            <button{% if cat.microchip_number == "0" %} class="btn btn2 btn-yellow" id="chip_alert">NEEDS MICROCHIP{% endif %}</button> 
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                 <input type="checkbox" name="fixed" id="fixed" required>Fixed</label>
                 <br>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary" style="float: none">FIXED!</button>
+                    <button type="submit" class="btn btn-red" style="float: none">FIXED!</button>
                 </div>
             </form>
         </div>
@@ -35,7 +35,7 @@
                 <input type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
                 <br>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary" style="float: none">CHIPPED!</button>
+                    <button type="submit" class="btn btn-red" style="float: none">CHIPPED!</button>
                 </div>
             </form>
         </div>
@@ -59,9 +59,9 @@
                 <label for="thumb" class="control-label" style="float: left;"><span><strong>UPDATE PICTURE </strong><span class="glyphicon glyphicon-arrow-down"></span></span></label>
                 <br>
                 <div class="upload-button">
-                    <input class="upload-margin2" id="thumb_dog" type="file" name="thumb">
+                    <input class="upload-margin2" id="thumb_cat" type="file" name="thumb">
                 </div>
-                <button type="submit" class="btn btn-success margin-top">Update!</button>
+                <button type="submit" class="btn btn-yellow margin-top">Update!</button>
             </form>
             
         </div>
@@ -76,7 +76,7 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_rabies_button" class="btn btn-default">New Rabies</button>
+            <button id="new_rabies_button" class="btn btn-yellow">New Rabies</button>
         </div>
         <div class="col-sm-12 hidden" id="new_rabies">
             <form action="/new_vaccine_cat/{{ rabies.id }}" method="post">
@@ -87,15 +87,15 @@
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">New Rabies Vaccine Given </label>
-                    <input placeholder="Rabies GIVEN on: " type="text" class="form-control" name="vaccine_given" id="rabies_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Rabies GIVEN on: " type="text" class="form-control" name="vaccine_given" id="rabies_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">Rabies Vaccine Due Date</label>
-                    <input placeholder="Rabies is now DUE on: " type="text" class="form-control" name="vaccine_due" id="rabies-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Rabies is now DUE on: " type="text" class="form-control" name="vaccine_due" id="rabies-due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
                     <input hidden name="vaccine_number" value=0>
-                    <button type="submit" class="btn btn-danger">RABIES</button>
+                    <button type="submit" class="btn btn-red">RABIES</button>
                 </div>
             </form>
         </div>
@@ -109,22 +109,22 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_fvrcp_button" class="btn btn-default">New FVRCP</button>
+            <button id="new_fvrcp_button" class="btn btn-yellow">New FVRCP</button>
         </div>
         <div class="col-sm-12 hidden" id="new_fvrcp">
             <form action="/new_vaccine_cat/{{ fvrcp.id }}" method="post">
                 {% csrf_token %}
                 <div class="col-sm-8">
                     <label class="sr-only">New FVRCP Vaccine Given </label>
-                    <input placeholder="FVRCP GIVEN on: " type="text" class="form-control" name="vaccine_given" id="fvrcp_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="FVRCP GIVEN on: " type="text" class="form-control" name="vaccine_given" id="fvrcp_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">FVRCP Vaccine Due Date</label>
-                    <input placeholder="FVRCP is now DUE on: " type="text" class="form-control" name="vaccine_due" id="fvrcp-due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="FVRCP is now DUE on: " type="text" class="form-control" name="vaccine_due" id="fvrcp-due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
                     <input hidden name="vaccine_number" value=0>
-                    <button type="submit" class="btn btn-danger">FVRCP</button>
+                    <button type="submit" class="btn btn-red">FVRCP</button>
                 </div>
             </form>
         </div>
@@ -140,21 +140,21 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_revolution_button" class="btn btn-default">New Revo</button>
+            <button id="new_revolution_button" class="btn btn-yellow">New Revo</button>
         </div>
         <div class="col-sm-12 hidden" id="new_revolution">
             <form action="/new_prevention_cat/{{ revolution.id }}" method="post">
                 {% csrf_token %}
                 <div class="col-sm-8">
                     <label class="sr-only">New Revolution Prevention Given </label>
-                    <input placeholder="Revolution GIVEN on: " type="text" class="form-control" name="prevention_given" id="revolution_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Revolution GIVEN on: " type="text" class="form-control" name="prevention_given" id="revolution_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">Revolution Prevention Due Date</label>
-                    <input placeholder="Revolution is now DUE on: " type="text" class="form-control" name="prevention_due" id="revolution_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Revolution is now DUE on: " type="text" class="form-control" name="prevention_due" id="revolution_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-danger">REVOLUTION</button>
+                    <button type="submit" class="btn btn-red">REVOLUTION</button>
                 </div>
             </form>
         </div>
@@ -169,21 +169,21 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_flea_prev_button" class="btn btn-default">New Flea</button>
+            <button id="new_flea_prev_button" class="btn btn-yellow">New Flea</button>
         </div>
         <div class="col-sm-12 hidden" id="new_flea_prev">
             <form action="/new_prevention_cat/{{ flea.id }}" method="post">
                 {% csrf_token %}
                 <div class="col-sm-8">
                     <label class="sr-only">New Flea/Tick Prevention Given </label>
-                    <input placeholder="Flea Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="flea_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Flea Prev GIVEN on: " type="text" class="form-control" name="prevention_given" id="flea_prev_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">Flea Prevention Due Date</label>
-                    <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-danger">FLEA/TICK</button>
+                    <button type="submit" class="btn btn-red">FLEA/TICK</button>
                 </div>
             </form>
         </div>
@@ -199,21 +199,21 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_fivfelv_button" class="btn btn-default">New FivFelv</button>
+            <button id="new_fivfelv_button" class="btn btn-yellow">New FivFelv</button>
         </div>
         <div class="col-sm-12 hidden" id="new_fivfelv">
             <form action="/new_test_cat/{{ fivfelv.id }}" method="post">
                 {% csrf_token %}
                 <div class="col-sm-8">
                     <label class="sr-only">New Fiv-Felv Test Given </label>
-                    <input placeholder="Fiv-Felv Test GIVEN on: " type="text" class="form-control" name="test_given" id="fivfelv_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Fiv-Felv Test GIVEN on: " type="text" class="form-control" name="test_given" id="fivfelv_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">Fiv-Felv Test Due Date</label>
-                    <input placeholder="Fiv-Felv Test is now DUE on: " type="text" class="form-control" name="test_due" id="fivfelv_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Fiv-Felv Test is now DUE on: " type="text" class="form-control" name="test_due" id="fivfelv_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-danger">FIV/FELV</button>
+                    <button type="submit" class="btn btn-red">FIV/FELV</button>
                 </div>
             </form>
         </div>
@@ -228,21 +228,21 @@
         </div>
     
         <div class="col-sm-4">
-            <button id="new_fecal_test_button" class="btn btn-default">New Fecal</button>
+            <button id="new_fecal_test_button" class="btn btn-yellow">New Fecal</button>
         </div>
         <div class="col-sm-12 hidden" id="new_fecal_test">
             <form action="/new_test_cat/{{ fecal.id }}" method="post">
                 {% csrf_token %}
                 <div class="col-sm-8">
                     <label class="sr-only">New Fecal Test Given </label>
-                    <input placeholder="Fecal Test GIVEN on: " type="text" class="form-control" name="test_given" id="fecal_test_given" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Fecal Test GIVEN on: " type="text" class="form-control" name="test_given" id="fecal_test_given" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-8">
                     <label class="sr-only">Fecal Test Due Date</label>
-                    <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-danger">FECAL</button>
+                    <button type="submit" class="btn btn-red">FECAL</button>
                 </div>
             </form>
         </div>

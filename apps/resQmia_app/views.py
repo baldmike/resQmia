@@ -533,7 +533,11 @@ def rescue_cat(request):
         birthdate = request.POST['birthdate']
         description = request.POST['description']
         weight = request.POST['weight']
-        thumb = request.FILES['thumb']
+        
+        thumb = "../media/default.jpg"
+        if 'picture' in request.POST:
+            thumb=request.FILES['thumb']
+            
         fixed = False
         if 'fixed' in request.POST:
             fixed = True

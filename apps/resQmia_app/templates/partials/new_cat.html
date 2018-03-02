@@ -42,12 +42,12 @@
                 <label for="source" class="sr-only">Select source </label>
                 <select name="source" id="source" class="form-control input-box">
                     <option value="" selected>--Select Source--</option>
-                    <option value="crisp">CRISP</option>
-                    <option value="cacc">CACC</option>
-                    <option value="awl">AWL</option>
-                    <option value="stray">Stray</option>
-                    <option value="crisp">Alive!</option>
-                    <option value="other">Other</option>
+                    <option value="CRISP">CRISP</option>
+                    <option value="CACC">CACC</option>
+                    <option value="AWL">AWL</option>
+                    <option value="Stray">Stray</option>
+                    <option value="Alive">Alive</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
         
@@ -59,7 +59,7 @@
             <div class="form-group">
                 <div class="col-xs-6 center">
                     <label for="fixed" class="checkbox-inline">
-                    <input type="checkbox" name="fixed" id="fixed">Is this cat fixed?</label>
+                    <input type="checkbox" name="fixed" id="fixed">Fixed?</label>
                 </div>
                 
                 <div class="col-xs-6 center">
@@ -77,11 +77,11 @@
 
             <div class="col-xs-12 center">
                 <label for="picture" class="checkbox-inline">
-                <input type="checkbox" name="picture" id="picture">Upload a picture??</label>
+                <input type="checkbox" name="picture" id="picture">Upload a picture?</label>
             </div>            
             <br>
             <div class="form-group picture-upload-box col-xs-8 col-xs-offset-2 hidden" id="picture_box">
-                <label for="thumb" class="control-label" style="float: left;"><span><strong>ADD A PICTURE </strong><span class="glyphicon glyphicon-arrow-down"></span></span></label>
+                <label for="thumb" class="control-label"><span class="glyphicon glyphicon-arrow-down"></span></label>
                 <br>
                 <div class="upload-button">
                     <input class="upload-margin2" id="thumb_cat" type="file" name="thumb">
@@ -90,7 +90,7 @@
         </div>
         <br>
         <div class="col-xs-12 margin">
-            <button type="submit" class="btn btn-success margin">Rescue!</button>
+            <button type="submit" class="btn btn-yellow margin">Rescue!</button>
         </div>
     </form>
 </div>
