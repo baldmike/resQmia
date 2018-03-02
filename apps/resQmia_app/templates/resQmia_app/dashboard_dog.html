@@ -1,4 +1,4 @@
-
+<!-- 
     {% include 'partials/head.html' %}
 
 <body>
@@ -19,6 +19,36 @@
             <div class="col-sm-4">
                 {% include 'partials/need_attention_cat.html' %}
                 {% include 'partials/our_cats.html' %}                 
+            </div>
+        </div>
+    </div>
+</body> -->
+
+
+
+
+{% include 'partials/head.html' %}
+
+<body>
+    <div class="container-fluid">
+        {% include 'partials/nav_bar.html' %}
+        {% include 'partials/api_strip.html' %}
+
+        <div class="row">
+            <div class="col-sm-4 hidden" id="need_attn_dog">
+                {% include 'partials/need_attention_dog.html' %}
+            </div>
+            <div class="col-sm-4" id="all_dogs">
+                {% include 'partials/our_dogs.html' %}
+            </div>
+
+            <div class="col-sm-4">
+                {% include 'partials/current_dog.html'%}
+            </div>
+
+            <div class="col-sm-4">
+                {% include 'partials/need_attention_cat.html' %}
+                {% include 'partials/our_cats.html' %}                
             </div>
         </div>
     </div>
