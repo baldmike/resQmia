@@ -359,6 +359,7 @@ def select_dashboard(request, dog_id):
 
 
 def delete_dog(request, dog_id):
+    
     dog = Dog.objects.filter(id=dog_id)
     dog.delete()
     
@@ -366,10 +367,9 @@ def delete_dog(request, dog_id):
 
 
 def select_adopted(request, dog_id):
+    
     current_dog = Dog.objects.filter(id=dog_id)
     adopted_dogs = Dog.objects.filter(adopted=True)
-   
-    print current_dog
    
     context = {
         "adopted_dogs" : adopted_dogs,
@@ -379,6 +379,7 @@ def select_adopted(request, dog_id):
     return render(request, 'resQmia_app/adopted.html', context)
 
 def adopted(request, dog_id):
+    
     adopted_dog = Dog.objects.get(id=dog_id)
     adopted_dog.adopted = True
     adopted_dog.save()
@@ -386,6 +387,7 @@ def adopted(request, dog_id):
     return redirect('/')
 
 def adopted_dogs(request):
+    
     adopted_dogs = Dog.objects.filter(adopted=True)
     context = {
         'adopted_dogs' : adopted_dogs
@@ -394,91 +396,87 @@ def adopted_dogs(request):
     return render(request, 'resQmia_app/adopted.html', context)
 
 def our_dogs(request):
+    
     avail_dogs = Dog.objects.exclude(adopted=True).order_by('name')
 
     context = {
         "avail_dogs" : avail_dogs,
     }
-    print avail_dogs
+
     return render(request, 'resQmia_app/dashboard_dog.html', context)
 
 def update_picture(request, id):
+    
     if request.method == 'POST':
         
         current_record = Dog.objects.get(id=id)
-
         current_record.thumb = request.FILES['thumb']
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def update_picture_cat(request, id):
+    
     if request.method == 'POST':
         
         current_record = Cat.objects.get(id=id)
-
         current_record.thumb = request.FILES['thumb']
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def new_vaccine_dog(request, id):
+    
     if request.method == 'POST':
         
         current_record = VaccineDog.objects.get(id=id)
-        
         current_record.vaccine_given = request.POST['vaccine_given']
         current_record.vaccine_due = request.POST['vaccine_due']
         current_record.vaccine_number = request.POST['vaccine_number']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_prevention_dog(request, id):
+    
     if request.method == 'POST':
         
         current_record = PreventionDog.objects.get(id=id)
-        
         current_record.prevention_given = request.POST['prevention_given']
         current_record.prevention_due = request.POST['prevention_due']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def new_test_dog(request, id):
+    
     if request.method == 'POST':
     
         current_record = TestDog.objects.get(id=id)
-    
         current_record.test_given = request.POST['test_given']
         current_record.test_due = request.POST['test_due']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def fix(request, dog_id):
+    
     if request.method == 'POST':
         
         current_record = Dog.objects.get(id=dog_id)
-
         current_record.fixed = True
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def microchip(request, dog_id):
+    
     if request.method == 'POST':
         
         current_record = Dog.objects.get(id=dog_id)
-
         current_record.microchip_number = request.POST['microchip_number']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -486,6 +484,7 @@ def microchip(request, dog_id):
     # CATS!!!!!!!!!!!!!! =============================================================
 
 def get_context_cat():
+    
     dog_alert()
     cat_alert()
 
@@ -585,6 +584,7 @@ def get_context_current_cat(request, cat_id):
 
 
 def delete_cat(request, cat_id):
+    
     cat = Cat.objects.filter(id=cat_id)
     cat.delete()
 
@@ -593,11 +593,13 @@ def delete_cat(request, cat_id):
 
 
 def our_cats(request):
+    
     avail_cats = Cat.objects.exclude(adopted=True).order_by('name')
-
+    
     context = {
         "avail_cats" : avail_cats,
     }
+    
     return render(request, 'resQmia_app/our_cats.html', context)    
 
 def new_cat(request):
@@ -607,7 +609,9 @@ def new_cat(request):
     return render(request, 'resQmia_app/dashboard_new_cat.html', context)
 
 def rescue_cat(request):
+    
     dateToday = date.today()
+    
     if request.method == 'POST':
         name = request.POST['name']
         rescue_date = request.POST['rescue_date']
@@ -657,14 +661,13 @@ def select_our_cats(request, cat_id):
 
 
 def new_vaccine_cat(request, id):
+    
     if request.method == 'POST':
         
         current_record = VaccineCat.objects.get(id=id)
-        
         current_record.vaccine_given = request.POST['vaccine_given']
         current_record.vaccine_due = request.POST['vaccine_due']
         current_record.vaccine_number = request.POST['vaccine_number']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -674,10 +677,8 @@ def new_prevention_cat(request, id):
     if request.method == 'POST':
         
         current_record = PreventionCat.objects.get(id=id)
-        
         current_record.prevention_given = request.POST['prevention_given']
         current_record.prevention_due = request.POST['prevention_due']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -687,10 +688,8 @@ def new_test_cat(request, id):
     if request.method == 'POST':
     
         current_record = TestCat.objects.get(id=id)
-    
         current_record.test_given = request.POST['test_given']
         current_record.test_due = request.POST['test_due']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -703,15 +702,11 @@ def select_dashboard_cat(request, cat_id):
     return render(request, 'resQmia_app/dashboard_cat.html', context)
 
 
-
-
 def fix_cat(request, cat_id):
     if request.method == 'POST':
     
         current_record = Cat.objects.get(id=cat_id)
-
         current_record.fixed = True
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -720,11 +715,7 @@ def microchip_cat(request, cat_id):
     if request.method == 'POST':
         
         current_record = Cat.objects.get(id=cat_id)
-
         current_record.microchip_number = request.POST['microchip_number']
-
         current_record.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
