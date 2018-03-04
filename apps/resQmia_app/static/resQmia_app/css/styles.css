@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('../images/puppy6.jpg');
+    background-image: url('../images/back3.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -31,20 +31,22 @@ a {
 
 .title {
     text-align: center;
-    height: 80px;
     background-color: rgb(212, 212, 212);
     padding-left: 15px;
-    opacity: .6;
-    border-radius: 40px;
-    margin-bottom: 5px;
-    border-bottom: 2px solid gray;
+    padding-top: 10px;
+    opacity: .8;
+    border-radius: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: black;
+    border: 3px solid black;
+    height: 100px;
+    padding-bottom: 10px;
 }
 
 .header {
-    font-size: 50px;
-    text-shadow: 2px 2px 2px gray;
-
+    font-size: 56px;
+    text-shadow: 3px 3px 3px white;
 }
 
 .center {
@@ -52,19 +54,20 @@ a {
 }
 
 .list-box {
-    height: 84vh;
+    height: 100vh;
     margin-bottom: 10px;
     border-radius: 10px;
-    opacity: .9;
+    /* background-color: tan; */
+    opacity: .8;
     overflow: scroll;
 }
 
 .list-box3 {
-    
+    height: 100vh;
     margin-bottom: 10px;
-    background-color: white;
+    background-color: tan;
     border-radius: 10px;
-    opacity: .7;
+    opacity: .8;
     overflow: scroll;
 }
 
@@ -124,10 +127,13 @@ h3 {
 
 .navbar {
     margin-bottom: 0px;
+    background-color: tan;
+    opacity: .8;
+    font-size: 30px;
 }
 
 .navbar-top {
-    background-color: yellow;
+    background-color: black;
 }
 
 #fix_box, #chip_box {
@@ -185,7 +191,7 @@ h3 {
 
 .btn-gray {
     background-color: yellow;
-    margin: 10px 5px 10px 5px;
+    margin: 5px 5px 5px 5px;
     width: 100px;
     border-radius: 10px;
     box-shadow: 1px 1px 1px black;
@@ -202,3 +208,8 @@ button:focus {outline:0;}
 .acme {
     font-family: 'Acme', sans-serif;
 }
+
+button:hover {
+    background-color: red:
+    color: black;
+    

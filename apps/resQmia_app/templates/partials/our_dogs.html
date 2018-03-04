@@ -1,7 +1,7 @@
 <div class="list-box2">
     {% for dog in avail_dogs %}
     <div class="col-lg-4">
-        <a href="/select_dashboard/{{ dog.id }}">{{ dog.name }} <br><img src="{{ dog.thumb.url }}" width="70" height="70"/></a></li>
+        <a href="/select_dashboard/{{ dog.id }}" class="acme">{{ dog.name }} <br><img src="{{ dog.thumb.url }}" width="70" height="70"/></a></li>
     </div>
     {% endfor %}
 </div>
