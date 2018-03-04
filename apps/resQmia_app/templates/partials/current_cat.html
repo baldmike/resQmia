@@ -1,9 +1,9 @@
 {% for cat in current_cat %}
 <div class="header">
-    <h3 class="title center">SELECTED CAT: {{ cat.name }}</h3>
+    <h3 class="title header center">{{ cat.name }}</h3>
 </div>
 
-<div class="list-box2">
+<div class="list-box3">
 
     <div class="attentions">
         <div class="col-sm-6">
@@ -32,7 +32,7 @@
             <form action="/microchip_cat/{{ cat.id }}" method="post">
                 {% csrf_token %}
                 <label for="microchip-number" class="sr-only">Microchip Number</label>
-                <input type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
+                <input type="text" name="microchip_number" class="input-box" placeholder="Microchip Number" required>
                 <br>
                 <div class="col-sm-12">
                     <button type="submit" class="btn btn-red" style="float: none">CHIPPED!</button>

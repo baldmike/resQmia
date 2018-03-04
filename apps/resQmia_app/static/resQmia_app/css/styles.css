@@ -12,10 +12,6 @@ body {
     background-size: cover;
 }
 
-body {
-    background-color: lightgray;
-}
-
 label {
     font-size: 1.1em;
 }
@@ -35,6 +31,7 @@ a {
 
 .title {
     text-align: center;
+    height: 80px;
     background-color: rgb(212, 212, 212);
     padding-left: 15px;
     opacity: .6;
@@ -45,7 +42,9 @@ a {
 }
 
 .header {
-    padding-left: 10px;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px gray;
+
 }
 
 .center {
@@ -53,20 +52,19 @@ a {
 }
 
 .list-box {
-    height: 40vh;
+    height: 84vh;
     margin-bottom: 10px;
-    /* background-color: lightgray; */
     border-radius: 10px;
     opacity: .9;
     overflow: scroll;
 }
 
-.list-box2 {
-    height: 84vh;
+.list-box3 {
+    
     margin-bottom: 10px;
     background-color: white;
     border-radius: 10px;
-    opacity: .9;
+    opacity: .7;
     overflow: scroll;
 }
 
@@ -83,7 +81,7 @@ a {
 }
 
 .upload-margin2 {
-    margin-left: 25%;
+    margin-left: 35%;
 }
 
 .gender {
@@ -177,8 +175,26 @@ h3 {
     margin: 5px;
 }
 
+.btn-white {
+    background-color: white;
+    margin: 10px 5px 10px 5px;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px black;
+}
+
+.btn-gray {
+    background-color: yellow;
+    margin: 10px 5px 10px 5px;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px black;
+}
+
 .btn-red {
     background-color: red;
     color: white;
     margin: 5px;
 }
+
+button:focus {outline:0;}

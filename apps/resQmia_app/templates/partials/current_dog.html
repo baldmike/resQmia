@@ -1,8 +1,8 @@
  {% for dog in current_dog %}
  <div class="header">
-    <h3 class="title center">SELECTED DOG: {{ dog.name }}</h3>
+    <h3 class="title header center">{{ dog.name }}</h3>
 </div>
-<div class="list-box2">
+<div class="list-box3">
     
     <div class="attentions">
         
@@ -10,7 +10,7 @@
             <button{% if dog.fixed == False %} class="btn2 btn-yellow" id="fix_alert">NOT FIXED{% endif %}</button>
         </div>
         <div class="col-sm-6">
-            <button{% if dog.microchip_number == "0" %} class="btn2 btn-yellow" id="chip_alert">NEEDS MICROCHIP{% endif %}</button> 
+            <button{% if dog.microchip_number == "0" %} class="btn2 btn-yellow" id="chip_alert">NEEDS MICROCHIP{% endif %}</button>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
             <form action="/microchip_dog/{{ dog.id }}" method="post">
                 {% csrf_token %}
                 <label for="microchip-number" class="sr-only">Microchip Number</label>
-                <input class="input-box" type="text" name="microchip_number" class="form-control" placeholder="Enter Microchip Number" required>
+                <input type="text" name="microchip_number" class="input-box" placeholder="Microchip Number" required>
                 <br>
                 <div class="col-sm-12">
                     <button type="submit" class="btn btn-red" style="float: none">CHIPPED!</button>

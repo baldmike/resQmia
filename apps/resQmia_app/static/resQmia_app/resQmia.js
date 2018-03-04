@@ -251,16 +251,115 @@ $(document).ready(function(){
     })
 
     $('#fix_alert').click(function(){
-        console.log('FIX BUTTON FIX')
         $('#fix_box').toggleClass("hidden")
     })
 
     $('#chip_alert').click(function(){
-        console.log('chip BUTTON chip')
         $('#chip_box').toggleClass("hidden")
     })
 
 
+    current_dog_selection = '#all_alerts'
+    current_dog_button = '#show_all_alerts'
+    console.log('Current dog view is', current_dog_selection)
 
+    function toggle_selection(new_selection, existing_selection, new_button, existing_button) {
+        $(existing_selection).hide()
+        $(new_selection).show()
+        $(existing_button).removeClass('btn-gray').addClass('btn-white')
+        $(new_button).removeClass('btn-white').addClass('btn-gray')
+        current_dog_button = new_button
+        current_dog_selection = new_selection
+        console.log('THE Current dog selection is now ', current_dog_selection)
+        console.log('THE Current dog button is now ', current_dog_button)
+    }
+
+    $('#show_all_dogs').click(function(){
+        a = '#all_dogs'
+        c = '#show_all_dogs'
+        toggle_selection(a, current_dog_selection, c, current_dog_button)
+    })
+
+    $('#show_all_alerts').click(function(){
+        a = '#all_alerts'
+        c = '#show_all_alerts'
+        toggle_selection(a, current_dog_selection, c, current_dog_button)
+        console.log('Current dog selection is now ', current_dog_selection)
+    })
+
+    $('#show_vaccines').click(function(){
+        a = '#vaccines'
+        c = '#show_vaccines'
+        toggle_selection(a, current_dog_selection, c, current_dog_button)
+        console.log('Current dog selection is now ', current_dog_selection)
+    })
+
+    $('#show_preventions').click(function(){
+        a = '#preventions'
+        c = '#show_preventions'
+        toggle_selection(a, current_dog_selection, c, current_dog_button)
+        console.log('Current dog selection is now ', current_dog_selection)
+    })
+
+    $('#show_tests').click(function(){
+        a = '#tests'
+        c = '#show_tests'
+        toggle_selection(a, current_dog_selection, c, current_dog_button)
+        console.log('Current dog selection is now ', current_dog_selection)
+    })
+
+
+
+
+
+
+
+    current_cat_selection = '#all_alerts_cat'
+    current_cat_button = '#show_all_alerts_cat'
+    console.log('Current cat view is', current_cat_selection)
+
+    function toggle_selection_cat(new_selection, existing_selection, new_button, existing_button) {
+        $(existing_selection).hide()
+        $(new_selection).show()
+        $(existing_button).removeClass('btn-gray').addClass('btn-white')
+        $(new_button).removeClass('btn-white').addClass('btn-gray')
+        current_cat_button = new_button
+        current_cat_selection = new_selection
+    }
+
+    $('#show_all_cats').click(function(){
+        a = '#all_cats'
+        c = '#show_all_cats'
+        toggle_selection_cat(a, current_cat_selection, c, current_cat_button)
+        console.log('Current cat selection is now ', current_cat_selection)
+    })
+
+    $('#show_all_alerts_cat').click(function(){
+        a = '#all_alerts_cat'
+        c = '#show_all_alerts_cat'
+        toggle_selection_cat(a, current_cat_selection, c, current_cat_button)
+        console.log('Current cat selection is now ', current_cat_selection)
+    })
+
+    $('#show_vaccines_cat').click(function(){
+        a = '#vaccines_cat'
+        c = '#show_vaccines_cat'
+        toggle_selection_cat(a, current_cat_selection, c, current_cat_button)
+        console.log('Current cat selection is now ', current_cat_selection)
+    })
+
+    $('#show_preventions_cat').click(function(){
+        a = '#preventions_cat'
+        c = '#show_preventions_cat'
+        toggle_selection_cat(a, current_cat_selection, c, current_cat_button)
+        console.log('Current cat selection is now ', current_cat_selection)
+    })
+
+    $('#show_tests_cat').click(function(){
+        a = '#tests_cat'
+        c = '#show_tests_cat'
+        toggle_selection_cat(a, current_cat_selection, c, current_cat_button)
+        console.log('Current cat selection is now ', current_cat_selection)
+    })
 
 });

@@ -24,8 +24,6 @@ urlpatterns = [
 
     url(r'^our_dogs$', views.our_dogs),
     url(r'^our_cats$', views.our_cats),
-    
-    url(r'^select_day/(?P<dog_id>\d+)$', views.select_day),
 
     url(r'^fix_dog/(?P<dog_id>\d+)$', views.fix),
     url(r'^microchip_dog/(?P<dog_id>\d+)$', views.microchip),
