@@ -58,7 +58,7 @@ button:hover {
     font-family: 'Anton', sans-serif;
 }
 .list-box {
-    height: 100vh;
+    height: 65vh;
     margin-bottom: 10px;
     border-radius: 10px;
     background-color: tan;
@@ -109,21 +109,10 @@ button:hover {
     border-radius: 10px;
 }
 
-.name {
-    font-size: 1.3em;
-    color: black;
-    text-shadow: 1px 1px 1px darkgray;
-
-}
-
-h3 {
-    margin: 0px;
-}
-
 .navbar {
     margin-bottom: 0px;
     background-color: tan;
-    opacity: .8;
+    opacity: .7;
     font-size: 30px;
 }
 
