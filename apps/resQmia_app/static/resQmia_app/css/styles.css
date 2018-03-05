@@ -23,13 +23,19 @@ a {
     color: black;
 }
 
+button:focus {outline:0;}
+
+button:hover {
+    background-color: green;
+    color: white;
+}
+
 .input-box {
     border-radius: 10px;
     margin: 10px;
 }
 
 .title {
-    text-align: center;
     background-color: rgb(212, 212, 212);
     padding-left: 15px;
     padding-top: 10px;
@@ -48,10 +54,9 @@ a {
     text-shadow: 3px 3px 3px white;
 }
 
-.center {
-    text-align: center;
+.animal-list {
+    font-family: 'Anton', sans-serif;
 }
-
 .list-box {
     height: 100vh;
     margin-bottom: 10px;
@@ -64,8 +69,7 @@ a {
 .picture-upload-box {
     margin-top: 5%;
     padding: 2%;
-    background-color: white;
-    color: gray;
+    color: black;
     border-radius: 10px;
 }
 
@@ -83,9 +87,10 @@ a {
 }
 
 .api-strip {
-    margin-top: 5px;
-    font-size: 1.1em;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Anton', sans-serif;
+    color: black;
+    text-shadow: 2px 2px 2px white;
+    margin: 5px;
 }
 
 .btn {
@@ -179,7 +184,7 @@ h3 {
     box-shadow: 1px 1px 1px black;
 }
 
-.btn-gray {
+.btn-selected {
     background-color: yellow;
     margin: 5px 5px 5px 5px;
     width: 100px;
@@ -193,13 +198,9 @@ h3 {
     margin: 5px;
 }
 
-button:focus {outline:0;}
-
 .acme {
     font-family: 'Acme', sans-serif;
 }
 
-button:hover {
-    background-color: red:
-    color: black;
+
     

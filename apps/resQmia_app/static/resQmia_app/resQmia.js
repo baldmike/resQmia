@@ -73,127 +73,7 @@ $(document).ready(function(){
         $('#picture_box').toggleClass('hidden')
     })
 
-    var rabiesVacTrue = $('#rabiesVacTrue')
-    rabiesVacTrue.change(function(){
-        $('#rabiesVacFalse').toggleClass('current-input')
-        $('#rabiesVacTrue').toggleClass('current-input')
-        $('#rabies_number').toggleClass("hidden")
-    })
-
-    var rabiesVacFalse = $('#rabiesVacFalse')
-    rabiesVacFalse.change(function(){
-        $('#rabiesVacFalse').toggleClass('current-input')
-        $('#rabiesVacTrue').toggleClass('current-input')
-        $('#rabies_number').toggleClass("hidden")
-    })
-
-    var da2ppVacTrue = $('#da2ppVacTrue')
-    da2ppVacTrue.change(function(){
-        $('#da2ppVacTrue').toggleClass('current-input')
-        $('#da2ppVacFalse').toggleClass('current-input')
-    })
-
-    var da2ppVacFalse = $('#da2ppVacFalse')
-    da2ppVacFalse.change(function(){
-        $('#da2ppVacFalse').toggleClass('current-input')
-        $('#da2ppVacTrue').toggleClass('current-input')
-    })
-
-    var leptoVacTrue = $('#leptoVacTrue')
-    leptoVacTrue.change(function(){
-        $('#leptoVacTrue').toggleClass('current-input')
-        $('#leptoVacFalse').toggleClass('current-input')
-    })
-
-    var leptoVacFalse = $('#leptoVacFalse')
-    leptoVacFalse.change(function(){
-        $('#leptoVacFalse').toggleClass('current-input')
-        $('#leptoVacTrue').toggleClass('current-input')
-    })
-
-    var bordVacTrue = $('#bordVacTrue')
-    bordVacTrue.change(function(){
-        $('#bordVacTrue').toggleClass('current-input')
-        $('#bordVacFalse').toggleClass('current-input')
-    })
-
-    var bordVacFalse = $('#bordVacFalse')
-    bordVacFalse.change(function(){
-        $('#bordVacFalse').toggleClass('current-input')
-        $('#bordVacTrue').toggleClass('current-input')
-    })
-
-    var civVacTrue = $('#civVacTrue')
-    civVacTrue.change(function(){
-        $('#civVacTrue').toggleClass('current-input')
-        $('#civVacFalse').toggleClass('current-input')
-    })
-
-    var civVacFalse = $('#civVacFalse')
-    civVacFalse.change(function(){
-        $('#civVacFalse').toggleClass('current-input')
-        $('#civVacTrue').toggleClass('current-input')
-    })
-
-    var heartwormPrevTrue = $('#heartwormPrevTrue')
-    heartwormPrevTrue.change(function(){
-        $('#heartwormPrevTrue').toggleClass('current-input')
-        $('#heartwormPrevFalse').toggleClass('current-input')
-    })
-
-    var heartwormPrevFalse = $('#heartwormPrevFalse')
-    heartwormPrevFalse.change(function(){
-        $('#heartwormPrevFalse').toggleClass('current-input')
-        $('#heartwormPrevTrue').toggleClass('current-input')
-    })
-
-    var fleaPrevTrue = $('#fleaPrevTrue')
-    fleaPrevTrue.change(function(){
-        $('#fleaPrevTrue').toggleClass('current-input')
-        $('#fleaPrevFalse').toggleClass('current-input')
-    })
-
-    var fleaPrevFalse = $('#fleaPrevFalse')
-    fleaPrevFalse.change(function(){
-        $('#fleaPrevFalse').toggleClass('current-input')
-        $('#fleaPrevTrue').toggleClass('current-input')
-    })
     
-    var heartwormTestTrue = $('#heartwormTestTrue')
-    heartwormTestTrue.change(function(){
-        $('#heartwormTestTrue').toggleClass('current-input')
-        $('#heartwormTestFalse').toggleClass('current-input')
-    })
-
-    var heartwormTestFalse = $('#heartwormTestFalse')
-    heartwormTestFalse.change(function(){
-        $('#heartwormTestFalse').toggleClass('current-input')
-        $('#heartwormTestTrue').toggleClass('current-input')
-    })
-
-    var fecalTestTrue = $('#fecalTestTrue')
-    fecalTestTrue.change(function(){
-        $('#fecalTestTrue').toggleClass('current-input')
-        $('#fecalTestFalse').toggleClass('current-input')
-    })
-
-    var fecalTestFalse = $('#fecalTestFalse')
-    fecalTestFalse.change(function(){
-        $('#fecalTestFalse').toggleClass('current-input')
-        $('#fecalTestTrue').toggleClass('current-input')
-    })
-
-    var dewormerTestTrue = $('#dewormerTestTrue')
-    dewormerTestTrue.change(function(){
-        $('#dewormerTestTrue').toggleClass('current-input')
-        $('#dewormerTestFalse').toggleClass('current-input')
-    })
-
-    var dewormerTestFalse = $('#dewormerTestFalse')
-    dewormerTestFalse.change(function(){
-        $('#dewormerTestFalse').toggleClass('current-input')
-        $('#dewormerTestTrue').toggleClass('current-input')
-    })
 
        
 
@@ -266,8 +146,8 @@ $(document).ready(function(){
     function toggle_selection(new_selection, existing_selection, new_button, existing_button) {
         $(existing_selection).hide()
         $(new_selection).show()
-        $(existing_button).removeClass('btn-gray').addClass('btn-white')
-        $(new_button).removeClass('btn-white').addClass('btn-gray')
+        $(existing_button).removeClass('btn-selected').addClass('btn-white')
+        $(new_button).removeClass('btn-white').addClass('btn-selected')
         current_dog_button = new_button
         current_dog_selection = new_selection
         console.log('THE Current dog selection is now ', current_dog_selection)
@@ -321,8 +201,8 @@ $(document).ready(function(){
     function toggle_selection_cat(new_selection, existing_selection, new_button, existing_button) {
         $(existing_selection).hide()
         $(new_selection).show()
-        $(existing_button).removeClass('btn-gray').addClass('btn-white')
-        $(new_button).removeClass('btn-white').addClass('btn-gray')
+        $(existing_button).removeClass('btn-selected').addClass('btn-white')
+        $(new_button).removeClass('btn-white').addClass('btn-selected')
         current_cat_button = new_button
         current_cat_selection = new_selection
     }
