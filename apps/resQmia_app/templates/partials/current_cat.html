@@ -7,10 +7,10 @@
 
     <div class="attentions">
         <div class="col-sm-6">
-            <button{% if cat.fixed == False %} class="btn btn2 btn-yellow" id="fix_alert">NOT FIXED{% endif %}</button>
+            <button{% if cat.fixed == False %} class="btn2 btn-yellow" id="fix_alert">NOT FIXED{% endif %}</button>
         </div>
         <div class="col-sm-6">
-            <button{% if cat.microchip_number == "0" %} class="btn btn2 btn-yellow" id="chip_alert">NEEDS MICROCHIP{% endif %}</button> 
+            <button{% if cat.microchip_number == "0" %} class="btn2 btn-yellow" id="chip_alert">NEEDS MICROCHIP{% endif %}</button> 
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                 <input type="checkbox" name="fixed" id="fixed" required>Fixed</label>
                 <br>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-red" style="float: none">FIXED!</button>
+                    <button type="submit" class="btn btn-yellow" style="float: none">FIXED!</button>
                 </div>
             </form>
         </div>
@@ -35,7 +35,7 @@
                 <input type="text" name="microchip_number" class="input-box" placeholder="Microchip Number" required>
                 <br>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-red" style="float: none">CHIPPED!</button>
+                    <button type="submit" class="btn btn-yellow" style="float: none">CHIPPED!</button>
                 </div>
             </form>
         </div>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-sm-4">
                     <input hidden name="vaccine_number" value=0>
-                    <button type="submit" class="btn btn-red">FVRCP</button>
+                    <button type="submit" class="btn btn-yellow">FVRCP</button>
                 </div>
             </form>
         </div>
@@ -154,7 +154,7 @@
                     <input placeholder="Revolution is now DUE on: " type="text" class="form-control" name="prevention_due" id="revolution_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-red">REVOLUTION</button>
+                    <button type="submit" class="btn btn-yellow">REVOLUTION</button>
                 </div>
             </form>
         </div>
@@ -183,7 +183,7 @@
                     <input placeholder="Flea Prev is now DUE on: " type="text" class="form-control" name="prevention_due" id="flea_prev_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-red">FLEA/TICK</button>
+                    <button type="submit" class="btn btn-yellow">FLEA/TICK</button>
                 </div>
             </form>
         </div>
@@ -213,7 +213,7 @@
                     <input placeholder="Fiv-Felv Test is now DUE on: " type="text" class="form-control" name="test_due" id="fivfelv_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-red">FIV/FELV</button>
+                    <button type="submit" class="btn btn-yellow">FIV/FELV</button>
                 </div>
             </form>
         </div>
@@ -242,7 +242,7 @@
                     <input placeholder="Fecal Test is now DUE on: " type="text" class="form-control" name="test_due" id="fecal_test_due" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                 </div>
                 <div class="col-sm-4">
-                    <button type="submit" class="btn btn-red">FECAL</button>
+                    <button type="submit" class="btn btn-yellow">FECAL</button>
                 </div>
             </form>
         </div>

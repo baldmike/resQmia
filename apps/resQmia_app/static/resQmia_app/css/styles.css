@@ -23,11 +23,15 @@ a {
     color: black;
 }
 
-button:focus {outline:0;}
+button:focus {
+    outline: 0;
+    background-color: yellow;
+    color: black;
+}
 
 button:hover {
-    background-color: green;
-    color: white;
+    background-color: black;
+    color: yellow;
 }
 
 .input-box {
@@ -40,7 +44,7 @@ button:hover {
     padding-left: 15px;
     padding-top: 10px;
     opacity: .8;
-    border-radius: 1px;
+    border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     color: black;
@@ -99,7 +103,7 @@ button:hover {
 }
 
 .btn2 {
-    width: 200px;;
+    width: 90%;
     height: 40px;
     border-radius: 20px;
     margin-bottom: 10px;
@@ -114,10 +118,6 @@ button:hover {
     background-color: tan;
     opacity: .7;
     font-size: 30px;
-}
-
-.navbar-top {
-    background-color: black;
 }
 
 #fix_box, #chip_box {
@@ -150,6 +150,19 @@ button:hover {
     text-shadow: 2px 2px 2px black;
 }
 
+.brand3 {
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px gray;
+    padding-right: 30px;
+}
+
+.brand4 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 30px;
+    color: hotpink;
+    text-shadow: 2px 2px 2px black;
+}
 .pink {
     font-size: 20px;
     background-color: hotpink;
@@ -162,6 +175,7 @@ button:hover {
 
 .btn-yellow {
     background-color: yellow;
+    color: black;
     margin: 5px;
 }
 
